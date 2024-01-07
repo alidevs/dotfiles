@@ -1,0 +1,90 @@
+[colors.bright]
+black = "#4C566A"
+blue = "#5e81ac"
+cyan = "#88c0d0"
+green = "#A3BE8C"
+magenta = "#B48EAD"
+red = "#bf616a"
+white = "#abb2bf"
+yellow = "#D7BA7D"
+
+[colors.cursor]
+cursor = "#ECEFF4"
+text = "#3B4252"
+
+[colors.normal]
+black = "#4C566A"
+blue = "#5e81ac"
+cyan = "#88c0d0"
+green = "#A3BE8C"
+magenta = "#B48EAD"
+red = "#bf616a"
+white = "#abb2bf"
+yellow = "#D7BA7D"
+
+[colors.primary]
+background = "#131216"
+foreground = "#abb2bf"
+
+[cursor.style]
+blinking = "Never"
+
+[font]
+size = 13.0
+
+[font.bold]
+family = "JetBrains Mono"
+style = "Bold"
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.italic]
+family = "JetBrains Mono"
+style = "Italic"
+
+[font.normal]
+family = "JetBrains Mono"
+style = "Regular"
+
+[font.offset]
+x = 0
+y = 0
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "C"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "ResetFontSize"
+key = "Key0"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "Equals"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "Minus"
+mods = "Control"
+
+[window]
+dynamic_title = true
+opacity = 0.97
+
+[window.padding]
+x = 2
+y = 2
+
+[shell]
+program = "tmux"
+args = ["-l", "-u", "new-session", "-A", "-s", "main"]
