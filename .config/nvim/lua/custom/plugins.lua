@@ -1,11 +1,5 @@
 local plugins = {
   {
-    "esensar/nvim-dev-container",
-    config = function ()
-      require("devcontainer").setup()
-    end,
-  },
-  {
     "jose-elias-alvarez/null-ls.nvim",
     ft = {"python"},
     opts = function ()
@@ -46,14 +40,15 @@ local plugins = {
     lazy = false
   },
   {
-    "tpope/vim-fugitive",
-    lazy = false,
-  },
-  {
     "2nthony/vitesse.nvim",
     dependencies = {
       "tjdevries/colorbuddy.nvim"
-    }
+    },
+    config = function ()
+      require("vitesse").setup {
+        transparent_background = false,
+      }
+    end
   },
   {
     "github/copilot.vim",
