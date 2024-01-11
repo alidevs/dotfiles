@@ -6,6 +6,9 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id feh --randomize --bg-fill ~/Pictures/*
 exec_always --no-startup-id autotiling
 
+exec_always --no-startup-id xrandr --output DP-0 --primary --mode 2560x1440
+exec_always --no-startup-id xrandr --output HDMI-0 --mode 1920x1080 --left-of DP-0
+
 #
 # #---Basic Definitions---# #
 smart_gaps on
