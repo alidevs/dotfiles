@@ -1,5 +1,22 @@
 local plugins = {
   {
+    "SmiteshP/nvim-navic",
+    config = function ()
+      require "custom.configs.nvim-navic"
+    end,
+  },
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- add any options here, or leave empty table for default options
+    },
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify"
+    }
+  },
+  {
     "jose-elias-alvarez/null-ls.nvim",
     ft = {"python"},
     opts = function ()
@@ -24,17 +41,17 @@ local plugins = {
       },
     },
   },
-  {
-    "ThePrimeagen/refactoring.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-    },
-    config = function ()
-      require "custom.configs.refactoring"
-    end,
-    lazy = false
-  },
+  -- {
+  --   "ThePrimeagen/refactoring.nvim",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-treesitter/nvim-treesitter",
+  --   },
+  --   config = function ()
+  --     require "custom.configs.refactoring"
+  --   end,
+  --   lazy = false
+  -- },
   {
     "tpope/vim-surround",
     lazy = false

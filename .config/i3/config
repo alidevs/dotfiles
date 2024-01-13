@@ -80,7 +80,7 @@ bindsym $mod+u                  [urgent=latest] focus
 bindsym $mod+i                  fullscreen disable; floating enable; resize set 300 200; sticky enable; move position 4792 53
 
 # o
-bindsym $mod+o			            exec --no-startup-id $term -e nvim ~/Repos/blog/content
+# bindsym $mod+o			            exec --no-startup-id $term -e nvim ~/Repos/blog/content
 # bindsym $mod+Shift			        exec --no-startup-id $term -e nvim ~/Repos
 
 # a
