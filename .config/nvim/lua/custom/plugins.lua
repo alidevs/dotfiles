@@ -1,5 +1,42 @@
 local plugins = {
   {
+    "rose-pine/neovim",
+    name = "rose-pine",
+    config = function ()
+      vim.cmd [[colorscheme rose-pine]]
+    end
+  },
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
+    lazy = false,
+    config = function()
+      require'nvim-treesitter.configs'.setup {
+        textobjects = {
+          select = {
+            enable = true,
+            lookahead = true,
+            keymaps = {
+              ["af"] = "@function.outer",
+              ["if"] = "@function.inner",
+              ["ac"] = "@class.outer",
+              ["ic"] = "@class.inner",
+            },
+          },
+        },
+      }
+    end
+  },
+  {
+    "ggandor/leap.nvim",
+    lazy = false,
+    config = function()
+      require('leap').add_default_mappings()
+    end,
+  },
+  {
     "SmiteshP/nvim-navic",
     config = function ()
       require "custom.configs.nvim-navic"

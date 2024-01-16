@@ -160,7 +160,7 @@ M.lspconfig = {
 
     ["<leader>ls"] = {
       function()
-        vim.lsp.buf.signature_help()
+        -- vim.lsp.buf.signature_help()
       end,
       "LSP signature help",
     },
@@ -291,6 +291,9 @@ M.telescope = {
     ["<leader>th"] = { "<cmd> Telescope themes <CR>", "Nvchad themes" },
 
     ["<leader>ma"] = { "<cmd> Telescope marks <CR>", "telescope bookmarks" },
+
+    -- registers
+    ["<leader>rr"] = { "<cmd> Telescope registers <CR>", "Registers" },
   },
 }
 

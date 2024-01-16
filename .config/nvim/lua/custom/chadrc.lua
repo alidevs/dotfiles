@@ -1,6 +1,21 @@
 ---@type ChadrcConfig
 local M = {}
 
-M.ui = { theme = 'gruvchad' }
+-- M.ui = { theme = 'catppuccin' }
+M.ui = {
+  changed_themes = {
+    catppuccin = {
+      theme = 'catppuccin',
+      transparent = false,
+      styles = {
+        comments = 'italic',
+        functions = 'italic',
+        keywords = 'italic',
+        strings = 'NONE',
+        variables = 'NONE',
+      }
+    }
+  }
+}
 M.plugins = 'custom.plugins'
 return M
