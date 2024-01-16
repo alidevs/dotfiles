@@ -30,10 +30,18 @@ foreground = "#abb2bf"
 blinking = "Never"
 
 [font]
-size = 13.0
+size = 15.0
+
+[font.offset]
+x = 0
+y = 1
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
 
 [font.bold]
-family = "JetBrains Mono"
+family = "JetBrainsMono Nerd Font"
 style = "Bold"
 
 [font.glyph_offset]
@@ -41,16 +49,8 @@ x = 0
 y = 0
 
 [font.italic]
-family = "JetBrains Mono"
+family = "JetBrainsMono Nerd Font"
 style = "Italic"
-
-[font.normal]
-family = "JetBrains Mono"
-style = "Regular"
-
-[font.offset]
-x = 0
-y = 0
 
 [[keyboard.bindings]]
 action = "Paste"
@@ -79,7 +79,7 @@ mods = "Control"
 
 [window]
 dynamic_title = true
-opacity = 0.97
+opacity = 0.80
 
 [window.padding]
 x = 2
