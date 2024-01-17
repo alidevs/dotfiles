@@ -52,6 +52,12 @@ M.general = {
       end,
       "LSP formatting",
     },
+    ["<leader>tt"] = {
+      function()
+        require("base46").toggle_transparency()
+      end,
+      "Toggle transparency",
+    }
   },
 
   t = {
