@@ -42,9 +42,16 @@ M.general = {
     ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
     ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
 
-    -- new buffer
     ["<leader>b"] = { "<cmd> enew <CR>", "New buffer" },
+    ["<leader>gj"] = { "<cmd> split <CR>", "Split buffer horizontally" },
+
+    ["<leader>gh"] = { "<cmd> vsplit <CR>", "Split buffer vertically" },
     ["<leader>ch"] = { "<cmd> NvCheatsheet <CR>", "Mapping cheatsheet" },
+
+    ["<leader>r="] = { "<cmd> vertical resize +5 <CR>", "Increase width" },
+    ["<leader>r-"] = { "<cmd> vertical resize -5 <CR>", "Decrease width" },
+    ["<leader>r+"] = { "<cmd> resize +5 <CR>", "Increase height" },
+    ["<leader>r_"] = { "<cmd> resize -5 <CR>", "Decrease height" },
 
     ["<leader>fm"] = {
       function()

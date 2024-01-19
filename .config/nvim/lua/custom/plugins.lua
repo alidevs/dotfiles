@@ -1,5 +1,23 @@
 local plugins = {
   {
+    "tzachar/local-highlight.nvim",
+    event = "VeryLazy",
+    config = function ()
+      require("local-highlight").setup {
+        file_types = {
+          "python",
+          "lua",
+          "json",
+          "yaml",
+          "toml",
+          "html"
+        },
+
+        hlgroup = "Visual"
+      }
+    end,
+  },
+  {
     "ggandor/leap.nvim",
     lazy = false,
     config = function()
@@ -45,6 +63,8 @@ local plugins = {
         "mypy",
         "ruff",
         "black",
+        "isort",
+        "flake8"
       },
     },
   },
