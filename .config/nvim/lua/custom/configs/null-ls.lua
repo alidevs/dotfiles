@@ -6,9 +6,16 @@ local opts = {
     null_ls.builtins.formatting.black.with({
       extra_args = { "--line-length", "120" },
     }),
-    null_ls.builtins.formatting.isort,
-    null_ls.builtins.diagnostics.mypy,
-    null_ls.builtins.diagnostics.ruff
+    null_ls.builtins.diagnostics.flake8.with({
+      extra_args = { "--import-order-style", "google", "--max-line-length", "140", "--ignore", "E203", "--exclude", "env.py" },
+    }),
+    null_ls.builtins.formatting.isort.with({
+      extra_args = { "--profile", "black", "--line-length", "120" },
+    }),
+    null_ls.builtins.diagnostics.mypy.with({
+      extra_args = { "--ignore-missing-imports", "--exclude", "alembic/*"},
+    }),
+    -- null_ls.builtins.diagnostics.ruff
   },
   on_attach = function (client, bufnr)
     if client.supports_method("textDocument/formatting") then
