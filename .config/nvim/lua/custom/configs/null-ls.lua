@@ -13,7 +13,7 @@ local opts = {
       extra_args = { "--profile", "black", "--line-length", "120" },
     }),
     null_ls.builtins.diagnostics.mypy.with({
-      extra_args = { "--ignore-missing-imports", "--exclude", "alembic/*"},
+      extra_args = { "--config-file", vim.fn.findfile("tox.ini", ".;")},
     }),
     -- null_ls.builtins.diagnostics.ruff
   },

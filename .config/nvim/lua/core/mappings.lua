@@ -92,14 +92,14 @@ M.tabufline = {
 
   n = {
     -- cycle through buffers
-    ["<tab>"] = {
+    ["<leader>]"] = {
       function()
         require("nvchad.tabufline").tabuflineNext()
       end,
       "Goto next buffer",
     },
 
-    ["<S-tab>"] = {
+    ["<leader>["] = {
       function()
         require("nvchad.tabufline").tabuflinePrev()
       end,
@@ -173,7 +173,7 @@ M.lspconfig = {
 
     ["<leader>ls"] = {
       function()
-        -- vim.lsp.buf.signature_help()
+        vim.lsp.buf.signature_help()
       end,
       "LSP signature help",
     },
@@ -274,7 +274,7 @@ M.nvimtree = {
     ["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
 
     -- focus
-    ["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "Focus nvimtree" },
+    -- ["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "Focus nvimtree" },
   },
 }
 

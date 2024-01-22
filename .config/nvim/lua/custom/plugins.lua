@@ -1,5 +1,44 @@
 local plugins = {
   {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    lazy = false,
+    dependencies = {
+      "nvim-lua/plenary.nvim"
+    },
+    config = function ()
+      local harpoon = require("harpoon")
+      harpoon:setup({})
+
+      local conf = require("telescope.config").values
+      local function toggle_telescope(harpoon_files)
+        local file_paths = {}
+        for _, item in ipairs(harpoon_files.items) do
+          table.insert(file_paths, item.value)
+        end
+
+        require("telescope.pickers").new({}, {
+          prompt_title = "Harpoon",
+          finder = require("telescope.finders").new_table({
+            results = file_paths,
+          }),
+          sorter = conf.generic_sorter({}),
+          previewer = conf.file_previewer({}),
+        }):find()
+      end
+
+      vim.keymap.set("n", "<leader>e", function () toggle_telescope(harpoon:list()) end, { desc = "Open harpoon window" })
+      vim.keymap.set("n", "<leader>m", function () harpoon:list():append() end, { desc = "Add current file to harpoon" })
+      vim.keymap.set("n", "<leader>md", function () harpoon:list():remove() end, { desc = "Delete current file from harpoon" })
+      vim.keymap.set("n", "<Tab>", function () harpoon:list():next() end, { desc = "Navigate to next file in harpoon" })
+      vim.keymap.set("n", "<S-Tab>", function () harpoon:list():prev() end, { desc = "Navigate to previous file in harpoon" })
+    end
+  },
+  {
+    "mg979/vim-visual-multi",
+    event = "BufEnter",
+  },
+  {
     "echasnovski/mini.nvim",
     enabled = true,
     event = "BufEnter",
