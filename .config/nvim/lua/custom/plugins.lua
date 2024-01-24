@@ -1,5 +1,12 @@
 local plugins = {
   {
+    "nvim-pack/nvim-spectre",
+    event = "BufRead",
+    config = function ()
+      require("spectre").setup()
+    end,
+  },
+  {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
     lazy = false,
@@ -30,8 +37,8 @@ local plugins = {
       vim.keymap.set("n", "<leader>e", function () toggle_telescope(harpoon:list()) end, { desc = "Open harpoon window" })
       vim.keymap.set("n", "<leader>m", function () harpoon:list():append() end, { desc = "Add current file to harpoon" })
       vim.keymap.set("n", "<leader>md", function () harpoon:list():remove() end, { desc = "Delete current file from harpoon" })
-      vim.keymap.set("n", "<Tab>", function () harpoon:list():next() end, { desc = "Navigate to next file in harpoon" })
-      vim.keymap.set("n", "<S-Tab>", function () harpoon:list():prev() end, { desc = "Navigate to previous file in harpoon" })
+      vim.keymap.set("n", "<leader>]", function () harpoon:list():next() end, { desc = "Navigate to next file in harpoon" })
+      vim.keymap.set("n", "<leader>[", function () harpoon:list():prev() end, { desc = "Navigate to previous file in harpoon" })
     end
   },
   {
