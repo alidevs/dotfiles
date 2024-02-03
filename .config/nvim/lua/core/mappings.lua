@@ -16,6 +16,7 @@ M.general = {
   },
 
   n = {
+    ["<leader>nd"] = { "<cmd>NoiceDismiss<CR>", "Dimiss Noice notifications" },
     ["<leader><leader>"] = { "<cmd>Telescope frecency workspace=CWD<CR>", "Recent files" },
     ["<Esc>"] = { "<cmd> noh <CR>", "Clear highlights" },
     -- switch between windows
