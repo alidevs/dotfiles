@@ -16,6 +16,7 @@ M.general = {
   },
 
   n = {
+    ["<leader><leader>"] = { "<cmd>Telescope frecency workspace=CWD<CR>", "Recent files" },
     ["<Esc>"] = { "<cmd> noh <CR>", "Clear highlights" },
     -- switch between windows
     ["<C-h>"] = { "<C-w>h", "Window left" },
@@ -64,7 +65,7 @@ M.general = {
         require("base46").toggle_transparency()
       end,
       "Toggle transparency",
-    }
+    },
   },
 
   t = {

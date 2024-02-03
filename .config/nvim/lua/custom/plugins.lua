@@ -1,28 +1,58 @@
 local plugins = {
   {
+    "kevinhwang91/nvim-ufo",
+    event = "BufRead",
+    config = function()
+      require "custom.configs.ufo"
+    end,
+    dependencies = {
+      {
+        "kevinhwang91/promise-async",
+      },
+    },
+  },
+  {
+    "nvim-telescope/telescope-frecency.nvim",
+    config = function()
+      require("telescope").load_extension "frecency"
+    end,
+  },
+  {
+    "rust-lang/rust.vim",
+    ft = { "rust" },
+  },
+  {
+    "mrcjkb/rustaceanvim",
+    version = "^4",
+    ft = { "rust" },
+    init = function()
+      vim.g.rustaceanvim = {}
+    end,
+  },
+  {
     "nvim-treesitter/nvim-treesitter-context",
     lazy = false,
-    config = function ()
+    config = function()
       require("treesitter-context").setup {
         enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
         max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
         min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
         line_numbers = true,
         multiline_threshold = 20, -- Maximum number of lines to show for a single context
-        trim_scope = 'inner', -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
-        mode = 'topline',  -- Line used to calculate context. Choices: 'cursor', 'topline'
+        trim_scope = "inner", -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
+        mode = "topline", -- Line used to calculate context. Choices: 'cursor', 'topline'
         -- Separator between context and content. Should be a single character string, like '-'.
         -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
         separator = nil,
         zindex = 20, -- The Z-index of the context window
         on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
-    }
-    end
+      }
+    end,
   },
   {
     "nvim-pack/nvim-spectre",
     event = "BufRead",
-    config = function ()
+    config = function()
       require("spectre").setup()
     end,
   },
@@ -31,11 +61,11 @@ local plugins = {
     branch = "harpoon2",
     lazy = false,
     dependencies = {
-      "nvim-lua/plenary.nvim"
+      "nvim-lua/plenary.nvim",
     },
-    config = function ()
-      local harpoon = require("harpoon")
-      harpoon:setup({})
+    config = function()
+      local harpoon = require "harpoon"
+      harpoon:setup {}
 
       local conf = require("telescope.config").values
       local function toggle_telescope(harpoon_files)
@@ -44,22 +74,34 @@ local plugins = {
           table.insert(file_paths, item.value)
         end
 
-        require("telescope.pickers").new({}, {
-          prompt_title = "Harpoon",
-          finder = require("telescope.finders").new_table({
-            results = file_paths,
-          }),
-          sorter = conf.generic_sorter({}),
-          previewer = conf.file_previewer({}),
-        }):find()
+        require("telescope.pickers")
+          .new({}, {
+            prompt_title = "Harpoon",
+            finder = require("telescope.finders").new_table {
+              results = file_paths,
+            },
+            sorter = conf.generic_sorter {},
+            previewer = conf.file_previewer {},
+          })
+          :find()
       end
 
-      vim.keymap.set("n", "<leader>e", function () toggle_telescope(harpoon:list()) end, { desc = "Open harpoon window" })
-      vim.keymap.set("n", "<leader>m", function () harpoon:list():append() end, { desc = "Add current file to harpoon" })
-      vim.keymap.set("n", "<leader>md", function () harpoon:list():remove() end, { desc = "Delete current file from harpoon" })
-      vim.keymap.set("n", "<leader>]", function () harpoon:list():next() end, { desc = "Navigate to next file in harpoon" })
-      vim.keymap.set("n", "<leader>[", function () harpoon:list():prev() end, { desc = "Navigate to previous file in harpoon" })
-    end
+      vim.keymap.set("n", "<leader>e", function()
+        toggle_telescope(harpoon:list())
+      end, { desc = "Open harpoon window" })
+      vim.keymap.set("n", "<leader>m", function()
+        harpoon:list():append()
+      end, { desc = "Add current file to harpoon" })
+      vim.keymap.set("n", "<leader>md", function()
+        harpoon:list():remove()
+      end, { desc = "Delete current file from harpoon" })
+      vim.keymap.set("n", "<leader>]", function()
+        harpoon:list():next()
+      end, { desc = "Navigate to next file in harpoon" })
+      vim.keymap.set("n", "<leader>[", function()
+        harpoon:list():prev()
+      end, { desc = "Navigate to previous file in harpoon" })
+    end,
   },
   {
     "mg979/vim-visual-multi",
@@ -69,10 +111,11 @@ local plugins = {
     "echasnovski/mini.nvim",
     enabled = true,
     event = "BufEnter",
-    config = function ()
+    config = function()
+      require("mini.pairs").setup()
       require("mini.surround").setup()
       require("mini.move").setup()
-      require("mini.indentscope").setup({
+      require("mini.indentscope").setup {
         event = { "BufReadPre", "BufNewFile" },
         opts = {
           symbol = "▏",
@@ -90,40 +133,20 @@ local plugins = {
               "mason",
               "notify",
               "toggleterm",
-              "lazyterm"
+              "lazyterm",
             },
             callback = function()
               vim.b.miniindentscope_disable = true
-            end
+            end,
           })
-        end
-      })
-    end
+        end,
+      }
+    end,
   },
-  -- {
-  --   "Bekaboo/dropbar.nvim",
-  --   event = { "BufRead", "BufWinEnter", "BufNewFile" },
-  --   config = function()
-  --     require("dropbar").setup {
-  --       sources = {
-  --         path = {
-  --           modified = function(sym)
-  --             return sym:merge {
-  --               name = sym.name .. "[+]",
-  --               icon = " ",
-  --               name_hl = "DiffAdded",
-  --               icon_hl = "DiffAdded",
-  --             }
-  --           end,
-  --         },
-  --       },
-  --     }
-  --   end,
-  -- },
   {
     "tzachar/local-highlight.nvim",
     event = "VeryLazy",
-    config = function ()
+    config = function()
       require("local-highlight").setup {
         file_types = {
           "python",
@@ -131,22 +154,15 @@ local plugins = {
           "json",
           "yaml",
           "toml",
-          "html"
+          "html",
         },
-        hlgroup = "Visual"
+        hlgroup = "Visual",
       }
     end,
   },
-  -- {
-  --   "ggandor/leap.nvim",
-  --   lazy = false,
-  --   config = function()
-  --     require('leap').add_default_mappings()
-  --   end,
-  -- },
   {
     "SmiteshP/nvim-navic",
-    config = function ()
+    config = function()
       require "custom.configs.nvim-navic"
     end,
   },
@@ -158,10 +174,10 @@ local plugins = {
     },
     dependencies = {
       "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify"
+      "rcarriga/nvim-notify",
     },
-    config = function ()
-      require("noice").setup({
+    config = function()
+      require("noice").setup {
         lsp = {
           -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
           override = {
@@ -178,23 +194,23 @@ local plugins = {
           inc_rename = false, -- enables an input dialog for inc-rename.nvim
           lsp_doc_border = false, -- add a border to hover docs and signature help
         },
-      })
+      }
 
-      require("notify").setup({
+      require("notify").setup {
         background_colour = "#000000",
-      })
-    end
+      }
+    end,
   },
   {
-    "jose-elias-alvarez/null-ls.nvim",
-    ft = {"python"},
-    opts = function ()
-      return require "custom.configs.null-ls"
+    "nvimtools/none-ls.nvim",
+    event = "VeryLazy",
+    opts = function()
+      return require "custom.configs.none-ls"
     end,
   },
   {
     "neovim/nvim-lspconfig",
-    config = function ()
+    config = function()
       require "plugins.configs.lspconfig"
       require "custom.configs.lspconfig"
     end,
@@ -205,31 +221,32 @@ local plugins = {
       ensure_installed = {
         "pyright",
         "mypy",
-        "ruff",
+        -- "ruff",
+        "rust-analyzer",
         "black",
         "isort",
-        "flake8"
+        "flake8",
       },
     },
   },
   {
     "2nthony/vitesse.nvim",
     dependencies = {
-      "tjdevries/colorbuddy.nvim"
+      "tjdevries/colorbuddy.nvim",
     },
-    config = function ()
+    config = function()
       require("vitesse").setup {
         transparent_background = false,
       }
-    end
+    end,
   },
   {
     "github/copilot.vim",
-    config = function ()
+    config = function()
       require "custom.configs.copilot"
     end,
-    lazy = false
-  }
+    lazy = false,
+  },
 }
 
 return plugins
