@@ -54,7 +54,7 @@ local options = {
     },
   },
 
-  extensions_list = { "themes", "terms", "fzf", "live_grep_args" },
+  extensions_list = { "themes", "terms", "fzf", "live_grep_args", "neoclip" },
   extensions = {
     fzf = {
       fuzzy = true,
