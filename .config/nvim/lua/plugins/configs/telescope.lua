@@ -1,3 +1,5 @@
+local lga_actions = require "telescope-live-grep-args.actions"
+
 local options = {
   defaults = {
     vimgrep_arguments = {
@@ -31,7 +33,7 @@ local options = {
       preview_cutoff = 120,
     },
     file_sorter = require("telescope.sorters").get_fuzzy_file,
-    file_ignore_patterns = { 
+    file_ignore_patterns = {
       "node_modules",
       "alembic",
     },
@@ -52,13 +54,28 @@ local options = {
     },
   },
 
-  extensions_list = { "themes", "terms", "fzf" },
+  extensions_list = { "themes", "terms", "fzf", "live_grep_args" },
   extensions = {
     fzf = {
       fuzzy = true,
       override_generic_sorter = true,
       override_file_sorter = true,
       case_mode = "smart_case",
+    },
+
+    live_grep_args = {
+      auto_quoting = true, -- enable/disable auto-quoting
+      -- define mappings, e.g.
+      mappings = {         -- extend mappings
+        i = {
+          ["<C-k>"] = lga_actions.quote_prompt(),
+          ["<C-i>"] = lga_actions.quote_prompt { postfix = " -g " },
+        },
+      },
+      -- ... also accepts theme settings, for example:
+      -- theme = "dropdown", -- use dropdown theme
+      -- theme = { }, -- use own theme spec
+      -- layout_config = { mirror=true }, -- mirror preview pane
     },
   },
 }
