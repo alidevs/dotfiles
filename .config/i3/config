@@ -9,12 +9,15 @@ exec_always --no-startup-id autotiling
 exec_always --no-startup-id xrandr --output DP-0 --primary --mode 2560x1440
 exec_always --no-startup-id xrandr --output HDMI-0 --mode 1920x1080 --left-of DP-0
 
+exec_always --no-startup-id picom -b --config ~/.config/picom/picom.conf
+
 #
 # #---Basic Definitions---# #
-smart_gaps on
+smart_gaps off
 smart_borders on
-set $inner_gaps 8
-set $outer_gaps 8
+set $inner_gaps 20
+set $outer_gaps 0
+set $top_gaps 70
 set $term --no-startup-id alacritty
 set $mod Mod4
 set $alt Mod1
@@ -24,13 +27,26 @@ set $lock i3lock
 set $suspend sudo systemctl suspend
 set $hibernate sudo -A systemctl hibernate
 
+set $ws1 "1"
+set $ws2 "2" 
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # #---Gaps---# #
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 0
+
 gaps inner $inner_gaps
 gaps outer $outer_gaps
+gaps top $top_gaps
 
 # #---Basic Bindings---# #
 bindsym $mod+Return 		         exec $term
@@ -40,7 +56,7 @@ bindsym $mod+Escape	             exec --no-startup-id dm-tool switch-to-greeter
 bindsym $mod+Shift+Escape	       exec --no-startup-id $hibernate
 
 # bindsym $mod+BackSpace
-# bindsym $mod+Shift+BackSpace	   exec --no-startup-id prompt "Reboot computer?" $reboot
+bindsym $mod+Shift+BackSpace	   exec --no-startup-id prompt "Reboot computer?" $reboot
 
 # space
 bindsym $mod+space 			            exec --no-startup-id rofi-menu 
