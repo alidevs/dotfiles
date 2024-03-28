@@ -5,7 +5,7 @@ local opts = {
   sources = {
     -- Python
     null_ls.builtins.formatting.black.with {
-      extra_args = { "--config", vim.fn.findfile(".python-black", ".;") },
+      extra_args = { "--config", vim.fn.findfile(".github/linters/.python-black", ".;") },
     },
     null_ls.builtins.diagnostics.flake8.with {
       extra_args = { "--config-file", vim.fn.findfile("tox.ini", ".;") },

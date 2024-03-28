@@ -28,9 +28,9 @@ lspconfig.rust_analyzer.setup {
   },
 }
 
-lspconfig.stylua.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  filetypes = { "lua" },
-  root_dir = lspconfig.util.root_pattern ".stylua.toml",
-}
+-- lspconfig.stylua.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   filetypes = { "lua" },
+--   root_dir = lspconfig.util.root_pattern ".stylua.toml",
+-- }
