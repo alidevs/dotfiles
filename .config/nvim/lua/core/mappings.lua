@@ -16,6 +16,9 @@ M.general = {
   },
 
   n = {
+    ["<leader>o"] = { "<cmd> Telescope neoclip<CR>", "Open neoclip" },
+    ["<leader>nd"] = { "<cmd>NoiceDismiss<CR>", "Dimiss Noice notifications" },
+    ["<leader><leader>"] = { "<cmd>Telescope frecency workspace=CWD<CR>", "Recent files" },
     ["<Esc>"] = { "<cmd> noh <CR>", "Clear highlights" },
     -- switch between windows
     ["<C-h>"] = { "<C-w>h", "Window left" },
@@ -64,7 +67,7 @@ M.general = {
         require("base46").toggle_transparency()
       end,
       "Toggle transparency",
-    }
+    },
   },
 
   t = {
@@ -173,7 +176,7 @@ M.lspconfig = {
 
     ["<leader>ls"] = {
       function()
-        -- vim.lsp.buf.signature_help()
+        vim.lsp.buf.signature_help()
       end,
       "LSP signature help",
     },
@@ -274,7 +277,7 @@ M.nvimtree = {
     ["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
 
     -- focus
-    ["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "Focus nvimtree" },
+    -- ["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "Focus nvimtree" },
   },
 }
 
@@ -286,6 +289,7 @@ M.telescope = {
     ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "Find files" },
     ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Find all" },
     ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "Live grep" },
+    ["<leader>fc"] = { "<cmd> Telescope live_grep_args <CR>", "Live grep args" },
     ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },
     ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "Help page" },
     ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "Find oldfiles" },
