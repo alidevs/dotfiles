@@ -39,16 +39,6 @@ local plugins = {
     end,
   },
 
-  -- Navigation and File Management
-  {
-    "ThePrimeagen/harpoon",
-    branch = "harpoon2",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      require("lua/config/harpoon").setup()
-    end,
-  },
-
   -- UI Enhancements
   {
     "echasnovski/mini.nvim",
