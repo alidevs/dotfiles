@@ -11,6 +11,26 @@ lspconfig.pyright.setup {
   root_dir = lspconfig.util.root_pattern(".venv", "docker-compose.yml", ".direnv"),
 }
 
+-- lspconfig.pylsp.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   filetypes = { "python" },
+--   root_dir = lspconfig.util.root_pattern(".venv", "docker-compose.yml", ".direnv"),
+--   settings = {
+--     pylsp = {
+--       plugins = {
+--         black = { enabled = true },
+--         pylsp_mypy = { enabled = true },
+--         pylsp_isort = { enabled = true },
+--         flake8 = { enabled = true },
+--         pycodestyle = {
+--           maxLineLength = 120,
+--         },
+--       },
+--     },
+--   },
+-- }
+
 lspconfig.rust_analyzer.setup {
   on_attach = on_attach,
   capabilities = capabilities,

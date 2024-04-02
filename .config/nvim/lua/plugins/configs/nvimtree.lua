@@ -2,6 +2,7 @@ local options = {
   filters = {
     dotfiles = false,
     exclude = { vim.fn.stdpath "config" .. "/lua/custom" },
+    custom = { "__pycache__", ".mypy_cache", ".pytest_cache" },
   },
   disable_netrw = true,
   hijack_netrw = true,
@@ -32,7 +33,7 @@ local options = {
   },
   renderer = {
     root_folder_label = false,
-    highlight_git = false,
+    highlight_git = true,
     highlight_opened_files = "none",
 
     indent_markers = {
@@ -44,7 +45,7 @@ local options = {
         file = true,
         folder = true,
         folder_arrow = true,
-        git = false,
+        git = true,
       },
 
       glyphs = {

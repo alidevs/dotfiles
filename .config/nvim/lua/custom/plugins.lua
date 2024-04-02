@@ -26,8 +26,13 @@ local plugins = {
   {
     "nvim-treesitter/nvim-treesitter-context",
     config = function()
-      require("lua/config/treesitter-context").setup()
+      require("custom.configs.nvim-treesitter-context").setup()
     end,
+    lazy = false,
+  },
+  {
+    "rrethy/vim-illuminate",
+    lazy = false,
   },
 
   -- Search and Replace
