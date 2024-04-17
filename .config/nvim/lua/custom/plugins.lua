@@ -78,9 +78,19 @@ local plugins = {
   },
   {
     "williamboman/mason.nvim",
-    config = function()
-      require("custom.configs.mason").setup()
-    end,
+    opts = {
+      ensure_installed = {
+        "pyright",
+        "mypy",
+        "rust-analyzer",
+        "typescript-language-server",
+        "eslint-lsp",
+        "prettier",
+        "black",
+        "isort",
+        "flake8",
+      },
+    },
   },
 
   -- Additional Plugins

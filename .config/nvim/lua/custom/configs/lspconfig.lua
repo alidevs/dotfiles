@@ -11,26 +11,6 @@ lspconfig.pyright.setup {
   root_dir = lspconfig.util.root_pattern(".venv", "docker-compose.yml", ".direnv"),
 }
 
--- lspconfig.pylsp.setup {
---   on_attach = on_attach,
---   capabilities = capabilities,
---   filetypes = { "python" },
---   root_dir = lspconfig.util.root_pattern(".venv", "docker-compose.yml", ".direnv"),
---   settings = {
---     pylsp = {
---       plugins = {
---         black = { enabled = true },
---         pylsp_mypy = { enabled = true },
---         pylsp_isort = { enabled = true },
---         flake8 = { enabled = true },
---         pycodestyle = {
---           maxLineLength = 120,
---         },
---       },
---     },
---   },
--- }
-
 lspconfig.rust_analyzer.setup {
   on_attach = on_attach,
   capabilities = capabilities,
@@ -44,6 +24,30 @@ lspconfig.rust_analyzer.setup {
       procMacro = {
         enable = true,
       },
+    },
+  },
+}
+
+local function organize_imports()
+  local params = {
+    command = "_typescript.organizeImports",
+    arguments = { vim.api.nvim_buf_get_name(0) },
+  }
+  vim.lsp.buf.execute_command(params)
+end
+
+lspconfig.tsserver.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  init_options = {
+    disableSuggestions = true,
+  },
+  filetypes = { "typescript", "typescriptreact" },
+  -- root_dir = lspconfig.util.root_pattern "package.json",
+  commands = {
+    OrganizeImports = {
+      organize_imports,
+      description = "Organize Imports",
     },
   },
 }

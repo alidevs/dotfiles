@@ -20,6 +20,10 @@ local opts = {
     -- Lua
     null_ls.builtins.formatting.stylua,
 
+    -- JavaScript / TypeScript
+    null_ls.builtins.diagnostics.eslint,
+    null_ls.builtins.formatting.prettier,
+
     -- Others
     -- null_ls.builtins.formatting.prettierd.with {
     --   filetypes = { "json", "yaml", "markdown", "html", "css" },
