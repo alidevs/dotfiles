@@ -276,7 +276,7 @@ M.nvimtree = {
     ["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
 
     -- focus
-    -- ["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "Focus nvimtree" },
+    ["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "Focus nvimtree" },
   },
 }
 
@@ -291,7 +291,7 @@ M.telescope = {
     ["<leader>fc"] = { "<cmd> Telescope live_grep_args <CR>", "Live grep args" },
     ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },
     ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "Help page" },
-    ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "Find oldfiles" },
+    ["<leader><Tab>"] = { "<cmd> Telescope oldfiles <CR><ESC>", "Find oldfiles" },
     ["<leader>fz"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>", "Find in current buffer" },
     ["<leader>fs"] = { "<cmd> Telescope grep_string <CR>", "Grep string" },
     ["<leader>fy"] = { "<cmd> Telescope lsp_document_symbols <CR>", "Document symbols" },
