@@ -4,7 +4,7 @@ end
 starship init fish | source
 direnv hook fish | source
 pyenv init - | source
-neofetch
+# neofetch
 status is-login; and source (jenv init -|psub)
 zoxide init fish | source
 
@@ -14,8 +14,8 @@ alias ll="ls -l"
 alias la="ls -a"
 alias lla="ls -la"
 alias l="ls -l"
-alias lt="ls --tree"
-alias lat="ls -la --tree"
+alias lt="ls --tree --depth=2"
+alias lat="ls -la --tree --depth=2"
 
 alias cat=bat
 
