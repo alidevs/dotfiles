@@ -21,3 +21,6 @@ alias cat=bat
 
 alias cd="z"
 alias lg="lazygit"
+
+alias nv="neovide"
+alias vim="nvim"
