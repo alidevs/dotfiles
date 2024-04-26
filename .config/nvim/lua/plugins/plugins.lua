@@ -26,7 +26,7 @@ local plugins = {
   {
     "nvim-treesitter/nvim-treesitter-context",
     config = function()
-      require("custom.configs.nvim-treesitter-context").setup()
+      require("plugins.configs.nvim-treesitter-context").setup()
     end,
     lazy = false,
   },
@@ -39,9 +39,6 @@ local plugins = {
   {
     "nvim-pack/nvim-spectre",
     event = "BufRead",
-    config = function()
-      require("spectre").setup()
-    end,
   },
 
   -- UI Enhancements
@@ -49,14 +46,14 @@ local plugins = {
     "echasnovski/mini.nvim",
     event = "BufEnter",
     config = function()
-      require("custom.configs.mini").setup()
+      require("plugins.configs.mini").setup()
     end,
   },
   {
     "folke/noice.nvim",
     event = "VeryLazy",
     config = function()
-      require("custom.configs.noice").setup()
+      require("plugins.configs.noice").setup()
     end,
     dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
   },
@@ -66,14 +63,14 @@ local plugins = {
     "jose-elias-alvarez/null-ls.nvim",
     event = "VeryLazy",
     opts = function()
-      return require "custom.configs.null-ls"
+      return require "plugins.configs.null-ls"
     end,
   },
   {
     "neovim/nvim-lspconfig",
     config = function()
+      require("nvchad.configs.lspconfig").defaults()
       require "plugins.configs.lspconfig"
-      require "custom.configs.lspconfig"
     end,
   },
   {
@@ -93,11 +90,11 @@ local plugins = {
     },
   },
 
-  -- Additional Plugins
+  -- AI
   {
     "github/copilot.vim",
     config = function()
-      require "custom.configs.copilot"
+      require "plugins.configs.copilot"
     end,
     lazy = false,
   },
