@@ -1,0 +1,25 @@
+#!/bin/bash
+
+if [[ "$1" == "--song" ]]; then
+    playerctl --player=spotify metadata title | cut -c -80
+elif [[ "$1" == "--artist" ]]; then
+    playerctl --player=spotify metadata artist | cut -c -80
+elif [[ "$1" == "--status" ]]; then
+    playerctl --player=spotify status
+elif [[ "$1" == "--get-shuffle" ]]; then
+    playerctl --player=spotify shuffle
+elif [[ "$1" == "--shuffle" ]]; then
+    playerctl --player=spotify shuffle Toggle
+elif [[ "$1" == "--toggle" ]]; then
+    playerctl --player=spotify play-pause
+elif [[ "$1" == "--next" ]]; then
+    playerctl --player=spotify next
+elif [[ "$1" == "--previous" ]]; then
+    playerctl --player=spotify previous
+elif [[ "$1" == "--loop-get" ]]; then
+    playerctl --player=spotify loop
+elif [[ "$1" == "--loop-off" ]]; then
+    playerctl --player=spotify loop Playlist
+elif [[ "$1" == "--loop-on" ]]; then
+    playerctl --player=spotify loop Track
+fi
