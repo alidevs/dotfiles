@@ -20,6 +20,9 @@ local opts = {
     null_ls.builtins.diagnostics.eslint,
     null_ls.builtins.formatting.prettier,
 
+    -- Rust
+    null_ls.builtins.formatting.rustfmt,
+
     -- Others
     -- null_ls.builtins.formatting.prettierd.with {
     --   filetypes = { "json", "yaml", "markdown", "html", "css" },
