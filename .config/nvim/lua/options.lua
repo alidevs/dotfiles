@@ -1,7 +1,7 @@
 require "nvchad.options"
 
 local o = vim.o
-o.cursorlineopt = 'both'
+o.cursorlineopt = "both"
 
 local opt = vim.opt
 opt.relativenumber = true
@@ -13,7 +13,7 @@ opt.titlestring = "NeoVim - %{expand('%:~:.')}"
 local g = vim.g
 -- Neovide
 if g.neovide then
-  o.guifont = "JetbrainsMono Nerd Font:h12"
+  o.guifont = "JetbrainsMono Nerd Font:h16"
 
   g.neovide_refresh_rate = 175
 

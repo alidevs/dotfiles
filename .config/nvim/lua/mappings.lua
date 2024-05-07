@@ -16,4 +16,10 @@ map("n", "<leader>fs", "<cmd>Telescope grep_string<cr>", { desc = "Search for st
 map("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<cr>", { desc = "Fuzzy find in buffer" })
 
 -- base46
-map("n", "<leader>tt", function() require("base46").toggle_transparency() end, { desc = "Toggle transparency" })
+map("n", "<leader>tt", function()
+  require("base46").toggle_transparency()
+end, { desc = "Toggle transparency" })
+
+-- gitsigns
+map("n", "]c", "<cmd>lua require('gitsigns').next_hunk()<cr>", { desc = "Next hunk" })
+map("n", "[c", "<cmd>lua require('gitsigns').prev_hunk()<cr>", { desc = "Previous hunk" })
