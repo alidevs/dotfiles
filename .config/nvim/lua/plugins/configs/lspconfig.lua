@@ -11,20 +11,6 @@ lspconfig.pyright.setup {
   root_dir = lspconfig.util.root_pattern(".venv", "docker-compose.yml", ".direnv"),
 }
 
-lspconfig.ruff_lsp.setup {
-  on_attach = function(client)
-    client.server_capabilities.hoverProvider = false
-  end,
-  capabilities = capabilities,
-  init_options = {
-    settings = {
-      format = {
-        args = { "--line-length", "120" },
-      },
-    },
-  },
-}
-
 lspconfig.rust_analyzer.setup {
   on_attach = on_attach,
   capabilities = capabilities,

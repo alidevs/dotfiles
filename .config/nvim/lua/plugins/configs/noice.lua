@@ -1,6 +1,18 @@
 return {
   setup = function()
     require("noice").setup {
+      views = {
+        cmdline_popup = {
+          border = {
+            style = "none",
+            padding = { 1, 3 },
+          },
+          filter_options = {},
+          win_options = {
+            winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
+          },
+        },
+      },
       lsp = {
         override = {
           ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
