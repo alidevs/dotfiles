@@ -23,3 +23,10 @@ end, { desc = "Toggle transparency" })
 -- gitsigns
 map("n", "]c", "<cmd>lua require('gitsigns').next_hunk()<cr>", { desc = "Next hunk" })
 map("n", "[c", "<cmd>lua require('gitsigns').prev_hunk()<cr>", { desc = "Previous hunk" })
+
+-- Lazygit
+map("n", "<leader>lg", "<cmd>LazyGit<cr>", { desc = "LazyGit" })
+
+-- LSP & utils
+map("n", "<leader>vs", "<cmd>VenvSelect<cr>", { desc = "Select virtualenv" })
+map("n", "<leader>vc", "<cmd>VenvSelectCached<cr>", { desc = "Select cached virtualenv" })

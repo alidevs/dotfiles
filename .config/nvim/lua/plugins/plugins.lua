@@ -2,7 +2,7 @@
 local overrides = require "custom.configs.overrides"
 
 local plugins = {
-  -- Telescope and Extensions
+  -- Telescope Extensions
   {
     "nvim-telescope/telescope-frecency.nvim",
     config = function()
@@ -43,6 +43,7 @@ local plugins = {
       require("telescope").load_extension "import"
     end,
   },
+
   -- Search and Replace
   {
     "nvim-pack/nvim-spectre",
@@ -114,19 +115,17 @@ local plugins = {
     dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim", "mfussenegger/nvim-dap-python" },
     config = function()
       require("venv-selector").setup {
-        -- Your options go here
         name = "python-3.12",
         auto_refresh = true,
       }
     end,
-    event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
+    event = "VeryLazy",
     keys = {
-      -- Keymap to open VenvSelector to pick a venv.
       { "<leader>vs", "<cmd>VenvSelect<cr>" },
-      -- Keymap to retrieve the venv from a cache (the one previously used for the same project directory).
       { "<leader>vc", "<cmd>VenvSelectCached<cr>" },
     },
   },
+
   -- AI
   {
     "github/copilot.vim",
@@ -140,6 +139,28 @@ local plugins = {
   {
     "nvim-tree/nvim-tree.lua",
     opts = overrides.nvimtree,
+  },
+
+  -- Quality of Life
+  {
+    "kdheepak/lazygit.nvim",
+    cmd = {
+      "LazyGit",
+      "LazyGitConfig",
+      "LazyGitCurrentFile",
+      "LazyGitFilter",
+      "LazyGitFilterCurrentFile",
+    },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+  },
+  {
+    "rktjmp/paperplanes.nvim",
+    event = "BufRead",
+    setup = function()
+      return require("plugins.configs.paperplanes").setup()
+    end,
   },
 }
 
