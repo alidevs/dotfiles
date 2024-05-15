@@ -43,10 +43,6 @@ local plugins = {
       require("telescope").load_extension "import"
     end,
   },
-  {
-    "unblevable/quick-scope",
-    event = "BufRead",
-  },
 
   -- Search and Replace
   {
