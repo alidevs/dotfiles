@@ -173,12 +173,13 @@ gaps outer 0
 for_window [class="^.*"] border pixel 0
 
 exec_always --no-startup-id dunst
-exec_always --no-startup-id feh --bg-fill ~/wallpaper.png
+exec_always feh --randomize --bg-fill ~/Pictures/*
 exec_always --no-startup-id eww daemon
 exec_always --no-startup-id eww open bar
 exec_always --no-startup-id picom -cb
 
 exec_always --no-startup-id xrdb ~/.Xresources
+exec_always --no-startup-id xrandr --output DP-0 --primary --mode 2560x1440 && xrandr --output HDMI-0 --mode 1920x1080 --left-of DP-0
 
 set $unfocused_border #24292f
 set $focused_border #ffffff
