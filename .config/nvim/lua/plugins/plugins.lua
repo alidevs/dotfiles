@@ -125,6 +125,10 @@ local plugins = {
       { "<leader>vc", "<cmd>VenvSelectCached<cr>" },
     },
   },
+  {
+    "chrisbra/csv.vim",
+    ft = { "csv" },
+  },
 
   -- AI
   {
