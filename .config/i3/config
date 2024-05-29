@@ -164,7 +164,9 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 
-bindsym $mod+Print exec ~/screenshot.sh
+# bindsym $mod+Shift+s exec
+# $mod+Shift+s screenshot via flameshot
+bindsym $mod+Shift+s exec flameshot gui
 
 gaps inner 10
 gaps outer 0
