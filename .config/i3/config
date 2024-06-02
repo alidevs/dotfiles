@@ -44,6 +44,10 @@ bindsym $mod+Shift+f exec firefox
 # kill focused window
 bindsym $mod+Shift+q kill
 
+# open clipboard manager
+exec --no-startup-id greenclip daemon>/dev/null
+bindsym $mod+c exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard
+
 # start dmenu (a program launcher)
 # bindsym $mod+d exec --no-startup-id dmenu_run
 # A more modern dmenu replacement is rofi:
