@@ -6,7 +6,7 @@
 (defwidget cpu_meter []
     (eventbox
         :onhover "eww update cpu_reveal=true"
-        :onhoverlost "eww update cpu_reveal=false"
+        :onhoverlost "eww update cpu_reveal=true"
         (box
             :class "metric left"
             :space-evenly false
