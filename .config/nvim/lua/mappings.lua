@@ -30,9 +30,3 @@ map("n", "<leader>lg", "<cmd>LazyGit<cr>", { desc = "LazyGit" })
 -- LSP & utils
 map("n", "<leader>vs", "<cmd>VenvSelect<cr>", { desc = "Select virtualenv" })
 map("n", "<leader>vc", "<cmd>VenvSelectCached<cr>", { desc = "Select cached virtualenv" })
-
-map("n", "<leader>ca", function()
-  if vim.bo.filetype == "rust" then
-    vim.cmd.RustLsp('codeAction')
-  end
-end, { desc = "Code action" })

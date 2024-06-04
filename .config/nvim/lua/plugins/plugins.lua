@@ -1,5 +1,6 @@
 -- plugins.lua for NvChad Neovim Configuration
 local overrides = require "custom.configs.overrides"
+local lspconfig = require "lspconfig"
 
 local plugins = {
   -- Telescope Extensions
@@ -30,6 +31,7 @@ local plugins = {
         },
         server = {
           on_attach = function(client, bufnr)
+            require("nvchad.configs.lspconfig").on_attach(client, bufnr)
             require("lsp-inlayhints").on_attach(client, bufnr)
           end,
         },
@@ -125,6 +127,7 @@ local plugins = {
   },
   {
     "linux-cultist/venv-selector.nvim",
+    branch = "regexp",
     dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim", "mfussenegger/nvim-dap-python" },
     config = function()
       require("venv-selector").setup {
@@ -142,7 +145,43 @@ local plugins = {
     "chrisbra/csv.vim",
     ft = { "csv" },
   },
-
+  {
+    "folke/trouble.nvim",
+    opts = {}, -- for default options, refer to the configuration section for custom setup.
+    cmd = "Trouble",
+    keys = {
+      {
+        "<leader>xx",
+        "<cmd>Trouble diagnostics toggle<cr>",
+        desc = "Diagnostics (Trouble)",
+      },
+      {
+        "<leader>xX",
+        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+        desc = "Buffer Diagnostics (Trouble)",
+      },
+      {
+        "<leader>cs",
+        "<cmd>Trouble symbols toggle focus=false<cr>",
+        desc = "Symbols (Trouble)",
+      },
+      {
+        "<leader>cl",
+        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+        desc = "LSP Definitions / references / ... (Trouble)",
+      },
+      {
+        "<leader>xL",
+        "<cmd>Trouble loclist toggle<cr>",
+        desc = "Location List (Trouble)",
+      },
+      {
+        "<leader>xQ",
+        "<cmd>Trouble qflist toggle<cr>",
+        desc = "Quickfix List (Trouble)",
+      },
+    },
+  },
   -- AI
   {
     "github/copilot.vim",
@@ -178,6 +217,13 @@ local plugins = {
     setup = function()
       return require("plugins.configs.paperplanes").setup()
     end,
+  },
+  {
+    "tzachar/highlight-undo.nvim",
+    event = "BufRead",
+    opts = {
+      duration = 500,
+    },
   },
 }
 
