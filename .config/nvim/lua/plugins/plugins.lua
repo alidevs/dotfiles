@@ -1,6 +1,4 @@
--- plugins.lua for NvChad Neovim Configuration
 local overrides = require "custom.configs.overrides"
-local lspconfig = require "lspconfig"
 
 local plugins = {
   -- Telescope Extensions
@@ -88,7 +86,7 @@ local plugins = {
     version = "*",
     dependencies = {
       "SmiteshP/nvim-navic",
-      "nvim-tree/nvim-web-devicons", -- optional dependency
+      "nvim-tree/nvim-web-devicons",
     },
     opts = {},
   },
@@ -182,6 +180,7 @@ local plugins = {
       },
     },
   },
+
   -- AI
   {
     "github/copilot.vim",
@@ -225,6 +224,12 @@ local plugins = {
       duration = 500,
     },
   },
+  {
+    "folke/todo-comments.nvim",
+    event = "BufRead",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {}
+  }
 }
 
 return plugins
