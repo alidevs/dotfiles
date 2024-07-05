@@ -198,3 +198,5 @@ set $focused_border #ffffff
 #client.placeholder      #ffffff #ffffff #ffffff #ffffff   #ffffff
 
 client.background       #ffffff
+
+bindsym Control+space exec ~/.config/i3/toggle_keyboard_layout.sh
