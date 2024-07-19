@@ -9,16 +9,10 @@ map("i", "jk", "<ESC>")
 map("n", "<leader>nd", "<cmd>NoiceDismiss<cr>", { desc = "Dismiss noice" })
 
 -- Telescope
-map("n", "<leader><leader>", "<cmd>Telescope frecency workspace=CWD<cr>", { desc = "Frecent files" })
 map("n", "<leader><Tab>", "<cmd>Telescope oldfiles cwd_only=true<cr>", { desc = "Open recent files" })
 map("n", "<leader>fy", "<cmd>Telescope lsp_document_symbols<cr>", { desc = "Document symbols" })
 map("n", "<leader>fs", "<cmd>Telescope grep_string<cr>", { desc = "Search for string" })
 map("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<cr>", { desc = "Fuzzy find in buffer" })
-
--- base46
-map("n", "<leader>tt", function()
-  require("base46").toggle_transparency()
-end, { desc = "Toggle transparency" })
 
 -- gitsigns
 map("n", "]c", "<cmd>lua require('gitsigns').next_hunk()<cr>", { desc = "Next hunk" })
@@ -33,3 +27,9 @@ map("n", "<leader>vc", "<cmd>VenvSelectCached<cr>", { desc = "Select cached virt
 
 -- Buffers
 map("n", "<leader>kw", "<cmd>bufdo bd<cr>", { desc = "Close all buffers" })
+
+-- Spectre
+map("n", "<leader>S", "<cmd>lua require('spectre').toggle()<cr>", { desc = "Toggle Spectre" })
+map("n", "<leader>sw", "<cmd>lua require('spectre').open_visual({select_word=true})<cr>",
+  { desc = "Search current word" })
+map("v", "<leader>sw", "<esc><cmd>lua require('spectre').open_visual()<CR>", { desc = "Search current word" })

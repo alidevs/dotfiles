@@ -195,7 +195,7 @@ local plugins = {
     config = function()
       require("supermaven-nvim").setup({
         keymaps = {
-          accept_word = "<A-]>",
+          accept_word = "<A-Right>",
         }
       })
     end,
