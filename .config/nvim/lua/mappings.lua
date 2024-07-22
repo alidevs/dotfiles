@@ -30,6 +30,23 @@ map("n", "<leader>kw", "<cmd>bufdo bd<cr>", { desc = "Close all buffers" })
 
 -- Spectre
 map("n", "<leader>S", "<cmd>lua require('spectre').toggle()<cr>", { desc = "Toggle Spectre" })
-map("n", "<leader>sw", "<cmd>lua require('spectre').open_visual({select_word=true})<cr>",
-  { desc = "Search current word" })
+map("n", "<leader>sw", "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", { desc = "Search current word" })
 map("v", "<leader>sw", "<esc><cmd>lua require('spectre').open_visual()<CR>", { desc = "Search current word" })
+
+-- Neovide
+local function neovide_scale(amount)
+  local temp = vim.g.neovide_scale_factor + amount
+
+  if temp < 0.5 then
+    return
+  end
+  vim.g.neovide_scale_factor = temp
+end
+
+map("n", "<C-=>", function()
+  neovide_scale(0.1)
+end, { desc = "Increase scale factor" })
+
+map("n", "<C-->", function()
+  neovide_scale(-0.1)
+end, { desc = "Decrease scale factor" })
