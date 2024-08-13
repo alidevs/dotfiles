@@ -4,13 +4,6 @@ local null_ls = require "null-ls"
 local opts = {
   sources = {
     -- Python
-    null_ls.builtins.formatting.black.with {
-      extra_args = { "--config", vim.fn.findfile(".github/linters/.python-black", ".;") },
-    },
-    -- null_ls.builtins.diagnostics.flake8,
-    null_ls.builtins.formatting.isort.with {
-      extra_args = { "--settings-path", vim.fn.findfile(".github/linters/tox.ini", ".;") },
-    },
     -- null_ls.builtins.diagnostics.mypy,
 
     -- Lua
