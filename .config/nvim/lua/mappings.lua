@@ -30,7 +30,8 @@ map("n", "<leader>kw", "<cmd>bufdo bd<cr>", { desc = "Close all buffers" })
 
 -- Spectre
 map("n", "<leader>S", "<cmd>lua require('spectre').toggle()<cr>", { desc = "Toggle Spectre" })
-map("n", "<leader>sw", "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", { desc = "Search current word" })
+map("n", "<leader>sw", "<cmd>lua require('spectre').open_visual({select_word=true})<cr>",
+  { desc = "Search current word" })
 map("v", "<leader>sw", "<esc><cmd>lua require('spectre').open_visual()<CR>", { desc = "Search current word" })
 
 -- Neovide

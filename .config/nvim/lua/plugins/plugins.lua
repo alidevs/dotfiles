@@ -193,11 +193,11 @@ local plugins = {
     "supermaven-inc/supermaven-nvim",
     lazy = false,
     config = function()
-      require("supermaven-nvim").setup({
+      require("supermaven-nvim").setup {
         keymaps = {
           accept_word = "<A-Right>",
-        }
-      })
+        },
+      }
     end,
   },
 
@@ -239,14 +239,14 @@ local plugins = {
     "folke/todo-comments.nvim",
     event = "BufRead",
     dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {}
+    opts = {},
   },
   {
     "rachartier/tiny-inline-diagnostic.nvim",
     event = "VeryLazy",
     config = function()
-      require('tiny-inline-diagnostic').setup()
-    end
+      require("tiny-inline-diagnostic").setup()
+    end,
   },
   {
     "oysandvik94/curl.nvim",
@@ -255,8 +255,13 @@ local plugins = {
       "nvim-lua/plenary.nvim",
     },
     config = function()
-      require("curl").setup({})
-    end
+      require("curl").setup {}
+    end,
+  },
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    keys = require "plugins.configs.flash-keys",
   },
 }
 
