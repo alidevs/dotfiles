@@ -1,4 +1,6 @@
 gui:
+  sidePanelWidth: 0.25
+  nerdFontsVersion: 3
   theme:
     activeBorderColor: ['#89b4fa', bold]
     inactiveBorderColor: ['#a6adc8']
@@ -14,7 +16,7 @@ gui:
 git:
   paging:
     colorArg: always
-    pager: delta  --dark --paging=never --24-bit-color=never --syntax-theme="OneHalfDark"
+    pager: delta  --dark --paging=never --24-bit-color=never --syntax-theme="OneHalfDark" --side-by-side
 
 os:
   editPreset: 'nvim'
