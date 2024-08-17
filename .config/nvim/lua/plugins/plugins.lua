@@ -1,14 +1,6 @@
 local overrides = require "custom.configs.overrides"
 
 local plugins = {
-  -- Telescope Extensions
-  {
-    "nvim-telescope/telescope-frecency.nvim",
-    config = function()
-      require("telescope").load_extension "frecency"
-    end,
-  },
-
   -- Rust Support
   {
     "mrcjkb/rustaceanvim",
@@ -48,13 +40,6 @@ local plugins = {
   {
     "rrethy/vim-illuminate",
     lazy = false,
-  },
-  {
-    "piersolenski/telescope-import.nvim",
-    dependencies = "nvim-telescope/telescope.nvim",
-    config = function()
-      require("telescope").load_extension "import"
-    end,
   },
 
   -- Search and Replace
@@ -113,8 +98,6 @@ local plugins = {
         "pyright",
         "ruff",
         "mypy",
-        "black",
-        "isort",
         "flake8",
         "rust-analyzer",
         "typescript-language-server",
