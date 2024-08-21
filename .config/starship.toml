@@ -1,23 +1,20 @@
 # Setups
 format = "$battery$directory$git_branch$character"
-right_format = """$python$git_status$cmd_duration"""
+right_format = """$python$rust$git_status$cmd_duration"""
 
 # Other languages configurations:
-c.disabled = true
-cmake.disabled = true
-haskell.disabled = true
+# c.disabled = false
+# cmake.disabled = true
+# haskell.disabled = true
 # python.disabled = true
-ruby.disabled = true
-rust.disabled = true
-perl.disabled = true
-package.disabled = true
-lua.disabled = true
-nodejs.disabled = true
-java.disabled = true
-golang.disabled = true
-
-[conda]
-format = ' [$symbol$environment](dimmed green) '
+# ruby.disabled = true
+# rust.disabled = false
+# perl.disabled = true
+# package.disabled = true
+# lua.disabled = true
+# nodejs.disabled = true
+# java.disabled = true
+# golang.disabled = true
 
 # Prompt symbols 
 [character]
@@ -52,7 +49,7 @@ stashed = " "
 renamed = " »${count}"
 
 [cmd_duration]
-min_time = 1
+min_time = 2000
 # duration & style 
 format = "[]($style)[[󰔚 ](bg:#161821 fg:#eba0ac bold)$duration](bg:#161821 fg:#BBC3DF)[ ]($style)"
 disabled = false
@@ -86,5 +83,10 @@ style = "bg:none fg:#161821"
 
 [python]
 symbol = " "
-format = '[]($style)[(\($virtualenv\))](bg:#161821 fg:#BBC3DF)[ ]($style)'
+format = '[]($style)[($symbol${pyenv_prefix}(${version} )(\($virtualenv\)))](bg:#161821 fg:#BBC3DF)[ ]($style)'
+style = "bg:none fg:#161821"
+
+[rust]
+symbol = " "
+format = '[]($style)[($symbol$version)](bg:#161821 fg:#BBC3DF)[ ]($style)'
 style = "bg:none fg:#161821"
