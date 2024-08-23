@@ -5,10 +5,39 @@ local options = {
     html = { "prettier" },
     toml = { "taplo" },
     rust = { "rustfmt" },
+    yaml = { "yamlfix" },
     python = function(bufnr)
       if require("conform").get_formatter_info("ruff_format", bufnr).available then
         return { "ruff_fix", "ruff_format", "ruff_organize_imports" }
       end
+    end,
+  },
+
+  formatters = {
+    rubocop = function()
+      return {
+        command = "rubocop",
+        args = {
+          "--server",
+          "--fix-layout",
+          "--autocorrect-all",
+          "--format",
+          "files",
+          "--stderr",
+          "--stdin",
+          "$FILENAME",
+        },
+        stdin = true,
+      }
+    end,
+
+    yamlfix = function()
+      return {
+        env = {
+          YAMLFIX_SEQUENCE_STYLE = "block_style",
+          YAMLFIX_WHITELINES = "1",
+        },
+      }
     end,
   },
 

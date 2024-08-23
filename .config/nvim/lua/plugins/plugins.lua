@@ -95,6 +95,7 @@ local plugins = {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
+        "yamlfix",
         "pyright",
         "ruff",
         "mypy",
