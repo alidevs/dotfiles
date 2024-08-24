@@ -35,9 +35,13 @@ lspconfig.tsserver.setup {
   },
 }
 
--- lspconfig.stylua.setup {
---   on_attach = on_attach,
---   capabilities = capabilities,
---   filetypes = { "lua" },
---   root_dir = lspconfig.util.root_pattern ".stylua.toml",
--- }
+lspconfig.sorbet.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { "ruby" },
+  root_dir = lspconfig.util.root_pattern "Gemfile",
+  cmd = { "bundle", "exec", "srb", "tc", "--lsp", "--disable-watchman", "--typed", "true" },
+  init_options = {
+    highlightUntyped = true,
+  },
+}

@@ -5,6 +5,7 @@ local options = {
     html = { "prettier" },
     toml = { "taplo" },
     rust = { "rustfmt" },
+    ruby = { "rufo" },
     yaml = { "yamlfix" },
     python = function(bufnr)
       if require("conform").get_formatter_info("ruff_format", bufnr).available then
@@ -14,23 +15,6 @@ local options = {
   },
 
   formatters = {
-    rubocop = function()
-      return {
-        command = "rubocop",
-        args = {
-          "--server",
-          "--fix-layout",
-          "--autocorrect-all",
-          "--format",
-          "files",
-          "--stderr",
-          "--stdin",
-          "$FILENAME",
-        },
-        stdin = true,
-      }
-    end,
-
     yamlfix = function()
       return {
         env = {
