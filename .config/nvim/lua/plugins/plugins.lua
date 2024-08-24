@@ -193,6 +193,16 @@ local plugins = {
 
   -- Quality of Life
   {
+    "folke/zen-mode.nvim",
+    lazy = false,
+    opts = {
+      window = {
+        backdrop = 1.0,
+        width = 140,
+      },
+    },
+  },
+  {
     "m4xshen/hardtime.nvim",
     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
     opts = {
