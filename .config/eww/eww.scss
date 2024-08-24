@@ -1,15 +1,29 @@
-$background_base: #1e1e2e;
-$background_accent: #2d333b;
+$background_base: #16181a;
+$background_accent: #1e2124;
+$highlight: #3c4048;
 
-$theme: #fab387;
-$theme_text: saturate(darken($theme, 90%), 40%);
+$grey: #7b8496;
+$blue: #5ea1ff;
+$green: #5eff6c;
+$cyan: #5ef1ff;
+$red: #ff6e5e;
+$yellow: #f1ff5e;
+$magenta: #ff5ef1;
+$pink: #ff5ea0;
+$orange: #ffbd5e;
+$purple: #bd5eff;
+
+$theme: $blue;
+$fg: #f1f1f1;
 
 .clock {
   all: unset;
 
   .label {
-    margin-right: 5px;
+    margin-right: 4px;
     font-weight: bold;
+    font-size: 1em;
+    color: $fg;
   }
 }
 
@@ -18,15 +32,16 @@ $theme_text: saturate(darken($theme, 90%), 40%);
 }
 
 .main {
-  padding: 10px 10px 0 10px;
+  padding: 8px 8px 0 8px;
 }
 
 .pacman {
   all: unset;
 
   .label {
-    margin-right: 5px;
+    margin-right: 4px;
     font-weight: bold;
+    color: $fg;
   }
 }
 
@@ -34,40 +49,42 @@ $theme_text: saturate(darken($theme, 90%), 40%);
   all: unset;
   background-color: $background_base;
   border-radius: 5px;
-  color: #fff;
-  padding: 5px 10px;
+  color: $fg;
+  padding: 4px 8px;
 }
 
 .button_panel {
   all: unset;
   font-weight: bold;
-  background-color: $background_base;
+  background-color: $background_accent;
   border-radius: 5px;
-  color: #fff;
-}
+  color: $fg;
+  padding: 0;
 
-.btn {
-  all: unset;
-  padding: 5px 10px;
-  background-color: transparent;
+  .btn {
+    all: unset;
+    padding: 4px 8px;
+    background-color: transparent;
+    transition: background-color 0.2s ease;
 
-  &.active {
-    color: $theme_text;
-    background-color: $theme;
-  }
+    &.active {
+      color: $background_base;
+      background-color: $theme;
+    }
 
-  &:not(.active):hover {
-    background-color: $background_accent;
-  }
+    &:not(.active):hover {
+      background-color: $highlight;
+    }
 
-  &:first-child {
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-  }
+    &:first-child {
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
 
-  &:last-child {
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+    &:last-child {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
   }
 }
 
@@ -76,17 +93,21 @@ $theme_text: saturate(darken($theme, 90%), 40%);
   font-weight: bold;
   background-color: $background_base;
   border-radius: 5px;
-  color: #fff;
+  color: $fg;
+  padding: 4px 8px;
 
   .label {
     font-weight: bold;
-    padding: 5px 10px;
+    padding: 4px 8px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
+    color: $fg;
   }
 
   .value {
-    margin-right: -50px;
+    margin-left: -70px;
+    color: $fg;
+    font-size: 1em;
   }
 
   &.left {
@@ -96,7 +117,6 @@ $theme_text: saturate(darken($theme, 90%), 40%);
     }
 
     .value {
-      margin-right: 0;
       margin-left: -100px;
     }
   }
@@ -107,10 +127,10 @@ $theme_text: saturate(darken($theme, 90%), 40%);
 
     trough {
       all: unset;
-      background-color: $background_accent;
+      background-color: $highlight;
       border-radius: 2px;
-      min-height: 24px;
-      min-width: 100px;
+      min-height: 20px;
+      min-width: 80px;
 
       slider {
         all: unset;
@@ -119,8 +139,17 @@ $theme_text: saturate(darken($theme, 90%), 40%);
       highlight {
         all: unset;
         background-color: $theme;
-        color: #000000;
+        color: $background_base;
         border-radius: 2px;
+
+       
+        &.warning {
+          background-color: $yellow;
+        }
+
+        &.critical {
+          background-color: $red;
+        }
       }
     }
   }
@@ -128,4 +157,6 @@ $theme_text: saturate(darken($theme, 90%), 40%);
 
 * {
   font-family: "Jetbrains Mono", sans-serif;
+  color: $fg;
 }
+

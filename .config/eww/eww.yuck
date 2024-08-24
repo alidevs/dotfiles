@@ -2,28 +2,20 @@
 ; CPU Metric
 ;;;;;;
 
-(defvar cpu_reveal true)
 (defwidget cpu_meter []
     (eventbox
-        :onhover "eww update cpu_reveal=true"
-        :onhoverlost "eww update cpu_reveal=true"
         (box
             :class "metric left"
             :space-evenly false
-            (revealer
-                :transition "slideleft"
-                :reveal {cpu_reveal}
-                :duration "350ms"
-                (box :space-evenly false
-                    (scale
-                        :min 0
-                        :max 100
-                        :active false
-                        :flipped true
-                        :value {EWW_CPU.avg}
-                    )
-                    (label :class "value" :text "${round(EWW_CPU.avg, 1)}%")
+            (box :space-evenly false
+                (scale
+                    :min 0
+                    :max 100
+                    :active false
+                    :flipped true
+                    :value {EWW_CPU.avg}
                 )
+                (label :class "value" :text "${round(EWW_CPU.avg, 1)}%")
             )
             (box 
                 :class "label"
@@ -35,7 +27,6 @@
         )
     )
 )
-
 
 ;;;;;;
 ; Workspace Switcher
@@ -74,11 +65,22 @@
         )
     )
 )
+
 ;;;;;;
-; Clock
+; Date and Time
 ;;;;;;
 
-(defpoll time :interval "1s" `date '+%H:%M:%S'`)
+(defpoll date :interval "1m" `date '+%a %d %b'`)
+(defwidget date-panel []
+    (box :class "panel clock"
+        (label
+            :text {date}
+            :class "label"
+        )
+    )
+)
+
+(defpoll time :interval "1s" `date '+%I:%M:%S %p'`)
 (defwidget clock []
     (box :class "panel clock"
         (label
@@ -108,11 +110,15 @@
             :halign "start"
             (workspace_switcher)
         )
-        (box :class "main" :spacing "10" :space-evenly false :hexpand true)
+        (box :class "main" :spacing "10" :space-evenly false :hexpand true
+            (box :class "panel clock" :orientation "h" :halign "center"
+                (date-panel)
+                (clock)
+            )
+        )
         (box :class "main" :spacing "10" :space-evenly false :halign "end"
             (pacman)
             (cpu_meter)
-            (clock)
         )
     )
 )
