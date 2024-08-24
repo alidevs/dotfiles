@@ -7,16 +7,8 @@
 * {
     font:   "Montserrat 12";
 
-    bg0:    #242424E6;
-    bg1:    #7E7E7E80;
-    bg2:    #0860f2E6;
-
-    fg0:    #DEDEDE;
-    fg1:    #FFFFFF;
-    fg2:    #DEDEDE80;
-
     background-color:   transparent;
-    text-color:         @fg0;
+    text-color:         #ffffff;
 
     margin:     0;
     padding:    0;
@@ -24,7 +16,7 @@
 }
 
 window {
-    background-color:   @bg0;
+    background-color:   #16181a;
 
     location:       center;
     width:          640;
@@ -52,13 +44,13 @@ entry {
     font:   inherit;
 
     placeholder         : "Search";
-    placeholder-color   : @fg2;
+    placeholder-color   : #7b8496;
 }
 
 message {
     border:             2px 0 0;
-    border-color:       @bg1;
-    background-color:   @bg1;
+    border-color:       #1e2124;
+    background-color:   #1e2124;
 }
 
 textbox {
@@ -71,7 +63,7 @@ listview {
 
     fixed-height:   false;
     border:         1px 0 0;
-    border-color:   @bg1;
+    border-color:   #1e2124;
 }
 
 element {
@@ -81,12 +73,12 @@ element {
 }
 
 element normal active {
-    text-color: @bg2;
+    text-color: #5ea1ff;
 }
 
 element selected normal, element selected active {
-    background-color:   @bg2;
-    text-color:         @fg1;
+    background-color:   #5ea1ff;
+    text-color:         #16181a;
 }
 
 element-icon {
