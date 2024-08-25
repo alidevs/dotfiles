@@ -89,130 +89,193 @@ $container\
 $shell\
 $character"""
 
+
 [buf]
 format = '(with [$symbol$version ]($style))'
+style = 'fg:#5eff6c'
 
 [bun]
 format = '(via [$symbol($version )]($style))'
+style = 'fg:#5ea1ff'
 
 [c]
 format = '(via [$symbol($version(-$name) )]($style))'
+style = 'fg:#ff6e5e'
 
 [cmake]
 format = '(via [$symbol($version )]($style))'
+style = 'fg:#ffbd5e'
 
 [cobol]
 format = '(via [$symbol($version )]($style))'
+style = 'fg:#ff5ef1'
 
 [crystal]
 format = '(via [$symbol($version )]($style))'
+style = 'fg:#bd5eff'
 
 [daml]
 format = '(via [$symbol($version )]($style))'
+style = 'fg:#f1ff5e'
 
 [dart]
 format = '(via [$symbol($version )]($style))'
+style = 'fg:#5eff6c'
 
 [deno]
 format = '(via [$symbol($version )]($style))'
+style = 'fg:#5ef1ff'
 
 [dotnet]
 format = '(via [$symbol($version )(🎯 $tfm )]($style))'
+style = 'fg:#ff6e5e'
 
 [elixir]
 format = '(via [$symbol($version \(OTP $otp_version\) )]($style))'
+style = 'fg:#5eff6c'
 
 [elm]
 format = '(via [$symbol($version )]($style))'
+style = 'fg:#5ea1ff'
 
 [erlang]
 format = '(via [$symbol($version )]($style))'
+style = 'fg:#ff6e5e'
 
 [fennel]
 format = '(via [$symbol($version )]($style))'
+style = 'fg:#f1ff5e'
 
 [gleam]
 format = '(via [$symbol($version )]($style))'
+style = 'fg:#ff5ea0'
 
 [golang]
 format = '(via [$symbol($version )]($style))'
+style = 'fg:#5eff6c'
 
 [haskell]
 format = '(via [$symbol($version )]($style))'
+style = 'fg:#ffbd5e'
 
 [helm]
 format = '(via [$symbol($version )]($style))'
+style = 'fg:#5ea1ff'
 
 [java]
 format = '(via [$symbol($version )]($style))'
+style = 'fg:#ff5ef1'
 
 [julia]
 format = '(via [$symbol($version )]($style))'
+style = 'fg:#ff6e5e'
 
 [kotlin]
 format = '(via [$symbol($version )]($style))'
+style = 'fg:#5eff6c'
 
 [lua]
 format = '(via [$symbol($version )]($style))'
+style = 'fg:#bd5eff'
 
 [nim]
 format = '(via [$symbol($version )]($style))'
+style = 'fg:#f1ff5e'
 
 [nodejs]
 format = '(via [$symbol($version )]($style))'
+style = 'fg:#5eff6c'
 
 [ocaml]
 format = '(via [$symbol($version )(\($switch_indicator$switch_name\) )]($style))'
+style = 'fg:#ffbd5e'
 
 [opa]
 format = '(via [$symbol($version )]($style))'
+style = 'fg:#ff5ef1'
+
 [package]
 format = '(is [$symbol$version]($style) )'
+style = 'fg:#5ea1ff'
 
 [perl]
 format = '(via [$symbol($version )]($style))'
+style = 'fg:#5ef1ff'
 
 [php]
 format = '(via [$symbol($version )]($style))'
+style = 'fg:#ff6e5e'
 
 [purescript]
 format = '(via [$symbol($version )]($style))'
+style = 'fg:#ff5ef1'
 
 [python]
 format = '(via [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style))'
+style = 'fg:#5eff6c'
 
 [quarto]
 format = '(via [$symbol($version )]($style))'
+style = 'fg:#ffbd5e'
 
 [raku]
 format = '(via [$symbol($version-$vm_version )]($style))'
+style = 'fg:#ff5ef1'
 
 [red]
 format = '(via [$symbol($version )]($style))'
+style = 'fg:#ff6e5e'
 
 [rlang]
 format = '(via [$symbol($version )]($style))'
+style = 'fg:#f1ff5e'
 
 [ruby]
 format = '(via [$symbol($version )]($style))'
+style = 'fg:#ff5ea0'
 
 [rust]
 format = '(via [$symbol($version )]($style))'
+style = 'fg:#bd5eff'
 
 [scala]
 format = '(via [$symbol($version )]($style))'
+style = 'fg:#ffbd5e'
 
 [swift]
 format = '(via [$symbol($version )]($style))'
+style = 'fg:#5eff6c'
 
 [typst]
 format = '(via [$symbol($version )]($style))'
+style = 'fg:#ff6e5e'
 
 [vagrant]
 format = '(via [$symbol($version )]($style))'
+style = 'fg:#ffbd5e'
 
 [vlang]
 format = '(via [$symbol($version )]($style))'
+style = 'fg:#5ea1ff'
 
 [zig]
 format = '(via [$symbol($version )]($style))'
+style = 'fg:#f1ff5e'
+
+[kubernetes]
+format = '[⛵ $context](dimmed green) '
+style = 'fg:#5eff6c'
+disabled = false
+
+[docker_context]
+format = '[🐳 $context](dimmed green) '
+style = 'fg:#5eff6c'
+disabled = true
+
+[git_metrics]
+added_style = 'bold fg:#5eff6c'
+deleted_style = 'bold fg:#ff6e5e'
+format = '[+$added]($added_style) | [-$deleted]($deleted_style) '
+only_nonzero_diffs = true
+disabled = true
+ignore_submodules = false
