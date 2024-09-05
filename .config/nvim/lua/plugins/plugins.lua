@@ -268,11 +268,6 @@ local plugins = {
       require("curl").setup {}
     end,
   },
-  {
-    "folke/flash.nvim",
-    event = "VeryLazy",
-    keys = require "plugins.configs.flash-keys",
-  },
 }
 
 return plugins
