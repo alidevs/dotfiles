@@ -179,7 +179,7 @@ gaps outer 0
 for_window [class="^.*"] border pixel 0
 
 exec_always --no-startup-id dunst
-exec_always feh --randomize --bg-fill ~/Pictures/*
+exec_always feh --randomize --bg-fill ~/Pictures
 exec_always --no-startup-id eww daemon
 exec_always --no-startup-id eww open bar
 exec_always --no-startup-id picom -cb
