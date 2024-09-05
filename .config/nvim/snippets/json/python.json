@@ -1,0 +1,22 @@
+{
+  "Print 3 Empty Lines": {
+    "prefix": "p3",
+    "body": "print(\"\\n\" * 3)",
+    "description": "Print 3 Empty Lines"
+  },
+  "Print Compiled Statement": {
+    "prefix": "pcs",
+    "body": [
+      "print(\"\\n\" * 3)",
+      "print(${1:stmt}.compile(bind=session.get_bind(), compile_kwargs=dict(literal_binds=True)))",
+      "print(\"\\n\" * 3)",
+      "assert False, \"Printing compiled statement\""
+    ],
+    "description": "Print Compiled Statement"
+  },
+  "Assert False": {
+    "prefix": "af",
+    "body": "assert False, \"[${RELATIVE_FILEPATH}:${TM_LINE_NUMBER}] — ${1:Meow!}\"",
+    "description": "Assert False with message"
+  }
+}

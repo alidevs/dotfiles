@@ -22,7 +22,6 @@ opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 opt.ignorecase = true
 opt.smartcase = true
 
-
 local g = vim.g
 -- Neovide
 if g.neovide then
@@ -31,13 +30,18 @@ if g.neovide then
   g.neovide_refresh_rate = 175
 
   g.neovide_cursor_vfx_mode = "railgun"
+
+  g.neovide_transparency = 0.50
 end
 
+g.vscode_snippets_path = "~/.config/nvim/snippets/json"
+g.lua_snippets_path = "~/.config/nvim/snippets/lua"
 
+-- Other
 vim.api.nvim_create_autocmd("BufRead", {
   callback = function()
-    vim.diagnostic.config({
+    vim.diagnostic.config {
       virtual_text = false,
-    })
+    }
   end,
 })
