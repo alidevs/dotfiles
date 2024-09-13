@@ -5,7 +5,7 @@
 local M = {}
 
 M.ui = {
-  theme = "vanny-nightlamp",
+  theme = "catppuccin",
 
   cmp = {
     lspkind_text = false,
