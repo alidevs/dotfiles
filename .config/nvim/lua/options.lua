@@ -45,3 +45,9 @@ vim.api.nvim_create_autocmd("BufRead", {
     }
   end,
 })
+
+vim.api.nvim_create_autocmd("BufWinEnter", {
+  callback = function()
+    vim.api.nvim_command "set colorcolumn=120"
+  end,
+})
