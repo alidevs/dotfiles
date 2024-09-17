@@ -9,6 +9,26 @@ lspconfig.pyright.setup {
   capabilities = capabilities,
   filetypes = { "python" },
   root_dir = lspconfig.util.root_pattern(".venv", "docker-compose.yml", ".direnv"),
+  handlers = {
+    -- ["textDocument/publishDiagnostics"] = function(...) end,
+  },
+  settings = {
+    pyright = {
+      disableOrganizeImports = true,
+    },
+  },
+  python = {
+    analysis = {
+      ignore = { diagnosticMode = "off", typeCheckingMode = "off" },
+    },
+  },
+}
+
+lspconfig.ruff.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { "python" },
+  cmd = { "ruff", "server", "--preview" },
 }
 
 local function organize_imports()
