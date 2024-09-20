@@ -1,7 +1,36 @@
 local overrides = require "custom.configs.overrides"
 
 local plugins = {
-  -- Rust Support
+  -- LSP and Language Support
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+      require "plugins.configs.lspconfig"
+    end,
+  },
+  {
+    "williamboman/mason.nvim",
+    opts = {
+      ensure_installed = {
+        "yamlfix",
+        "pyright",
+        "ruff",
+        "mypy",
+        "flake8",
+        "rust-analyzer",
+        "typescript-language-server",
+        "eslint-lsp",
+        "prettier",
+      },
+    },
+  },
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    lazy = false,
+    opts = function()
+      return require "plugins.configs.null-ls"
+    end,
+  },
   {
     "mrcjkb/rustaceanvim",
     version = "^4",
@@ -28,8 +57,28 @@ local plugins = {
       }
     end,
   },
+  {
+    "linux-cultist/venv-selector.nvim",
+    branch = "regexp",
+    dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim", "mfussenegger/nvim-dap-python" },
+    config = function()
+      require("venv-selector").setup {
+        name = "python-3.12",
+        auto_refresh = true,
+      }
+    end,
+    event = "VeryLazy",
+    keys = {
+      { "<leader>vs", "<cmd>VenvSelect<cr>" },
+      { "<leader>vc", "<cmd>VenvSelectCached<cr>" },
+    },
+  },
+  {
+    "chrisbra/csv.vim",
+    ft = { "csv" },
+  },
 
-  -- Treesitter Enhancements
+  -- Treesitter and Syntax
   {
     "nvim-treesitter/nvim-treesitter-context",
     config = function()
@@ -41,11 +90,12 @@ local plugins = {
     "rrethy/vim-illuminate",
     lazy = false,
   },
-
-  -- Search and Replace
   {
-    "nvim-pack/nvim-spectre",
-    event = "BufRead",
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    config = function()
+      require("plugins.configs.nvim-treesitter-textobjects").setup()
+    end,
+    lazy = false,
   },
 
   -- UI Enhancements
@@ -75,60 +125,25 @@ local plugins = {
     },
     opts = {},
   },
-
-  -- Language and Syntax Support
   {
-    "jose-elias-alvarez/null-ls.nvim",
+    "folke/zen-mode.nvim",
     lazy = false,
-    opts = function()
-      return require "plugins.configs.null-ls"
-    end,
-  },
-  {
-    "neovim/nvim-lspconfig",
-    config = function()
-      require "plugins.configs.lspconfig"
-    end,
-  },
-  {
-    "williamboman/mason.nvim",
     opts = {
-      ensure_installed = {
-        "yamlfix",
-        "pyright",
-        "ruff",
-        "mypy",
-        "flake8",
-        "rust-analyzer",
-        "typescript-language-server",
-        "eslint-lsp",
-        "prettier",
+      window = {
+        backdrop = 1.0,
+        width = 140,
       },
     },
   },
   {
-    "linux-cultist/venv-selector.nvim",
-    branch = "regexp",
-    dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim", "mfussenegger/nvim-dap-python" },
-    config = function()
-      require("venv-selector").setup {
-        name = "python-3.12",
-        auto_refresh = true,
-      }
-    end,
-    event = "VeryLazy",
-    keys = {
-      { "<leader>vs", "<cmd>VenvSelect<cr>" },
-      { "<leader>vc", "<cmd>VenvSelectCached<cr>" },
-    },
+    "nvim-tree/nvim-tree.lua",
+    opts = overrides.nvimtree,
   },
-  {
-    "chrisbra/csv.vim",
-    ft = { "csv" },
-  },
+
+  -- Diagnostics and Troubleshooting
   {
     "folke/trouble.nvim",
-    opts = {}, -- for default options, refer to the configuration section for custom setup.
+    opts = {},
     cmd = "Trouble",
     keys = {
       {
@@ -163,8 +178,15 @@ local plugins = {
       },
     },
   },
+  {
+    "rachartier/tiny-inline-diagnostic.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("tiny-inline-diagnostic").setup()
+    end,
+  },
 
-  -- AI
+  -- AI and Code Assistance
   {
     "github/copilot.vim",
     config = function()
@@ -184,22 +206,10 @@ local plugins = {
     end,
   },
 
-  -- Overrides
+  -- Utility and Productivity
   {
-    "nvim-tree/nvim-tree.lua",
-    opts = overrides.nvimtree,
-  },
-
-  -- Quality of Life
-  {
-    "folke/zen-mode.nvim",
-    lazy = false,
-    opts = {
-      window = {
-        backdrop = 1.0,
-        width = 140,
-      },
-    },
+    "nvim-pack/nvim-spectre",
+    event = "BufRead",
   },
   {
     "m4xshen/hardtime.nvim",
@@ -251,13 +261,6 @@ local plugins = {
     opts = {},
   },
   {
-    "rachartier/tiny-inline-diagnostic.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("tiny-inline-diagnostic").setup()
-    end,
-  },
-  {
     "oysandvik94/curl.nvim",
     event = "VeryLazy",
     dependencies = {
@@ -266,6 +269,10 @@ local plugins = {
     config = function()
       require("curl").setup {}
     end,
+  },
+  {
+    "wakatime/vim-wakatime",
+    lazy = false,
   },
 }
 
