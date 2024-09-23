@@ -5,21 +5,16 @@
 local M = {}
 
 M.ui = {
-  theme = "catppuccin",
+  theme = "vanny",
 
-  cmp = {
-    lspkind_text = false,
-    style = "flat_dark",
-  },
+  cmp = { lspkind_text = false, style = "flat_dark" },
 
-  statusline = {
-    theme = "minimal",
-    separator_style = "default",
-  },
+  statusline = { theme = "minimal", separator_style = "default" },
 
   hl_override = {
     Comment = { italic = true },
     ["@comment"] = { italic = true },
+    CursorLineNr = { fg = "#F5DFAD", bold = true, italic = true },
   },
 }
 

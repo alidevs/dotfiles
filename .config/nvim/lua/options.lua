@@ -31,7 +31,7 @@ if g.neovide then
 
   g.neovide_cursor_vfx_mode = "railgun"
 
-  g.neovide_transparency = 0.50
+  g.neovide_transparency = 0.75
 end
 
 g.vscode_snippets_path = "~/.config/nvim/snippets/json"
