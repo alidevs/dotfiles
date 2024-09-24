@@ -53,3 +53,6 @@ end, { desc = "Increase scale factor" })
 map("n", "<C-->", function()
   neovide_scale(-0.1)
 end, { desc = "Decrease scale factor" })
+
+-- Neoclip
+map("n", "<leader>p", "<cmd>Telescope neoclip<cr>", { desc = "Yank history" })

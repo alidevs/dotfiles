@@ -206,6 +206,19 @@ local plugins = {
 
   -- Utility and Productivity
   {
+    "AckslD/nvim-neoclip.lua",
+    config = function()
+      require("neoclip").setup()
+    end,
+  },
+  {
+    "aserowy/tmux.nvim",
+    config = function()
+      return require("tmux").setup()
+    end,
+    event = "VeryLazy",
+  },
+  {
     "nvim-pack/nvim-spectre",
     event = "BufRead",
   },
