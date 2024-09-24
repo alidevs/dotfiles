@@ -11,6 +11,12 @@ M.ui = {
 
   statusline = { theme = "minimal", separator_style = "default" },
 
+  tabufline = {
+    order = { "treeOffset", "buffers", "tabs" },
+    lazyload = false,
+    modules = {},
+  },
+
   hl_override = {
     Comment = { italic = true },
     ["@comment"] = { italic = true },
