@@ -49,6 +49,7 @@ vim.api.nvim_create_autocmd("BufRead", {
 vim.api.nvim_create_autocmd("BufWinEnter", {
   callback = function()
     vim.api.nvim_command "set colorcolumn=120"
+    vim.api.nvim_command "set scrolloff=8"
   end,
 })
 
