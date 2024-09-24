@@ -90,13 +90,13 @@ local plugins = {
     "rrethy/vim-illuminate",
     lazy = false,
   },
-  -- {
-  --   "nvim-treesitter/nvim-treesitter-textobjects",
-  --   config = function()
-  --     require("plugins.configs.nvim-treesitter-textobjects").setup()
-  --   end,
-  --   lazy = false,
-  -- },
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    config = function()
+      require("plugins.configs.nvim-treesitter-textobjects").setup()
+    end,
+    lazy = false,
+  },
 
   -- UI Enhancements
   {
