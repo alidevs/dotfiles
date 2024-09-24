@@ -90,13 +90,13 @@ local plugins = {
     "rrethy/vim-illuminate",
     lazy = false,
   },
-  {
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    config = function()
-      require("plugins.configs.nvim-treesitter-textobjects").setup()
-    end,
-    lazy = false,
-  },
+  -- {
+  --   "nvim-treesitter/nvim-treesitter-textobjects",
+  --   config = function()
+  --     require("plugins.configs.nvim-treesitter-textobjects").setup()
+  --   end,
+  --   lazy = false,
+  -- },
 
   -- UI Enhancements
   {
@@ -115,15 +115,13 @@ local plugins = {
     dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
   },
   {
-    "utilyre/barbecue.nvim",
-    lazy = false,
-    name = "barbecue",
-    version = "*",
-    dependencies = {
-      "SmiteshP/nvim-navic",
-      "nvim-tree/nvim-web-devicons",
+    {
+      "Bekaboo/dropbar.nvim",
+      event = "BufEnter",
+      dependencies = {
+        "nvim-telescope/telescope-fzf-native.nvim",
+      },
     },
-    opts = {},
   },
   {
     "folke/zen-mode.nvim",
