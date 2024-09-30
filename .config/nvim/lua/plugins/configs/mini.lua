@@ -7,6 +7,7 @@ return {
       symbol = "▏",
       options = { try_as_border = true },
     }
+    require("mini.ai").setup {}
     -- Additional setup for disabling in specific filetypes
     vim.api.nvim_create_autocmd("FileType", {
       pattern = {

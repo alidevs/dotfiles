@@ -32,6 +32,8 @@ local opts = {
       end,
     },
 
+    -- Dockerfile
+    null_ls.builtins.diagnostics.hadolint,
     -- Others
     -- null_ls.builtins.formatting.prettierd.with {
     --   filetypes = { "json", "yaml", "markdown", "html", "css" },
