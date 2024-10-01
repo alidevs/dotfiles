@@ -32,6 +32,8 @@ if g.neovide then
   g.neovide_cursor_vfx_mode = "railgun"
 
   g.neovide_transparency = 0.75
+
+  g.neovide_input_macos_option_key_is_meta = "only_left"
 end
 
 g.vscode_snippets_path = "~/.config/nvim/snippets/json"
