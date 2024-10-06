@@ -17,6 +17,8 @@ map("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<cr>", { desc = 
 -- gitsigns
 map("n", "]c", "<cmd>lua require('gitsigns').next_hunk()<cr>", { desc = "Next hunk" })
 map("n", "[c", "<cmd>lua require('gitsigns').prev_hunk()<cr>", { desc = "Previous hunk" })
+map("n", "<leader>gb", "<cmd>lua require('gitsigns').blame_line()<cr>", { desc = "Blame line" })
+map("n", "<leader>rh", "<cmd>lua require('gitsigns').reset_hunk()<cr>", { desc = "Reset hunk" })
 
 -- Lazygit
 map("n", "<leader>lg", "<cmd>LazyGit<cr>", { desc = "LazyGit" })
@@ -53,6 +55,3 @@ end, { desc = "Increase scale factor" })
 map("n", "<C-->", function()
   neovide_scale(-0.1)
 end, { desc = "Decrease scale factor" })
-
--- Neoclip
-map("n", "<leader>p", "<cmd>Telescope neoclip<cr>", { desc = "Yank history" })

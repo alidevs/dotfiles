@@ -5,8 +5,6 @@
 local M = {}
 
 M.ui = {
-  theme = "vanny-nightlamp",
-
   cmp = { lspkind_text = false, style = "flat_dark" },
 
   statusline = { theme = "minimal", separator_style = "default" },
