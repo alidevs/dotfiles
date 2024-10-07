@@ -259,13 +259,6 @@ local plugins = {
     end,
   },
   {
-    "tzachar/highlight-undo.nvim",
-    event = "BufRead",
-    opts = {
-      duration = 500,
-    },
-  },
-  {
     "folke/todo-comments.nvim",
     event = "BufRead",
     dependencies = { "nvim-lua/plenary.nvim" },
