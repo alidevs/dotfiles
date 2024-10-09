@@ -38,8 +38,8 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec kitty -e /sbin/tmux
 
-# start firefox
-bindsym $mod+Shift+f exec firefox
+# start brave
+bindsym $mod+Shift+f exec brave --user-data-dir=/home/alidevs/.config/BraveSoftware/Brave-Browser
 
 # kill focused window
 bindsym $mod+Shift+q kill
