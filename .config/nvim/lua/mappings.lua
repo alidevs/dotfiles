@@ -19,6 +19,7 @@ map("n", "]c", "<cmd>lua require('gitsigns').next_hunk()<cr>", { desc = "Next hu
 map("n", "[c", "<cmd>lua require('gitsigns').prev_hunk()<cr>", { desc = "Previous hunk" })
 map("n", "<leader>gb", "<cmd>lua require('gitsigns').blame_line()<cr>", { desc = "Blame line" })
 map("n", "<leader>rh", "<cmd>lua require('gitsigns').reset_hunk()<cr>", { desc = "Reset hunk" })
+map("n", "<leader>ph", "<cmd>lua require('gitsigns').preview_hunk()<cr>", { desc = "Preview hunk" })
 
 -- Lazygit
 map("n", "<leader>lg", "<cmd>LazyGit<cr>", { desc = "LazyGit" })
