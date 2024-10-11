@@ -14,7 +14,10 @@ M.ui = {
     lazyload = false,
     modules = {},
   },
+}
 
+M.base64 = {
+  theme = "vanny-nightlamp",
   hl_override = {
     Comment = { italic = true },
     ["@comment"] = { italic = true },

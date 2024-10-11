@@ -10,8 +10,7 @@ local opts = {
     null_ls.builtins.formatting.stylua,
 
     -- JavaScript / TypeScript
-    -- null_ls.builtins.diagnostics.eslint,
-    -- null_ls.builtins.formatting.prettier,
+    null_ls.builtins.diagnostics.eslint,
 
     -- Rust
     null_ls.builtins.formatting.rustfmt.with {

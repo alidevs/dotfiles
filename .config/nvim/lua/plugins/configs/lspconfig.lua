@@ -43,16 +43,12 @@ lspconfig.ts_ls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   init_options = {
-    disableSuggestions = true,
-  },
-  filetypes = { "typescript", "typescriptreact" },
-  -- root_dir = lspconfig.util.root_pattern "package.json",
-  commands = {
-    OrganizeImports = {
-      organize_imports,
-      description = "Organize Imports",
+    preferences = {
+      disableSuggestions = true,
     },
   },
+  filetypes = { "typescript" },
+  root_dir = lspconfig.util.root_pattern "package.json",
 }
 
 lspconfig.sorbet.setup {
