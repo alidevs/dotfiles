@@ -56,3 +56,14 @@ end, { desc = "Increase scale factor" })
 map("n", "<C-->", function()
   neovide_scale(-0.1)
 end, { desc = "Decrease scale factor" })
+
+-- Menu
+map("n", "<C-t>", function()
+  require("menu").open "default"
+end, { desc = "Open default menu" })
+map("n", "<RightMouse>", function()
+  vim.cmd.exec '"normal! \\<RightMouse>"'
+
+  local options = vim.bo.ft == "NvimTree" and "nvimtree" or "default"
+  require("menu").open(options, { mouse = true })
+end, { desc = "Open menu" })

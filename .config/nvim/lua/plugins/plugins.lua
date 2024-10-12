@@ -224,22 +224,6 @@ local plugins = {
     event = "BufRead",
   },
   {
-    "m4xshen/hardtime.nvim",
-    dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-    opts = {
-      restricted_keys = {
-        ["j"] = {},
-        ["k"] = {},
-        ["l"] = {},
-        ["h"] = {},
-      },
-    },
-    lazy = false,
-    setup = function()
-      require("hardtime").setup()
-    end,
-  },
-  {
     "kdheepak/lazygit.nvim",
     cmd = {
       "LazyGit",
