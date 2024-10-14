@@ -1,14 +1,15 @@
 local options = {
   formatters_by_ft = {
     lua = { "stylua" },
-    css = { "prettier" },
-    html = { "prettier" },
+    css = { "biome" },
+    html = { "biome" },
+    json = { "biome" },
+    typescript = { "biome" },
     toml = { "taplo" },
     rust = { "rustfmt" },
     ruby = { "rufo" },
     yaml = { "yamlfix" },
-    json = { "fixjson" },
-    typescript = { "biome" },
+    terraform = { "terraform_fmt" },
     python = function(bufnr)
       if require("conform").get_formatter_info("ruff_format", bufnr).available then
         return { "ruff_fix", "ruff_format", "ruff_organize_imports" }

@@ -4,6 +4,12 @@ local lspconfig = require "lspconfig"
 local on_attach = config.on_attach
 local capabilities = config.capabilities
 
+lspconfig.terraformls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = { "terraform-ls" },
+}
+
 lspconfig.pyright.setup {
   on_attach = on_attach,
   capabilities = capabilities,
@@ -30,14 +36,6 @@ lspconfig.ruff.setup {
   filetypes = { "python" },
   cmd = { "ruff", "server", "--preview" },
 }
-
-local function organize_imports()
-  local params = {
-    command = "_typescript.organizeImports",
-    arguments = { vim.api.nvim_buf_get_name(0) },
-  }
-  vim.lsp.buf.execute_command(params)
-end
 
 lspconfig.ts_ls.setup {
   on_attach = on_attach,
