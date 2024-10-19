@@ -59,3 +59,17 @@ lspconfig.sorbet.setup {
     highlightUntyped = true,
   },
 }
+
+lspconfig.yamlls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    yaml = {
+      schemas = {
+        kubernetes = "*.{yaml,yml}",
+        ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*.{yml,yaml}",
+        ["https://json.schemastore.org/github-action.json"] = "/.github/action/*.{yml,yaml}",
+      },
+    },
+  },
+}
