@@ -41,6 +41,9 @@ bindsym $mod+Return exec kitty -e /sbin/tmux
 # start brave
 bindsym $mod+Shift+f exec brave --user-data-dir=/home/alidevs/.config/BraveSoftware/Brave-Browser
 
+# start discord
+bindsym $mod+Shift+d exec discord
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
