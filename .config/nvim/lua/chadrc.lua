@@ -16,7 +16,7 @@ M.ui = {
   },
 }
 
-M.base64 = {
+M.base46 = {
   theme = "vanny-nightlamp",
   hl_override = {
     Comment = { italic = true },
