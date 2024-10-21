@@ -79,6 +79,14 @@ local plugins = {
     "chrisbra/csv.vim",
     ft = { "csv" },
   },
+  {
+    enabled = false,
+    "ray-x/lsp_signature.nvim",
+    event = "LspAttach",
+    config = function()
+      require("lsp_signature").setup()
+    end,
+  },
 
   -- Treesitter and Syntax
   {
@@ -138,6 +146,26 @@ local plugins = {
   {
     "nvim-tree/nvim-tree.lua",
     opts = overrides.nvimtree,
+  },
+
+  {
+    "nvim-telescope/telescope.nvim",
+    opts = function(_, opts)
+      return vim.tbl_deep_extend("force", opts, {
+        defaults = {
+          file_ignore_patterns = { ".git/", "node_modules/", "venv/", ".venv/", ".direnv/", ".mypy_cache/" },
+          vimgrep_arguments = {
+            "rg",
+            "--no-heading",
+            "--with-filename",
+            "--line-number",
+            "--column",
+            "--smart-case",
+            "--fixed-strings",
+          },
+        },
+      })
+    end,
   },
 
   -- Diagnostics and Troubleshooting
