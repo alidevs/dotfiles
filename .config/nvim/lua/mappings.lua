@@ -67,3 +67,23 @@ map("n", "<RightMouse>", function()
   local options = vim.bo.ft == "NvimTree" and "nvimtree" or "default"
   require("menu").open(options, { mouse = true })
 end, { desc = "Open menu" })
+
+-- UI
+map("n", "<C-A-h>", "5<C-w>>", { desc = "Window increase width by 5%" })
+map("n", "<C-A-l>", "5<C-w><", { desc = "Window decrease width by 5%" })
+map("n", "<C-A-j>", "5<C-w>+", { desc = "Window increase height by 5%" })
+map("n", "<C-A-k>", "5<C-w>-", { desc = "Window decrease height by 5%" })
+
+-- Editor
+map("n", "<A-Down>", ":m .+1<CR>", { desc = "Move line down" })
+map("n", "<A-j>", ":m .+1<CR>", { desc = "Move line down" })
+map("n", "<A-Up>", ":m .-2<CR>", { desc = "Move line up" })
+map("n", "<A-k>", ":m .-2<CR>", { desc = "Move line up" })
+map("i", "<A-Down>", "<Esc>:m .+1<CR>==gi", { desc = "Move line down" })
+map("i", "<A-j>", "<Esc>:m .+1<CR>==gi", { desc = "Move line down" })
+map("i", "<A-Up>", "<Esc>:m .-2<CR>==gi", { desc = "Move line up" })
+map("i", "<A-k>", "<Esc>:m .-2<CR>==gi", { desc = "Move line up" })
+map("v", "<A-Down>", ":m '>+1<CR>gv=gv", { desc = "Move line down" })
+map("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move line down" })
+map("v", "<A-Up>", ":m '<-2<CR>gv=gv", { desc = "Move line up" })
+map("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move line up" })
