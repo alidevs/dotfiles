@@ -7,7 +7,9 @@ local M = {}
 M.ui = {
   cmp = { lspkind_text = false, style = "flat_dark" },
 
-  statusline = { theme = "minimal", separator_style = "default" },
+  statusline = {
+    theme = "default",
+  },
 
   tabufline = {
     order = { "treeOffset", "buffers", "tabs" },
@@ -17,11 +19,39 @@ M.ui = {
 }
 
 M.base46 = {
-  theme = "vanny-nightlamp",
+  theme = "vanny",
+  transparency = false,
+
   hl_override = {
     Comment = { italic = true },
     ["@comment"] = { italic = true },
-    CursorLineNr = { fg = "#F5DFAD", bold = true, italic = true },
+    CursorLineNr = { fg = "yellow", bold = true },
+    LspInlayHint = { fg = "#4e5665", bg = "NONE" },
+    FloatTitle = { link = "Title" },
+    FloatBorder = { link = "TelescopeBorder" },
+    TelescopeSelection = { bg = { "black", -2 }, bold = true },
+    NvimTreeRootFolder = { link = "TelescopeBorder" },
+    NvimTreeGitDirty = { link = "NvimTreeNormal" },
+    ["@keyword"] = { italic = true },
+  },
+
+  hl_add = {
+    YankVisual = { link = "CursorColumn" },
+    LspInfoBorder = { fg = "#444c5b" },
+    WinBar = { bg = "NONE" },
+    WinBarNC = { bg = "NONE" },
+    DropBarMenuCurrentContext = { link = "Visual" },
+    St_HarpoonInactive = { link = "StText" },
+    St_HarpoonActive = { link = "St_LspHints" },
+    NvimTreeGitStagedIcon = { fg = "#a6e3a1" },
+    MarkviewLayer2 = { bg = "#171b21" },
+    MarkviewCode = { link = "MarkviewLayer2" },
+    HelpviewCode = { link = "MarkviewLayer2" },
+    HelpviewInlineCode = { link = "MarkviewInlineCode" },
+    HelpviewCodeLanguage = { link = "MarkviewCode" },
+    CodeActionSignHl = { fg = "#f9e2af" },
+    ["@markup.quote.markdown"] = { bg = "NONE" },
+    ["@markup.raw.block.markdown"] = { link = "MarkviewLayer2" },
   },
 }
 

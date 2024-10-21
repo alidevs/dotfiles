@@ -72,3 +72,51 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
   desc = "LSP: Disable hover capability from Ruff",
 })
+
+--
+function code_action_listener()
+  local buffer = vim.api.nvim_get_current_buf()
+  local clients = vim.lsp.get_clients { bufnr = buffer }
+
+  if clients == nil or #clients == 0 then
+    return
+  end
+
+  local has_code_action_support = vim.tbl_filter(function(client)
+    return client.server_capabilities.codeActionProvider
+  end, clients)[1] ~= nil
+
+  if has_code_action_support then
+    local context = { diagnostics = vim.lsp.diagnostic.get_line_diagnostics(buffer) }
+    local params = vim.lsp.util.make_range_params()
+    params.context = context
+
+    vim.lsp.buf_request(buffer, "textDocument/codeAction", params, function(_, result, _, _)
+      vim.fn.sign_unplace("code_action_gear", { buffer = buffer })
+
+      if result and next(result) then
+        vim.fn.sign_place(0, "code_action_gear", "CodeActionSign", buffer, { lnum = vim.api.nvim_win_get_cursor(0)[1], priority = 100 })
+      end
+    end)
+  end
+end
+
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
+vim.fn.sign_define("CodeActionSign", { text = "󰉁", texthl = "CodeActionSignHl" })
+autocmd("LspAttach", {
+  desc = "Display code action sign in gutter if available.",
+  pattern = "*",
+  group = augroup("UserLspConfig", { clear = true }),
+
+  callback = function()
+    autocmd({ "CursorMoved", "CursorMovedI" }, {
+      group = augroup("CodeActionSign", { clear = true }),
+      callback = function()
+        vim.schedule(function()
+          code_action_listener()
+        end)
+      end,
+    })
+  end,
+})
