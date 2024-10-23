@@ -5,7 +5,10 @@
 local M = {}
 
 M.ui = {
-  cmp = { lspkind_text = false, style = "flat_dark" },
+  cmp = {
+    lspkind_text = true,
+    style = "default",
+  },
 
   statusline = {
     theme = "default",
@@ -19,7 +22,7 @@ M.ui = {
 }
 
 M.base46 = {
-  theme = "vanny",
+  theme = "vanny-nightlamp",
   transparency = false,
 
   hl_override = {
