@@ -15,7 +15,7 @@ local plugins = {
         "yamlls",
         "biome",
         "yamlfix",
-        "pyright",
+        "basedpyright",
         "ruff",
         "mypy",
         "flake8",

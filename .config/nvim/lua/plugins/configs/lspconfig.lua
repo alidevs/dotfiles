@@ -10,22 +10,16 @@ lspconfig.terraformls.setup {
   cmd = { "terraform-ls" },
 }
 
-lspconfig.pyright.setup {
-  on_attach = on_attach,
+lspconfig.basedpyright.setup {
+  on_attach = function(client, bufnr)
+    client.server_capabilities.semanticTokensProvider = nil
+  end,
   capabilities = capabilities,
   filetypes = { "python" },
-  root_dir = lspconfig.util.root_pattern(".venv", "docker-compose.yml", ".direnv"),
-  handlers = {
-    -- ["textDocument/publishDiagnostics"] = function(...) end,
-  },
   settings = {
-    pyright = {
+    basedpyright = {
       disableOrganizeImports = true,
-    },
-  },
-  python = {
-    analysis = {
-      ignore = { diagnosticMode = "off", typeCheckingMode = "off" },
+      typeCheckingMode = "basic",
     },
   },
 }
