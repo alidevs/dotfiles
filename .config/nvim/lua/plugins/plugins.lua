@@ -61,19 +61,19 @@ local plugins = {
   },
   {
     "linux-cultist/venv-selector.nvim",
+    dependencies = {
+      "neovim/nvim-lspconfig",
+      "mfussenegger/nvim-dap",
+      "mfussenegger/nvim-dap-python",
+      { "nvim-telescope/telescope.nvim", branch = "0.1.x", dependencies = { "nvim-lua/plenary.nvim" } },
+    },
+    lazy = false,
     branch = "regexp",
-    dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim", "mfussenegger/nvim-dap-python" },
     config = function()
       require("venv-selector").setup {
-        name = "python-3.12",
         auto_refresh = true,
       }
     end,
-    event = "VeryLazy",
-    keys = {
-      { "<leader>vs", "<cmd>VenvSelect<cr>" },
-      { "<leader>vc", "<cmd>VenvSelectCached<cr>" },
-    },
   },
   {
     "chrisbra/csv.vim",

@@ -25,8 +25,7 @@ map("n", "<leader>ph", "<cmd>lua require('gitsigns').preview_hunk()<cr>", { desc
 map("n", "<leader>lg", "<cmd>LazyGit<cr>", { desc = "LazyGit" })
 
 -- LSP & utils
-map("n", "<leader>vs", "<cmd>VenvSelect<cr>", { desc = "Select virtualenv" })
-map("n", "<leader>vc", "<cmd>VenvSelectCached<cr>", { desc = "Select cached virtualenv" })
+map("n", ",v", "<cmd>VenvSelect<cr>", { desc = "Select virtualenv" })
 
 -- Buffers
 map("n", "<leader>kw", "<cmd>bufdo bd<cr>", { desc = "Close all buffers" })
