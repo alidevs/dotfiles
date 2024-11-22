@@ -190,8 +190,8 @@ exec_always --no-startup-id picom -cb
 exec_always --no-startup-id xrdb ~/.Xresources
 exec_always --no-startup-id xrandr --output DP-0 --primary --mode 2560x1440 && xrandr --output HDMI-0 --mode 1920x1080 --left-of DP-0
 
-set $unfocused_border #25172f
-set $focused_border #7b4d9e
+set $unfocused_border #7b8496
+set $focused_border #5ea1ff
 
 
 # class                 border  backgr. text    indicator child_border
