@@ -179,7 +179,7 @@ gaps inner 10
 gaps outer 0
 # border_radius 3
 
-for_window [class="^.*"] border pixel 0
+for_window [class="^.*"] border pixel 1
 
 exec_always --no-startup-id dunst
 exec_always feh --randomize --bg-fill ~/Pictures
@@ -190,16 +190,13 @@ exec_always --no-startup-id picom -cb
 exec_always --no-startup-id xrdb ~/.Xresources
 exec_always --no-startup-id xrandr --output DP-0 --primary --mode 2560x1440 && xrandr --output HDMI-0 --mode 1920x1080 --left-of DP-0
 
-set $unfocused_border #24292f
-set $focused_border #ffffff
+set $unfocused_border #25172f
+set $focused_border #7b4d9e
+
 
 # class                 border  backgr. text    indicator child_border
-#client.focused          #ffffff #ffffff #ffffff #ffffff   $focused_border
-#client.focused_inactive #ffffff #ffffff #ffffff #ffffff   $focused_border
-#client.unfocused        #ffffff #ffffff #ffffff #ffffff   $unfocused_border
-#client.urgent           #ffffff #ffffff #ffffff #ffffff   $focused_border
-#client.placeholder      #ffffff #ffffff #ffffff #ffffff   #ffffff
-
-client.background       #ffffff
+client.focused          #ffffff #ffffff #ffffff #ffffff   $focused_border
+client.focused_inactive  #ffffff #ffffff #ffffff #ffffff  $unfocused_border
+client.unfocused        #ffffff #ffffff #ffffff #ffffff   $unfocused_border
 
 bindsym Control+space exec ~/.config/i3/toggle_keyboard_layout.sh
