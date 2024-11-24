@@ -283,6 +283,10 @@ local plugins = {
     "wakatime/vim-wakatime",
     lazy = false,
   },
+  {
+    "taybart/b64.nvim",
+    event = "BufRead",
+  },
 }
 
 return plugins

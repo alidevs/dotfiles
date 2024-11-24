@@ -86,3 +86,7 @@ map("v", "<A-Down>", ":m '>+1<CR>gv=gv", { desc = "Move line down" })
 map("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move line down" })
 map("v", "<A-Up>", ":m '<-2<CR>gv=gv", { desc = "Move line up" })
 map("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move line up" })
+
+-- Base64 encoding/decoding
+map("v", "<leader>be", "<cmd>B64Encode<cr>", { desc = "Base64 encode" })
+map("v", "<leader>bd", "<cmd>B64Decode<cr>", { desc = "Base64 decode" })
