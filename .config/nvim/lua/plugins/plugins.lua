@@ -117,12 +117,48 @@ local plugins = {
     end,
   },
   {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("plugins.configs.noice").setup()
-    end,
-    dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    opts = {
+      bigfile = { enabled = true },
+      dashboard = { enabled = true },
+      indent = {
+        enabled = true,
+
+        chunk = {
+          enabled = true,
+          only_current = true,
+          hl = "SnacksIndentChunk", ---@type string|string[] hl group for chunk scopes
+          char = {
+            corner_top = "┌",
+            corner_bottom = "└",
+            corner_top = "╭",
+            corner_bottom = "╰",
+            horizontal = "─",
+            vertical = "│",
+            arrow = ">",
+          },
+        },
+      },
+      input = {
+        enabled = true,
+        icon_hl = "SnacksInputIcon",
+        win = { style = "input" },
+        expand = true,
+      },
+      notifier = {
+        enabled = true,
+      },
+      quickfile = { enabled = true },
+      lazygit = {
+        enabled = true,
+        configure = false,
+      },
+      dim = {
+        enabled = true,
+      },
+    },
   },
   {
     {
@@ -130,16 +166,6 @@ local plugins = {
       event = "BufEnter",
       dependencies = {
         "nvim-telescope/telescope-fzf-native.nvim",
-      },
-    },
-  },
-  {
-    "folke/zen-mode.nvim",
-    lazy = false,
-    opts = {
-      window = {
-        backdrop = 1.0,
-        width = 140,
       },
     },
   },
@@ -242,19 +268,6 @@ local plugins = {
   {
     "nvim-pack/nvim-spectre",
     event = "BufRead",
-  },
-  {
-    "kdheepak/lazygit.nvim",
-    cmd = {
-      "LazyGit",
-      "LazyGitConfig",
-      "LazyGitCurrentFile",
-      "LazyGitFilter",
-      "LazyGitFilterCurrentFile",
-    },
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
   },
   {
     "rktjmp/paperplanes.nvim",

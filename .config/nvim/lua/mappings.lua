@@ -21,9 +21,6 @@ map("n", "<leader>gb", "<cmd>lua require('gitsigns').blame_line()<cr>", { desc =
 map("n", "<leader>rh", "<cmd>lua require('gitsigns').reset_hunk()<cr>", { desc = "Reset hunk" })
 map("n", "<leader>ph", "<cmd>lua require('gitsigns').preview_hunk()<cr>", { desc = "Preview hunk" })
 
--- Lazygit
-map("n", "<leader>lg", "<cmd>LazyGit<cr>", { desc = "LazyGit" })
-
 -- LSP & utils
 map("n", ",v", "<cmd>VenvSelect<cr>", { desc = "Select virtualenv" })
 
@@ -90,3 +87,19 @@ map("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move line up" })
 -- Base64 encoding/decoding
 map("v", "<leader>be", "<cmd>B64Encode<cr>", { desc = "Base64 encode" })
 map("v", "<leader>bd", "<cmd>B64Decode<cr>", { desc = "Base64 decode" })
+
+-- Snacks
+map("n", "<leader>lg", function()
+  Snacks.lazygit()
+end, { desc = "LazyGit" })
+
+local dim_enabled = false
+map("n", "<leader>uD", function()
+  if dim_enabled then
+    Snacks.dim.disable()
+  else
+    Snacks.dim.enable()
+  end
+
+  dim_enabled = not dim_enabled
+end, { desc = "Toggle dimming" })
