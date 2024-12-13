@@ -5,8 +5,10 @@ local map = vim.keymap.set
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
--- Noice
-map("n", "<leader>nd", "<cmd>NoiceDismiss<cr>", { desc = "Dismiss noice" })
+-- Notifications
+map("n", "<leader>nh", function()
+  Snacks.notifier.show_history()
+end, { desc = "Show notification history" })
 
 -- Telescope
 map("n", "<leader><Tab>", "<cmd>Telescope oldfiles cwd_only=true<cr>", { desc = "Open recent files" })
