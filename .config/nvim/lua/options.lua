@@ -115,3 +115,9 @@ vim.api.nvim_create_autocmd("LspProgress", {
     })
   end,
 })
+
+vim.filetype.add {
+  extension = {
+    ["blade.php"] = "blade",
+  },
+}

@@ -3,6 +3,12 @@ local overrides = require "custom.configs.overrides"
 local plugins = {
   -- LSP and Language Support
   {
+    "ricardoramirezr/blade-nav.nvim",
+    dependencies = { "hrsh7th/nvim-cmp" },
+    ft = { "blade", "php" },
+    opts = { close_tag_on_complete = false },
+  },
+  {
     "neovim/nvim-lspconfig",
     config = function()
       require "plugins.configs.lspconfig"
@@ -23,6 +29,8 @@ local plugins = {
         "typescript-language-server",
         "eslint-lsp",
         "prettier",
+        "intelephense",
+        "emmet-ls",
       },
     },
   },

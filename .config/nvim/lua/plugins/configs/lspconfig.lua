@@ -67,3 +67,14 @@ lspconfig.yamlls.setup {
     },
   },
 }
+
+lspconfig.intelephense.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
+lspconfig.emmet_ls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { "blade", "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less" },
+}
