@@ -181,7 +181,6 @@ local plugins = {
     "nvim-tree/nvim-tree.lua",
     opts = overrides.nvimtree,
   },
-
   {
     "nvim-telescope/telescope.nvim",
     opts = function(_, opts)
@@ -307,6 +306,26 @@ local plugins = {
   {
     "taybart/b64.nvim",
     event = "BufRead",
+  },
+  {
+    "mvllow/modes.nvim",
+    tag = "v0.2.0",
+    event = "VeryLazy",
+    config = function()
+      require("modes").setup {
+        colors = {
+          bg = "", -- Optional bg param, defaults to Normal hl group
+          copy = "#f5c359",
+          delete = "#c75c6a",
+          insert = "#588157",
+          visual = "#8ecae6",
+        },
+      }
+    end,
+  },
+  {
+    "ahmedkhalf/project.nvim",
+    event = "BufReadPre",
   },
 }
 

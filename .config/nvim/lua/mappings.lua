@@ -15,6 +15,7 @@ map("n", "<leader><Tab>", "<cmd>Telescope oldfiles cwd_only=true<cr>", { desc = 
 map("n", "<leader>fy", "<cmd>Telescope lsp_document_symbols<cr>", { desc = "Document symbols" })
 map("n", "<leader>fs", "<cmd>Telescope grep_string<cr>", { desc = "Search for string" })
 map("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<cr>", { desc = "Fuzzy find in buffer" })
+map("n", "<leader>fp", "<cmd>Telescope projects<cr>", { desc = "Projects" })
 
 -- gitsigns
 map("n", "]c", "<cmd>lua require('gitsigns').next_hunk()<cr>", { desc = "Next hunk" })
@@ -35,7 +36,7 @@ map("n", "<leader>sw", "<cmd>lua require('spectre').open_visual({select_word=tru
 map("v", "<leader>sw", "<esc><cmd>lua require('spectre').open_visual()<CR>", { desc = "Search current word" })
 
 -- Transparent
-map("n", "<leader>tt", "<cmd>lua require('base46').toggle_transparency()<cr>", { desc = "Toggle transparency" })
+-- map("n", "<leader>tt", "<cmd>lua require('base46').toggle_transparency()<cr>", { desc = "Toggle transparency" })
 
 -- Neovide
 local function neovide_scale(amount)
