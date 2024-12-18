@@ -31,6 +31,7 @@ require("lazy").setup({
 
     -- util
     { import = "lazyvim.plugins.extras.util.project" },
+    { import = "lazyvim.plugins.extras.util.dot" },
 
     -- lang
     { import = "lazyvim.plugins.extras.lang.python" },
