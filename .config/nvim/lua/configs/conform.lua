@@ -9,6 +9,7 @@ local options = {
     rust = { "rustfmt" },
     ruby = { "rufo" },
     yaml = { "yamlfix" },
+    php = { "php_cs_fixer" },
     terraform = { "terraform_fmt" },
     python = function(bufnr)
       if require("conform").get_formatter_info("ruff_format", bufnr).available then

@@ -25,7 +25,7 @@ opt.smartcase = true
 local g = vim.g
 -- Neovide
 if g.neovide then
-  o.guifont = "JetbrainsMono Nerd Font:h13"
+  o.guifont = "JetbrainsMono Nerd Font:h18"
 
   g.neovide_refresh_rate = 175
 
