@@ -14,11 +14,6 @@ vim.opt.termguicolors = true
 vim.opt.background = "dark"
 vim.opt.signcolumn = "yes"
 
-vim.opt.winblend = 0
-vim.opt.pumblend = 0
-
-vim.opt.clipboard:append("unnamedplus")
-
 -- Neovide
 if vim.g.neovide then
   vim.o.guifont = "JetbrainsMono Nerd Font:h13"
