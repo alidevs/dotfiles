@@ -24,6 +24,7 @@ require("lazy").setup({
 
     -- coding
     { import = "lazyvim.plugins.extras.coding.mini-surround" },
+    { import = "lazyvim.plugins.extras.coding.luasnip" },
 
     -- ai
     { import = "lazyvim.plugins.extras.ai.supermaven" },
