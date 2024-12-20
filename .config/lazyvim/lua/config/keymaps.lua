@@ -3,6 +3,10 @@ local map = LazyVim.safe_keymap_set
 map("n", "<leader><Tab>", "<cmd>Telescope oldfiles cwd_only=true<cr>", { desc = "Open recent files" })
 map("n", "<leader>kw", "<cmd>bufdo bd<cr>", { desc = "Close all buffers" })
 
+map("n", "<leader>la", ":Laravel artisan<cr>", { desc = "Laravel artisan" })
+map("n", "<leader>lr", ":Laravel routes<cr>", { desc = "Laravel routes" })
+map("n", "<leader>lm", ":Laravel related<cr>", { desc = "Laravel related" })
+map("n", "<leader>lc", ":Laravel composer<cr>", { desc = "Laravel composer" })
 -- Neovide
 local function neovide_scale(amount)
   local temp = vim.g.neovide_scale_factor + amount
