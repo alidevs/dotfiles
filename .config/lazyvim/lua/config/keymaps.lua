@@ -8,7 +8,8 @@ vim.keymap.del("n", "<leader><Tab>[")
 vim.keymap.del("n", "<leader><Tab>]")
 vim.keymap.del("n", "<leader><Tab><Tab>")
 
-map("n", "<leader><Tab>", LazyVim.pick("oldfiles", { cwd = vim.uv.cwd() }), { desc = "Recent (cwd)" })
+map("n", "<leader><Tab>", "<cmd>FzfLua oldfiles cwd_only=true<cr>", { desc = "Open recent files" })
+
 map("n", "<leader>kw", "<cmd>bufdo bd<cr>", { desc = "Close all buffers" })
 
 map("n", "<leader>la", ":Laravel artisan<cr>", { desc = "Laravel artisan" })
