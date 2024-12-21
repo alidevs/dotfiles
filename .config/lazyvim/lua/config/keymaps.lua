@@ -1,6 +1,14 @@
 local map = LazyVim.safe_keymap_set
 
-map("n", "<leader><Tab>", "<cmd>Telescope oldfiles cwd_only=true<cr>", { desc = "Open recent files" })
+vim.keymap.del("n", "<leader><Tab>d")
+vim.keymap.del("n", "<leader><Tab>f")
+vim.keymap.del("n", "<leader><Tab>l")
+vim.keymap.del("n", "<leader><Tab>o")
+vim.keymap.del("n", "<leader><Tab>[")
+vim.keymap.del("n", "<leader><Tab>]")
+vim.keymap.del("n", "<leader><Tab><Tab>")
+
+map("n", "<leader><Tab>", LazyVim.pick("oldfiles", { cwd = vim.uv.cwd() }), { desc = "Recent (cwd)" })
 map("n", "<leader>kw", "<cmd>bufdo bd<cr>", { desc = "Close all buffers" })
 
 map("n", "<leader>la", ":Laravel artisan<cr>", { desc = "Laravel artisan" })
