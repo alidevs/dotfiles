@@ -8,7 +8,8 @@ vim.keymap.del("n", "<leader><Tab>[")
 vim.keymap.del("n", "<leader><Tab>]")
 vim.keymap.del("n", "<leader><Tab><Tab>")
 
-map("n", "<leader><Tab>", "<cmd>FzfLua oldfiles cwd_only=true<cr>", { desc = "Open recent files" })
+map("n", "<leader><Tab>", "<cmd>FzfLua oldfiles cwd_only=true include_current_session=true sort_mru=true<cr>",
+  { desc = "Recent files" })
 
 map("n", "<leader>kw", "<cmd>bufdo bd<cr>", { desc = "Close all buffers" })
 
