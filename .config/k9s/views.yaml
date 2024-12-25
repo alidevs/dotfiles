@@ -11,3 +11,4 @@ views:
       - READY
       - CPU
       - IP
+      - "%MEM/R"
