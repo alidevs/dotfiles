@@ -1,4 +1,9 @@
-theme = dark:rose-pine,light:rose-pine-dawn
+# vim:ft=config
+theme = rose-pine
+term = xterm-ghostty
+
+selection-background = #232136
+selection-foreground = #faf4ed
 
 macos-titlebar-style = hidden
 bold-is-bright = true
@@ -6,7 +11,7 @@ window-decoration = false
 background-opacity = 1.0
 
 font-feature = +liga
-font-size = 17
+font-size = 14
 
 cursor-style = block
 
@@ -16,5 +21,17 @@ window-padding-color = background
 window-padding-x = 10
 window-padding-y = 10
 
-keybind = ctrl+shift+x=toggle_quick_terminal
+cursor-style = block
+cursor-style-blink = false
+
+copy-on-select = clipboard
+
+window-padding-x = 10
+window-padding-y = 10
+window-padding-balance = true
+window-padding-color = background
+
+keybind = global:ctrl+shift+x=toggle_quick_terminal
 quick-terminal-position = top
+
+shell-integration = detect
