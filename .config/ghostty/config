@@ -1,0 +1,20 @@
+theme = dark:rose-pine,light:rose-pine-dawn
+
+macos-titlebar-style = hidden
+bold-is-bright = true
+window-decoration = false
+background-opacity = 1.0
+
+font-feature = +liga
+font-size = 17
+
+cursor-style = block
+
+mouse-hide-while-typing = true
+
+window-padding-color = background
+window-padding-x = 10
+window-padding-y = 10
+
+keybind = ctrl+shift+x=toggle_quick_terminal
+quick-terminal-position = top
