@@ -1,0 +1,37 @@
+
+[GHEGist]
+Public = false
+access_token = ""
+auto_sync = false
+base_url = ""
+file_name = ""
+gist_id = ""
+upload_url = ""
+
+[General]
+Backend = "gist"
+Cmd = []
+Color = false
+Column = 40
+Editor = "/sbin/nvim"
+Format = "[$description]: $command $tags"
+SelectCmd = "fzf --ansi --layout=reverse --border --height=90% --pointer=* --cycle --prompt=Snippets:"
+SnippetDirs = []
+SnippetFile = "/home/alidevs/.config/pet/snippet.toml"
+SortBy = ""
+
+[Gist]
+Public = false
+access_token = ""
+auto_sync = false
+file_name = "pet-snippet.toml"
+gist_id = "9a02b35f2785d1e28a57107ad69c7b49"
+
+[GitLab]
+ID = ""
+Url = ""
+Visibility = "private"
+access_token = ""
+auto_sync = false
+file_name = "pet-snippet.toml"
+skip_ssl = false
