@@ -8,6 +8,8 @@ vim.keymap.del("n", "<leader><Tab>[")
 vim.keymap.del("n", "<leader><Tab>]")
 vim.keymap.del("n", "<leader><Tab><Tab>")
 
+map("n", ";", ":", { desc = "CMD enter command mode" })
+
 map("n", "<leader><Tab>", "<cmd>FzfLua oldfiles cwd_only=true include_current_session=true sort_mru=true<cr>",
   { desc = "Recent files" })
 
