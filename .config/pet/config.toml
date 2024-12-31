@@ -13,11 +13,11 @@ Backend = "gist"
 Cmd = []
 Color = false
 Column = 40
-Editor = "/sbin/nvim"
+Editor = "${which nvim}"
 Format = "[$description]: $command $tags"
 SelectCmd = "fzf --ansi --layout=reverse --border --height=90% --pointer=* --cycle --prompt=Snippets:"
 SnippetDirs = []
-SnippetFile = "/home/alidevs/.config/pet/snippet.toml"
+SnippetFile = "~/.config/pet/snippet.toml"
 SortBy = ""
 
 [Gist]
