@@ -24,8 +24,6 @@ window-padding-y = 10
 cursor-style = block
 cursor-style-blink = false
 
-copy-on-select = clipboard
-
 window-padding-x = 10
 window-padding-y = 10
 window-padding-balance = true
