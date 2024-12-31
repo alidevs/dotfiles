@@ -33,5 +33,3 @@ window-padding-color = background
 
 keybind = global:ctrl+shift+x=toggle_quick_terminal
 quick-terminal-position = top
-
-shell-integration = detect
