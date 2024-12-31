@@ -1,32 +1,37 @@
 ---
 gui:
   sidePanelWidth: 0.25
-  nerdFontsVersion: 3
+  nerdFontsVersion: "3"
   border: rounded
   theme:
     activeBorderColor:
-      - '#5ef1ff'
+      - "#ebbcba"
+      - bold
     inactiveBorderColor:
-      - '#7b8496'
-    searchingActiveBorderColor:
-      - '#ff5ef1'
+      - "#524f67"
     optionsTextColor:
-      - '#3c4048'
+      - "#9ccfd8"
     selectedLineBgColor:
-      - '#3c4048'
+      - "#403d52"
     cherryPickedCommitBgColor:
-      - '#3c4048'
+      - "#1f1d2e"
     cherryPickedCommitFgColor:
-      - '#ff5ea0'
+      - "#31748f"
     unstagedChangesColor:
-      - '#ffbd5e'
+      - "#ebbcba"
     defaultFgColor:
-      - '#ffffff'
+      - "#e0def4"
+    searchingActiveBorderColor:
+      - "#f6c177"
+
+  authorColors:
+    "*": "#c4a7e7"
 
 git:
   paging:
     colorArg: always
-    pager: delta  --dark --paging=never --24-bit-color=never --syntax-theme="OneHalfDark"
+    pager:
+      delta --dark --paging=never --24-bit-color=never --syntax-theme="Catppuccin Mocha"
       --side-by-side
   log:
     showGraph: always
