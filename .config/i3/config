@@ -16,7 +16,7 @@ font pango:JetBrains Mono 10
 # Gaps and borders
 gaps inner 10
 gaps outer 0
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 2
 
 # Colors
 set $unfocused_border #7b8496
