@@ -1,0 +1,6 @@
+color:
+  # 'default' or theme in ~/.config/lsd/themes/<theme>.yaml, or file path.
+  theme: custom
+
+# Possible values: date, relative, '+<strftime format>'
+date: "+%d/%m/%Y %X"
