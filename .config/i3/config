@@ -66,6 +66,7 @@ bindsym $mod+Return exec ghostty
 bindsym $mod+Shift+f exec brave --user-data-dir=/home/alidevs/.config/BraveSoftware/Brave-Browser
 bindsym $mod+Shift+d exec discord
 bindsym $mod+d exec --no-startup-id rofi -show drun -theme ~/.config/rofi/launcher.rasi
+bindsym $mod+b exec --no-startup-id rofi-bluetooth
 bindsym $mod+c exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard
 bindsym $alt+Tab exec rofi -show window -theme ~/.config/rofi/launcher.rasi
 bindsym $mod+Shift+s exec flameshot gui
