@@ -38,6 +38,8 @@ return {
             env = {
               YAMLFIX_SEQUENCE_STYLE = "block_style",
               YAMLFIX_WHITELINES = "1",
+              YAMLFIX_quote_representation = "\"",
+              YAMLFIX_SECTION_WHITELINES = "2",
             },
           }
         end,
