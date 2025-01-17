@@ -70,7 +70,7 @@ bindsym $mod+b exec --no-startup-id rofi-bluetooth
 bindsym $mod+c exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard
 bindsym $alt+Tab exec rofi -show window -theme ~/.config/rofi/launcher.rasi
 bindsym $mod+Shift+s exec flameshot gui
-bindsym Control+space exec ~/.config/i3/toggle_keyboard_layout.sh
+bindsym Control+$alt+space exec ~/.config/i3/toggle_keyboard_layout.sh
 
 # Window Management
 bindsym $mod+Shift+q kill
