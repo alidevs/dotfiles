@@ -11,6 +11,8 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.cursorline = true
 
+vim.o.wrap = true
+
 -- colors
 vim.opt.termguicolors = true
 vim.opt.background = "dark"
