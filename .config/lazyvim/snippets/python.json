@@ -1,22 +1,40 @@
 {
-  "Print 3 Empty Lines": {
-    "prefix": "p3",
-    "body": "print(\"\\n\" * 3)",
-    "description": "Print 3 Empty Lines"
-  },
-  "Print Compiled Statement": {
-    "prefix": "pcs",
-    "body": [
-      "print(\"\\n\" * 3)",
-      "print(${1:stmt}.compile(bind=session.get_bind(), compile_kwargs=dict(literal_binds=True)))",
-      "print(\"\\n\" * 3)",
-      "assert False, \"Printing compiled statement\""
-    ],
-    "description": "Print Compiled Statement"
-  },
-  "Assert False": {
-    "prefix": "af",
-    "body": "assert False, \"[${RELATIVE_FILEPATH}:${TM_LINE_NUMBER}] — ${1:Meow!}\"",
-    "description": "Assert False with message"
-  }
+	"Print 3 Empty Lines": {
+		"prefix": "p3",
+		"body": "print(\"\\n\" * 3)",
+		"description": "Print 3 Empty Lines"
+	},
+	"Print Compiled Statement": {
+		"prefix": "pcs",
+		"body": [
+			"print(\"\\n\" * 3)",
+			"print(${1:stmt}.compile(bind=session.get_bind(), compile_kwargs=dict(literal_binds=True)))",
+			"print(\"\\n\" * 3)",
+			"assert False, \"Printing compiled statement\""
+		],
+		"description": "Print Compiled Statement"
+	},
+	"Assert False": {
+		"prefix": "af",
+		"body": "assert False, \"[${RELATIVE_FILEPATH}:${TM_LINE_NUMBER}] — ${1:Meow!}\"",
+		"description": "Assert False with message"
+	},
+	"Pretty Print": {
+		"prefix": "pp",
+		"body": [
+			"print(\"\\n\" * 3)",
+			"__import__(\"pprint\").pprint(${1:response.json()})",
+			"print(\"\\n\" * 3)"
+		],
+		"description": "Pretty Print"
+	},
+	"Debug Variable": {
+		"prefix": "dbg",
+		"body": [
+			"print(\"\\n\" * 3)",
+			"print(f\"DEBUG: {${1:var}=}\")",
+			"print(\"\\n\" * 3)"
+		],
+		"description": "Print variable name and value for debugging"
+	}
 }
