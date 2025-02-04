@@ -64,7 +64,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # Application Launchers
 bindsym $mod+Return exec ghostty
 bindsym $mod+Shift+f exec brave --user-data-dir=/home/alidevs/.config/BraveSoftware/Brave-Browser
-bindsym $mod+Shift+d exec discord
+bindsym $mod+Shift+d exec flatpak run com.discordapp.DiscordCanary
 bindsym $mod+d exec --no-startup-id rofi -show drun -theme ~/.config/rofi/launcher.rasi
 bindsym $mod+b exec --no-startup-id rofi-bluetooth
 bindsym $mod+c exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard
