@@ -11,8 +11,6 @@ vim.keymap.del("n", "<leader><Tab><Tab>")
 map("n", "<leader><Tab>", "<cmd>FzfLua oldfiles cwd_only=true include_current_session=true sort_mru=true<cr>",
   { desc = "Recent files" })
 
-map("n", "<leader>kw", "<cmd>bufdo bd<cr>", { desc = "Close all buffers" })
-
 map("n", "<leader>la", ":Laravel artisan<cr>", { desc = "Laravel artisan" })
 map("n", "<leader>lr", ":Laravel routes<cr>", { desc = "Laravel routes" })
 map("n", "<leader>lm", ":Laravel related<cr>", { desc = "Laravel related" })
