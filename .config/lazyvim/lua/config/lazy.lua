@@ -26,6 +26,9 @@ require("lazy").setup({
     -- editor
     { import = "lazyvim.plugins.extras.editor.refactoring" },
 
+    -- formatting
+    { import = "lazyvim.plugins.extras.formatting.prettier" },
+
     -- ai
     { import = "lazyvim.plugins.extras.ai.supermaven" },
     { import = "lazyvim.plugins.extras.ai.copilot-chat" },
