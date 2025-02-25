@@ -92,7 +92,7 @@ $character"""
 
 [buf]
 format = '(with [$symbol$version ]($style))'
-style = 'fg:#5eff6c'
+style = 'fg:#f6c177'
 
 [bun]
 format = '(via [$symbol($version )]($style))'
@@ -120,7 +120,7 @@ style = 'fg:#f1ff5e'
 
 [dart]
 format = '(via [$symbol($version )]($style))'
-style = 'fg:#5eff6c'
+style = 'fg:#f6c177'
 
 [deno]
 format = '(via [$symbol($version )]($style))'
@@ -132,7 +132,7 @@ style = 'fg:#ff6e5e'
 
 [elixir]
 format = '(via [$symbol($version \(OTP $otp_version\) )]($style))'
-style = 'fg:#5eff6c'
+style = 'fg:#f6c177'
 
 [elm]
 format = '(via [$symbol($version )]($style))'
@@ -152,7 +152,7 @@ style = 'fg:#ff5ea0'
 
 [golang]
 format = '(via [$symbol($version )]($style))'
-style = 'fg:#5eff6c'
+style = 'fg:#f6c177'
 
 [haskell]
 format = '(via [$symbol($version )]($style))'
@@ -172,7 +172,7 @@ style = 'fg:#ff6e5e'
 
 [kotlin]
 format = '(via [$symbol($version )]($style))'
-style = 'fg:#5eff6c'
+style = 'fg:#f6c177'
 
 [lua]
 format = '(via [$symbol($version )]($style))'
@@ -184,7 +184,7 @@ style = 'fg:#f1ff5e'
 
 [nodejs]
 format = '(via [$symbol($version )]($style))'
-style = 'fg:#5eff6c'
+style = 'fg:#f6c177'
 
 [ocaml]
 format = '(via [$symbol($version )(\($switch_indicator$switch_name\) )]($style))'
@@ -212,7 +212,7 @@ style = 'fg:#ff5ef1'
 
 [python]
 format = '(via [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style))'
-style = 'fg:#5eff6c'
+style = 'fg:#f6c177'
 
 [quarto]
 format = '(via [$symbol($version )]($style))'
@@ -244,7 +244,7 @@ style = 'fg:#ffbd5e'
 
 [swift]
 format = '(via [$symbol($version )]($style))'
-style = 'fg:#5eff6c'
+style = 'fg:#f6c177'
 
 [typst]
 format = '(via [$symbol($version )]($style))'
@@ -264,16 +264,16 @@ style = 'fg:#f1ff5e'
 
 [kubernetes]
 format = '[⛵ $context](dimmed green) '
-style = 'fg:#5eff6c'
+style = 'fg:#f6c177'
 disabled = false
 
 [docker_context]
 format = '[🐳 $context](dimmed green) '
-style = 'fg:#5eff6c'
+style = 'fg:#f6c177'
 disabled = true
 
 [git_metrics]
-added_style = 'bold fg:#5eff6c'
+added_style = 'bold fg:#f6c177'
 deleted_style = 'bold fg:#ff6e5e'
 format = '[+$added]($added_style) | [-$deleted]($deleted_style) '
 only_nonzero_diffs = true
