@@ -6,6 +6,11 @@ selection-background = #232136
 selection-foreground = #faf4ed
 
 macos-titlebar-style = hidden
+macos-option-as-alt = left
+
+keybind = alt+left=unbind
+keybind = alt+right=unbind
+
 bold-is-bright = true
 window-decoration = false
 background-opacity = 1.0
