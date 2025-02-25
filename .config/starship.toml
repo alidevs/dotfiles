@@ -211,7 +211,7 @@ format = '(via [$symbol($version )]($style))'
 style = 'fg:#ff5ef1'
 
 [python]
-format = '(via [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style))'
+format = '(via [${symbol}(${version} )]($style))'
 style = 'fg:#f6c177'
 
 [quarto]
