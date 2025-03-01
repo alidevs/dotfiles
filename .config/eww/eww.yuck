@@ -90,6 +90,22 @@
     )
 )
 
+;;;;;;
+; Network Status
+;;;;;;
+
+(defpoll network_icon :interval "5s" `scripts/network --icon`)
+(defpoll network_status :interval "5s" `scripts/network --stat`)
+
+(defwidget network []
+    (box :class "panel network"
+        (label
+            :text {network_status}
+            :class "label"
+        )
+    )
+)
+
 (defwindow bar :monitor 0 :windowtype "dock" :wm-ignore false :stacking "fg"
     :geometry (geometry 
         :x "0%" 
@@ -117,6 +133,7 @@
             )
         )
         (box :class "main" :spacing "10" :space-evenly false :halign "end"
+            (network)
             (pacman)
             (cpu_meter)
         )

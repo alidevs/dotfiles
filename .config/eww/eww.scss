@@ -155,6 +155,19 @@ $fg: #f1f1f1;
   }
 }
 
+.network {
+  all: unset;
+  background-color: $background_base;
+  border-radius: 5px;
+  color: $fg;
+  padding: 4px 8px;
+
+  .label {
+    font-weight: bold;
+    color: $fg;
+  }
+}
+
 * {
   font-family: "Jetbrains Mono", sans-serif;
   color: $fg;
