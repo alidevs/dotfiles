@@ -133,7 +133,7 @@
             )
         )
         (box :class "main" :spacing "10" :space-evenly false :halign "end"
-            (network)
+            ;; (network)
             (pacman)
             (cpu_meter)
         )
