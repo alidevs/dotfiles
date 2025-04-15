@@ -44,7 +44,9 @@ exec_always feh --randomize --bg-fill ~/Pictures
 
 # Display configuration
 exec_always --no-startup-id xrdb ~/.Xresources
-exec_always --no-startup-id xrandr --output DP-0 --primary --mode 2560x1440 --rate 240 --output DP-2 --mode 2560x1440 --rate 170 --left-of DP-0 --rotate right
+exec_always --no-startup-id xrandr \
+  --output DP-4 --primary --mode 2560x1440 --rate 240 \
+  --output DP-2 --mode 2560x1440 --rate 170 --rotate right --left-of DP-4
 
 ################
 # Key Bindings #
