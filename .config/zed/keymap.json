@@ -1,0 +1,78 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {}
+  },
+  {
+    "context": "Editor && vim_mode && vim_mode != insert",
+    "bindings": {
+      "shift-h": "pane::ActivatePreviousItem",
+      "shift-l": "pane::ActivateNextItem"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
+    }
+  },
+  {
+    "context": "ProjectPanel",
+    "bindings": {
+      "space e": "workspace::ToggleLeftDock"
+    }
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "space -": "pane::SplitUp",
+      "space _": "pane::SplitDown",
+      "space |": "pane::SplitLeft",
+      "space \\": "pane::SplitRight"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal && vim_operator == none && !VimWaiting",
+    "bindings": {
+      "space space": "file_finder::Toggle",
+      "space tab": ["tab_switcher::Toggle", { "select_last": true }],
+      "space e": "project_panel::ToggleFocus",
+      "space b d": "pane::CloseActiveItem",
+      "g r": "editor::FindAllReferences",
+      "g f": "editor::OpenExcerpts",
+      "g e": "editor::OpenExcerpts",
+      "d ]": "editor::GoToDiagnostic",
+      "d [": "editor::GoToPreviousDiagnostic",
+      "] h": "editor::GoToHunk",
+      "[ h": "editor::GoToPreviousHunk",
+      "space c a": "editor::ToggleCodeActions",
+      "space c r": "editor::Rename",
+      "space g h r": "git::Restore",
+      "space g h p": "editor::ToggleSelectedDiffHunks"
+    }
+  },
+  {
+    "context": "vim_operator == c",
+    "bindings": {
+      "x": "vim::Exchange", // Exchange with register
+      "d": "editor::Rename" // Rename (Zed specific)
+    }
+  },
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      "g s a": ["vim::PushAddSurrounds", {}],
+      "g s r": ["vim::PushChangeSurrounds", {}]
+    }
+  }
+]
