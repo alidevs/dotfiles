@@ -20,10 +20,10 @@ return {
           "ruff_organize_imports"
         },
         json = { "biome" },
-        -- typescriptreact = { "biome" },
-        -- typescript = { "biome" },
-        -- javascript = { "biome" },
-        -- javascriptreact = { "biome" },
+        typescriptreact = { "biome" },
+        typescript = { "biome" },
+        javascript = { "biome" },
+        javascriptreact = { "biome" },
         go = { "gofmt" },
       },
       -- LazyVim will merge the options you set here with builtin formatters.
