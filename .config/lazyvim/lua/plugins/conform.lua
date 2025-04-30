@@ -24,6 +24,8 @@ return {
         typescript = { "biome" },
         javascript = { "biome" },
         javascriptreact = { "biome" },
+        css = { "prettier" },
+        html = { "prettier" },
         go = { "gofmt" },
       },
       -- LazyVim will merge the options you set here with builtin formatters.
