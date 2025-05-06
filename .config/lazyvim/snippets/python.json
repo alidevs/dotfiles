@@ -36,5 +36,18 @@
 			"print(\"\\n\" * 3)"
 		],
 		"description": "Print variable name and value for debugging"
+	},
+
+	"Timed Context Manager": {
+		"prefix": "tcm",
+		"body": [
+			"@__import__(\"contextlib\").contextmanager",
+			"def timed(name: str):",
+			"\tstart = __import__(\"time\").perf_counter()",
+			"\tyield",
+			"\tduration = __import__(\"time\").perf_counter() - start",
+			"\tlogger.info(f\"\t== {name} took {duration:.4f}s\")"
+		],
+		"description": "Context Manager for timing a block of code"
 	}
 }
