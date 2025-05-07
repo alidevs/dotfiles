@@ -12,8 +12,9 @@ $magenta: #ff5ef1;
 $pink: #ff5ea0;
 $orange: #ffbd5e;
 $purple: #bd5eff;
+$skin: #eabdba;
 
-$theme: $blue;
+$theme: $skin;
 $fg: #f1f1f1;
 
 .clock {
@@ -68,8 +69,8 @@ $fg: #f1f1f1;
     transition: background-color 0.2s ease;
 
     &.active {
-      color: $background_base;
       background-color: $theme;
+      color: #0E1111;
     }
 
     &:not(.active):hover {
@@ -170,6 +171,5 @@ $fg: #f1f1f1;
 
 * {
   font-family: "Jetbrains Mono", sans-serif;
-  color: $fg;
 }
 

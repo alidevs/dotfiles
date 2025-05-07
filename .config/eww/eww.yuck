@@ -29,6 +29,17 @@
 )
 
 ;;;;;;
+;; Memory Usage
+;;;;;;
+(defpoll mem :interval "2s" `free -m | awk '/Mem:/ {print int($3*100/$2)}'`)
+(defwidget mem_meter []
+  (box :class "panel mem" :spacing 5
+    (label :text "${mem}%" :class "value")
+    (image :path "images/icons/memory.svg" :image-width 20 :image-height 20)
+  )
+)
+
+;;;;;;
 ; Workspace Switcher
 ;;;;;;
 
@@ -54,7 +65,7 @@
 
 (defpoll UPDATES :interval "2m" `(checkupdates; yay -Qua) | wc -l`)
 (defwidget pacman []
-    (box :class "panel pacman"
+    (box :class "panel pacman" :spacing 5
         (label
             :text {UPDATES}
             :class "label"
@@ -64,6 +75,18 @@
             :image-width 20 :image-height 20
         )
     )
+)
+
+;;;;;;
+;; Disk Usage
+;;;;;;
+
+(defpoll disk :interval "60s" `df -h / | awk 'NR==2 {print $5}'`)
+(defwidget disk_widget []
+  (box :class "panel disk" :spacing 5
+    (label :text {disk} :class "value")
+    (image :path "images/icons/disk.svg" :image-width 20 :image-height 20)
+  )
 )
 
 ;;;;;;
@@ -135,6 +158,8 @@
         (box :class "main" :spacing "10" :space-evenly false :halign "end"
             ;; (network)
             (pacman)
+            (disk_widget)
+            (mem_meter)
             (cpu_meter)
         )
     )
