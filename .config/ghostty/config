@@ -17,7 +17,6 @@ background-opacity = 1.0
 
 font-feature = +liga
 font-size = 14
-font-family = "JetBrains Mono, monospace"
 
 cursor-style = block
 

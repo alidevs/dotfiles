@@ -52,7 +52,7 @@
 ;; Pacman
 ;;;;;;
 
-(defpoll UPDATES :interval "2m" `checkupdates | wc -l`)
+(defpoll UPDATES :interval "2m" `(checkupdates; yay -Qua) | wc -l`)
 (defwidget pacman []
     (box :class "panel pacman"
         (label
