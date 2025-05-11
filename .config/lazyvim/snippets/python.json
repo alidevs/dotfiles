@@ -43,11 +43,14 @@
 		"body": [
 			"@__import__(\"contextlib\").contextmanager",
 			"def timed(name: str):",
-			"\tstart = __import__(\"time\").perf_counter()",
-			"\tyield",
-			"\tduration = __import__(\"time\").perf_counter() - start",
-			"\tlogger.info(f\"\t== {name} took {duration:.4f}s\")"
+			"    start = __import__(\"time\").perf_counter()",
+			"    yield",
+			"    duration = __import__(\"time\").perf_counter() - start",
+			"    if duration < 1:",
+			"        logger.info(f\"  == {name} took {duration * 1000:.2f}ms\")",
+			"    else:",
+			"        logger.info(f\"  == {name} took {duration:.2f}s\")"
 		],
-		"description": "Context Manager for timing a block of code"
+		"description": "Context manager that logs duration in ms or s depending on execution time"
 	}
 }
