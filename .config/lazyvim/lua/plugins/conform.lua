@@ -85,11 +85,16 @@ return {
           end
         end,
         pint = {
+          meta = {
+            url = "https://github.com/laravel/pint",
+            description = "Laravel Pint is an opinionated PHP code style fixer for minimalists.",
+          },
           command = require("conform.util").find_executable({
             vim.fn.stdpath("data") .. "/mason/bin/pint",
             "vendor/bin/pint",
+            "pint",
           }, "pint"),
-          args = { "$FILENAME" },
+          args = { "--config", vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h") .. "/pint.json", "$FILENAME" },
           stdin = false,
         },
         yamlfix = function()
