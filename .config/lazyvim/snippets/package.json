@@ -7,6 +7,12 @@
           "python"
         ],
         "path": "./python.json"
+      },
+      {
+        "language": [
+          "go"
+        ],
+        "path": "./go.json"
       }
     ]
   }
