@@ -45,6 +45,7 @@ return {
         css = { "prettier" },
         html = { "prettier" },
         go = { "gofmt" },
+        toml = { "taplo" },
       },
       formatters = {
         injected = { options = { ignore_errors = true } },
