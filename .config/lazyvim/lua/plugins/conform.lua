@@ -38,6 +38,7 @@ return {
           "ruff_organize_imports"
         },
         json = { "biome" },
+        jsonc = { "biome" },
         typescriptreact = { "biome" },
         typescript = { "biome" },
         javascript = { "biome" },
