@@ -47,6 +47,7 @@ return {
         html = { "prettier" },
         go = { "gofmt" },
         toml = { "taplo" },
+        sql = { "pg_format" },
       },
       formatters = {
         injected = { options = { ignore_errors = true } },
