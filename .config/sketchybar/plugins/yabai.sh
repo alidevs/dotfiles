@@ -40,6 +40,7 @@ window_state() {
 
 windows_on_spaces () {
   CURRENT_SPACES="$(yabai -m query --displays | jq -r '.[].spaces | @sh')"
+  CURRENT_SPACE="$(yabai -m query --spaces --space | jq '.index')"
 
   args=()
   while read -r line
@@ -47,13 +48,20 @@ windows_on_spaces () {
     for space in $line
     do
       icon_strip=" "
-      apps=$(yabai -m query --windows --space $space | jq -r ".[].app")
+      apps=$(yabai -m query --windows --space $space | jq -r ".[].app" | sort | uniq)
       if [ "$apps" != "" ]; then
         while IFS= read -r app; do
           icon_strip+=" $($HOME/.config/sketchybar/plugins/icon_map.sh "$app")"
         done <<< "$apps"
+        args+=(--set space.$space label="$icon_strip" label.drawing=on)
+      else
+        # Empty space: collapse unless it's the current space
+        if [ "$space" = "$CURRENT_SPACE" ]; then
+          args+=(--set space.$space label="$icon_strip" label.drawing=on)
+        else
+          args+=(--set space.$space label.drawing=off)
+        fi
       fi
-      args+=(--set space.$space label="$icon_strip" label.drawing=on)
     done
   done <<< "$CURRENT_SPACES"
 

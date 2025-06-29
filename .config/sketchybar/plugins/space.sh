@@ -6,7 +6,7 @@ update() {
     WIDTH="0"
   fi
 
-  sketchybar --animate tanh 20 --set $NAME icon.highlight=$SELECTED label.width=$WIDTH
+  sketchybar --animate tanh 15 --set $NAME icon.highlight=$SELECTED label.width=$WIDTH
 }
 
 mouse_clicked() {
@@ -19,8 +19,10 @@ mouse_clicked() {
 }
 
 case "$SENDER" in
-  "mouse.clicked") mouse_clicked
+"mouse.clicked")
+  mouse_clicked
   ;;
-  *) update
+*)
+  update
   ;;
 esac

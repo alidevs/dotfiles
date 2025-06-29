@@ -1,20 +1,19 @@
 #!/bin/bash
 
-FRONT_APP_SCRIPT='sketchybar --set $NAME label="$INFO"'
+FRONT_APP_SCRIPT='sketchybar --set $NAME label="$INFO" icon="$($HOME/.config/sketchybar/plugins/icon_map.sh "$INFO")"'
 
 yabai=(
   script="$PLUGIN_DIR/yabai.sh"
-  icon.font="$FONT:Bold:16.0"
+  icon.drawing=off
   label.drawing=off
-  icon.width=30
-  icon=$YABAI_GRID
-  icon.color=$ORANGE
   associated_display=active
 )
 
 front_app=(
   script="$FRONT_APP_SCRIPT"
-  icon.drawing=off
+  icon.drawing=on
+  icon.font="sketchybar-app-font:Regular:16.0"
+  icon.color=$ORANGE
   padding_left=0
   label.color=$WHITE
   label.font="$FONT:Black:12.0"
