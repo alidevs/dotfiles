@@ -37,8 +37,10 @@ done
 spaces=(
   background.color=$BACKGROUND_1
   background.border_color=$BACKGROUND_2
-  background.border_width=2
-  background.drawing=off
+  background.border_width=1
+  background.corner_radius=12
+  background.height=32
+  background.drawing=on
 )
 
 separator=(
