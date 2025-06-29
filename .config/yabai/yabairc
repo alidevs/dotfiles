@@ -6,7 +6,11 @@ set -x
 declare -A gaps
 declare -A color
 
-gaps["top"]="55" # 55 OR 25
+if [[ $(yabai -m query --displays | jq 'length') -gt 1 ]]; then
+  gaps["top"]="55"
+else
+  gaps["top"]="25"
+fi
 gaps["bottom"]="16"
 gaps["left"]="16"
 gaps["right"]="16"
@@ -66,4 +70,4 @@ yabai -m signal --add app='^Ghostty$' event=window_destroyed action='yabai -m sp
 set +x
 printf "yabai: configuration loaded...\\n"
 
-borders active_color=0xffeb6f92 inactive_color=0xff6e6a86 width=3.0 &
+borders active_color=0xffeb6f92 width=3.0 &
