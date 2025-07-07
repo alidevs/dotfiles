@@ -1,30 +1,37 @@
-$background_base: #16181a;
-$background_accent: #1e2124;
-$highlight: #3c4048;
+// Rose Pine color palette
+$base: #191724;
+$surface: #1f1d2e;
+$overlay: #26233a;
+$muted: #6e6a86;
+$subtle: #908caa;
+$text: #e0def4;
+$love: #eb6f92;
+$gold: #f6c177;
+$rose: #ebbcba;
+$pine: #31748f;
+$foam: #9ccfd8;
+$iris: #c4a7e7;
+$highlight-low: #21202e;
+$highlight-med: #403d52;
+$highlight-high: #524f67;
 
-$grey: #7b8496;
-$blue: #5ea1ff;
-$green: #5eff6c;
-$cyan: #5ef1ff;
-$red: #ff6e5e;
-$yellow: #f1ff5e;
-$magenta: #ff5ef1;
-$pink: #ff5ea0;
-$orange: #ffbd5e;
-$purple: #bd5eff;
-$skin: #eabdba;
+// Theme colors
+$theme: $rose;
+$fg: $text;
+$background_base: $surface;
+$background_accent: $overlay;
+$highlight: $highlight-med;
 
-$theme: $skin;
-$fg: #f1f1f1;
 
 .clock {
   all: unset;
 
   .label {
     margin-right: 4px;
-    font-weight: bold;
+    font-weight: 600;
     font-size: 1em;
-    color: $fg;
+    color: $text;
+    letter-spacing: 0.5px;
   }
 }
 
@@ -36,45 +43,51 @@ $fg: #f1f1f1;
   padding: 8px 8px 0 8px;
 }
 
+
 .pacman {
   all: unset;
 
   .label {
     margin-right: 4px;
-    font-weight: bold;
-    color: $fg;
+    font-weight: 600;
+    color: $text;
   }
 }
 
 .panel {
   all: unset;
-  background-color: $background_base;
+  background-color: $surface;
   border-radius: 5px;
   color: $fg;
   padding: 4px 8px;
+  transition: all 0.2s ease;
+
 }
 
 .button_panel {
   all: unset;
-  font-weight: bold;
-  background-color: $background_accent;
+  font-weight: 600;
+  background: $surface;
   border-radius: 5px;
-  color: $fg;
+  color: $subtle;
   padding: 0;
-
+  
   .btn {
     all: unset;
     padding: 4px 8px;
     background-color: transparent;
-    transition: background-color 0.2s ease;
+    color: $subtle;
+    transition: all 0.2s ease;
 
     &.active {
-      background-color: $theme;
-      color: #0E1111;
+      background-color: $rose;
+      color: $base;
+      font-weight: 700;
     }
 
     &:not(.active):hover {
-      background-color: $highlight;
+      background-color: $overlay;
+      color: $text;
     }
 
     &:first-child {
@@ -91,24 +104,25 @@ $fg: #f1f1f1;
 
 .metric {
   all: unset;
-  font-weight: bold;
-  background-color: $background_base;
+  font-weight: 600;
+  background-color: $surface;
   border-radius: 5px;
   color: $fg;
   padding: 4px 8px;
 
   .label {
-    font-weight: bold;
+    font-weight: 600;
     padding: 4px 8px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
-    color: $fg;
+    color: $text;
   }
 
   .value {
     margin-left: -70px;
-    color: $fg;
-    font-size: 1em;
+    color: $text;
+    font-size: 0.9em;
+    font-weight: 700;
   }
 
   &.left {
@@ -128,7 +142,7 @@ $fg: #f1f1f1;
 
     trough {
       all: unset;
-      background-color: $highlight;
+      background-color: $overlay;
       border-radius: 2px;
       min-height: 20px;
       min-width: 80px;
@@ -139,17 +153,15 @@ $fg: #f1f1f1;
 
       highlight {
         all: unset;
-        background-color: $theme;
-        color: $background_base;
+        background-color: $rose;
         border-radius: 2px;
-
-       
+        
         &.warning {
-          background-color: $yellow;
+          background-color: $gold;
         }
 
         &.critical {
-          background-color: $red;
+          background-color: $love;
         }
       }
     }
@@ -158,18 +170,32 @@ $fg: #f1f1f1;
 
 .network {
   all: unset;
-  background-color: $background_base;
+  background-color: $surface;
   border-radius: 5px;
   color: $fg;
   padding: 4px 8px;
 
   .label {
-    font-weight: bold;
-    color: $fg;
+    font-weight: 600;
+    color: $text;
   }
 }
 
 * {
-  font-family: "Jetbrains Mono", sans-serif;
+  font-family: "JetBrains Mono", sans-serif;
 }
 
+// Global animations
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+// Add some fun to critical values
+.value {
+  &.critical {
+    animation: pulse 1s ease-in-out infinite;
+    color: $love;
+  }
+}

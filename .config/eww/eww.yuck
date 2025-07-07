@@ -3,29 +3,34 @@
 ;;;;;;
 
 (defwidget cpu_meter []
-    (eventbox
-        (box
-            :class "metric left"
-            :space-evenly false
-            (box :space-evenly false
-                (scale
-                    :min 0
-                    :max 100
-                    :active false
-                    :flipped true
-                    :value {EWW_CPU.avg}
-                )
-                (label :class "value" :text "${round(EWW_CPU.avg, 1)}%")
-            )
-            (box 
-                :class "label"
-                (image 
-                    :path "images/icons/cpu.svg"
-                    :image-height 20 :image-width 20
-                )
-            )
+  (eventbox
+    :tooltip "CPU Usage: ${round(EWW_CPU.avg, 1)}%"
+    (box
+      :class "metric left"
+      :space-evenly false
+      (box :space-evenly false
+        (scale
+          :min 0
+          :max 100
+          :active false
+          :flipped true
+          :value {EWW_CPU.avg}
+          :class {EWW_CPU.avg > 80 ? "critical" : EWW_CPU.avg > 60 ? "warning" : ""}
         )
+          (label
+            :class "value ${EWW_CPU.avg > 80 ? "critical" : ""}"
+            :text "${round(EWW_CPU.avg, 1)}%"
+          )
+      )
+      (box
+        :class "label"
+        (image
+          :path "images/icons/cpu.svg"
+          :image-height 20 :image-width 20
+        )
+      )
     )
+  )
 )
 
 ;;;;;;
@@ -33,9 +38,15 @@
 ;;;;;;
 (defpoll mem :interval "2s" `free -m | awk '/Mem:/ {print int($3*100/$2)}'`)
 (defwidget mem_meter []
-  (box :class "panel mem" :spacing 5
-    (label :text "${mem}%" :class "value")
-    (image :path "images/icons/memory.svg" :image-width 20 :image-height 20)
+  (eventbox
+    :tooltip "Memory Usage: ${mem}%"
+    (box :class "panel mem" :spacing 5
+      (label
+        :text "${mem}%"
+        :class "value ${mem > 80 ? "critical" : ""}"
+      )
+      (image :path "images/icons/memory.svg" :image-width 20 :image-height 20)
+    )
   )
 )
 
@@ -45,18 +56,18 @@
 
 (defvar workspaces "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]")
 (defpoll current_ws
-    :interval "50ms"
-    `i3-msg -t get_workspaces | jq -r '.[] | select(.focused).name'`)
+  :interval "50ms"
+  `hyprctl activeworkspace -j | jq -r '.id'`)
 (defwidget workspace_switcher []
-    (box :class "button_panel" :orientation "h"
-        (for ws in workspaces
-            (button 
-                :class "btn ${ws == current_ws ? "active" : ""}"
-                :onclick "i3-msg workspace ${ws}"
-                ws
-            )
-        )
+  (box :class "button_panel" :orientation "h"
+    (for ws in workspaces
+      (button
+        :class "btn ${ws == current_ws ? "active" : ""}"
+        :onclick "hyprctl dispatch workspace ${ws}"
+        ws
+      )
     )
+  )
 )
 
 ;;;;;;
@@ -65,16 +76,19 @@
 
 (defpoll UPDATES :interval "2m" `(checkupdates; yay -Qua) | wc -l`)
 (defwidget pacman []
+  (eventbox
+    :tooltip "${UPDATES} package updates available"
     (box :class "panel pacman" :spacing 5
-        (label
-            :text {UPDATES}
-            :class "label"
-        )
-        (image
-            :path "images/icons/pacman.svg"
-            :image-width 20 :image-height 20
-        )
+      (label
+        :text {UPDATES}
+        :class "label"
+      )
+      (image
+        :path "images/icons/pacman.svg"
+        :image-width 20 :image-height 20
+      )
     )
+  )
 )
 
 ;;;;;;
@@ -83,9 +97,12 @@
 
 (defpoll disk :interval "60s" `df -h / | awk 'NR==2 {print $5}'`)
 (defwidget disk_widget []
-  (box :class "panel disk" :spacing 5
-    (label :text {disk} :class "value")
-    (image :path "images/icons/disk.svg" :image-width 20 :image-height 20)
+  (eventbox
+    :tooltip "Disk usage: ${disk}"
+    (box :class "panel disk" :spacing 5
+      (label :text {disk} :class "value")
+      (image :path "images/icons/disk.svg" :image-width 20 :image-height 20)
+    )
   )
 )
 
@@ -95,22 +112,28 @@
 
 (defpoll date :interval "1m" `date '+%a %d %b'`)
 (defwidget date-panel []
+  (eventbox
+    :tooltip "Today's date"
     (box :class "panel clock"
-        (label
-            :text {date}
-            :class "label"
-        )
+      (label
+        :text {date}
+        :class "label"
+      )
     )
+  )
 )
 
 (defpoll time :interval "1s" `date '+%I:%M:%S %p'`)
 (defwidget clock []
+  (eventbox
+    :tooltip "Current time"
     (box :class "panel clock"
-        (label
-            :text {time}
-            :class "label"
-        )
+      (label
+        :text {time}
+        :class "label"
+      )
     )
+  )
 )
 
 ;;;;;;
@@ -121,46 +144,51 @@
 (defpoll network_status :interval "5s" `scripts/network --stat`)
 
 (defwidget network []
-    (box :class "panel network"
-        (label
-            :text {network_status}
-            :class "label"
-        )
+  (box :class "panel network"
+    (label
+      :text {network_status}
+      :class "label"
     )
+  )
 )
 
-(defwindow bar :monitor 0 :windowtype "dock" :wm-ignore false :stacking "fg"
-    :geometry (geometry 
-        :x "0%" 
-        :y "0%"
-        :width "100%"
-        :height "30px"
-        :anchor "top center"
+(defwindow bar
+  :monitor 0
+  :windowtype "dock"
+  :wm-ignore false
+  :stacking "fg"
+  :exclusive true
+  :geometry (geometry
+    :x "0%"
+    :y "0%"
+    :width "100%"
+    :height "30px"
+    :anchor "top center"
+  )
+  :reserve (struts
+    :distance "30px"
+    :side "top"
+  )
+  (centerbox :orientation "h"
+    (box
+      :class "main"
+      :spacing "10"
+      :space-evenly false
+      :halign "start"
+      (workspace_switcher)
     )
-    :reserve (struts
-        :distance "30px"
-        :side "top"
+    (box :class "main" :spacing "10" :space-evenly false :hexpand true
+      (box :class "panel clock" :orientation "h" :halign "center"
+          (date-panel)
+          (clock)
+      )
     )
-    (centerbox :orientation "h"
-        (box 
-            :class "main"
-            :spacing "10"
-            :space-evenly false
-            :halign "start"
-            (workspace_switcher)
-        )
-        (box :class "main" :spacing "10" :space-evenly false :hexpand true
-            (box :class "panel clock" :orientation "h" :halign "center"
-                (date-panel)
-                (clock)
-            )
-        )
-        (box :class "main" :spacing "10" :space-evenly false :halign "end"
-            ;; (network)
-            (pacman)
-            (disk_widget)
-            (mem_meter)
-            (cpu_meter)
-        )
+    (box :class "main" :spacing "10" :space-evenly false :halign "end"
+      ;; (network)
+      (pacman)
+      (disk_widget)
+      (mem_meter)
+      (cpu_meter)
     )
+  )
 )
