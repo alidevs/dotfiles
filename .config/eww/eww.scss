@@ -1,4 +1,4 @@
-// Rose Pine color palette
+// Rose Pine color palette (Official)
 $base: #191724;
 $surface: #1f1d2e;
 $overlay: #26233a;
@@ -15,187 +15,157 @@ $highlight-low: #21202e;
 $highlight-med: #403d52;
 $highlight-high: #524f67;
 
-// Theme colors
-$theme: $rose;
-$fg: $text;
-$background_base: $surface;
-$background_accent: $overlay;
-$highlight: $highlight-med;
-
-
-.clock {
+// Global reset and base
+* {
   all: unset;
-
-  .label {
-    margin-right: 4px;
-    font-weight: 600;
-    font-size: 1em;
-    color: $text;
-    letter-spacing: 0.5px;
-  }
+  font-family: "JetBrainsMono Nerd Font", "JetBrains Mono", monospace;
+  font-size: 16px;
+  font-weight: 500;
 }
 
-.background {
-  background-color: transparent;
+// Bar container - solid background
+.bar-container {
+  background-color: $base;
+  color: $text;
+  padding: 3px 0;
 }
 
+// Main sections - minimal padding
 .main {
-  padding: 8px 8px 0 8px;
+  padding: 0 8px;
 }
 
-
-.pacman {
-  all: unset;
-
-  .label {
-    margin-right: 4px;
-    font-weight: 600;
-    color: $text;
-  }
-}
-
-.panel {
-  all: unset;
-  background-color: $surface;
-  border-radius: 5px;
-  color: $fg;
-  padding: 4px 8px;
-  transition: all 0.2s ease;
-
-}
-
-.button_panel {
-  all: unset;
-  font-weight: 600;
-  background: $surface;
-  border-radius: 5px;
-  color: $subtle;
+.center-section {
   padding: 0;
-  
+}
+
+// Workspaces - clean minimal style
+.button_panel {
+  background: transparent;
+
   .btn {
-    all: unset;
-    padding: 4px 8px;
-    background-color: transparent;
+    padding: 0 6px;
     color: $subtle;
-    transition: all 0.2s ease;
+    transition: color 0.2s ease;
+    font-weight: 500;
 
     &.active {
-      background-color: $rose;
-      color: $base;
-      font-weight: 700;
+      color: $love;
+      font-weight: 600;
     }
 
-    &:not(.active):hover {
-      background-color: $overlay;
+    &:hover:not(.active) {
       color: $text;
-    }
-
-    &:first-child {
-      border-top-left-radius: 5px;
-      border-bottom-left-radius: 5px;
-    }
-
-    &:last-child {
-      border-top-right-radius: 5px;
-      border-bottom-right-radius: 5px;
     }
   }
 }
 
-.metric {
-  all: unset;
-  font-weight: 600;
-  background-color: $surface;
-  border-radius: 5px;
-  color: $fg;
-  padding: 4px 8px;
+// All panels - remove backgrounds, minimal text
+.panel {
+  background: transparent;
+  color: $text;
+  padding: 0 4px;
+  font-weight: 500;
 
   .label {
-    font-weight: 600;
-    padding: 4px 8px;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
     color: $text;
   }
+}
+
+// Clock styling
+.clock {
+  .clock-label {
+    color: $text;
+    margin: 0 2px;
+    font-weight: 500;
+  }
+}
+
+// Front app
+.front-app {
+  .label {
+    color: $iris;
+    font-weight: 400;
+  }
+}
+
+// Spotify - subtle styling
+.spotify {
+  color: $subtle;
+
+  &.playing {
+    color: $rose;
+  }
+ 
+  .spotify-icon {
+    margin-right: 4px;
+  }
+ 
+  .spotify-text {
+    font-weight: 400;
+  }
+}
+
+// Package updates
+.brew {
+  .label {
+    color: $gold;
+    font-weight: 500;
+  }
+}
+
+// CPU - simplified without heavy backgrounds
+.cpu {
+  color: $text;
+
+  .cpu-label {
+    font-size: 15px;
+    color: $subtle;
+    margin-right: 4px;
+  }
+
+  .cpu-percent {
+    color: $text;
+    font-weight: 500;
+  }
+}
+
+// Remove all metric styling complexity
+.metric {
+  background: transparent;
+  color: $text;
 
   .value {
-    margin-left: -70px;
     color: $text;
-    font-size: 0.9em;
-    font-weight: 700;
-  }
+    font-weight: 500;
 
-  &.left {
-    scale {
-      margin-right: 0;
-      margin-left: 3px;
-    }
-
-    .value {
-      margin-left: -100px;
+    &.critical {
+      color: $love;
     }
   }
 
   scale {
     all: unset;
-    margin-right: 3px;
-
-    trough {
-      all: unset;
-      background-color: $overlay;
-      border-radius: 2px;
-      min-height: 20px;
-      min-width: 80px;
-
-      slider {
-        all: unset;
-      }
-
-      highlight {
-        all: unset;
-        background-color: $rose;
-        border-radius: 2px;
-        
-        &.warning {
-          background-color: $gold;
-        }
-
-        &.critical {
-          background-color: $love;
-        }
-      }
-    }
   }
 }
 
+// Network
 .network {
-  all: unset;
-  background-color: $surface;
-  border-radius: 5px;
-  color: $fg;
-  padding: 4px 8px;
-
   .label {
-    font-weight: 600;
+    color: $foam;
+  }
+}
+
+// Battery and volume (if we add them back)
+.battery, .volume {
+  .battery-icon, .volume-icon {
     color: $text;
   }
 }
 
-* {
-  font-family: "JetBrains Mono", sans-serif;
-}
-
-// Global animations
-@keyframes pulse {
-  0% { opacity: 1; }
-  50% { opacity: 0.7; }
-  100% { opacity: 1; }
-}
-
-// Add some fun to critical values
-.value {
-  &.critical {
-    animation: pulse 1s ease-in-out infinite;
-    color: $love;
+// Pacman
+.pacman {
+  .label {
+    color: $gold;
   }
 }

@@ -1,0 +1,80 @@
+#!/bin/bash
+
+# Get current window info
+window_info=$(hyprctl activewindow -j 2>/dev/null)
+
+if [ -z "$window_info" ]; then
+    echo ""
+    exit 0
+fi
+
+# Extract class and pid
+class=$(echo "$window_info" | jq -r '.class // ""')
+pid=$(echo "$window_info" | jq -r '.pid // ""')
+
+# Mapping of common class names to friendly names
+case "$class" in
+    "com.mitchellh.ghostty") echo "Ghostty" ;;
+    "firefox") echo "Firefox" ;;
+    "Brave-browser") echo "Brave" ;;
+    "brave-browser") echo "Brave" ;;
+    "google-chrome") echo "Chrome" ;;
+    "chromium") echo "Chromium" ;;
+    "code") echo "VS Code" ;;
+    "Code") echo "VS Code" ;;
+    "code-oss") echo "VS Code" ;;
+    "org.gnome.Nautilus") echo "Nautilus" ;;
+    "dolphin") echo "Dolphin" ;;
+    "org.kde.dolphin") echo "Dolphin" ;;
+    "kitty") echo "Kitty" ;;
+    "alacritty") echo "Alacritty" ;;
+    "foot") echo "Foot" ;;
+    "gnome-terminal") echo "Terminal" ;;
+    "konsole") echo "Konsole" ;;
+    "discord") echo "Discord" ;;
+    "Discord") echo "Discord" ;;
+    "spotify") echo "Spotify" ;;
+    "Spotify") echo "Spotify" ;;
+    "steam") echo "Steam" ;;
+    "Steam") echo "Steam" ;;
+    "gimp") echo "GIMP" ;;
+    "GIMP") echo "GIMP" ;;
+    "blender") echo "Blender" ;;
+    "Blender") echo "Blender" ;;
+    "org.gnome.TextEditor") echo "Text Editor" ;;
+    "gedit") echo "Text Editor" ;;
+    "vim") echo "Vim" ;;
+    "nvim") echo "Neovim" ;;
+    "emacs") echo "Emacs" ;;
+    "libreoffice-writer") echo "LibreOffice Writer" ;;
+    "libreoffice-calc") echo "LibreOffice Calc" ;;
+    "thunderbird") echo "Thunderbird" ;;
+    "org.mozilla.Thunderbird") echo "Thunderbird" ;;
+    "telegram-desktop") echo "Telegram" ;;
+    "telegramdesktop") echo "Telegram" ;;
+    "signal-desktop") echo "Signal" ;;
+    "whatsapp-for-linux") echo "WhatsApp" ;;
+    "obsidian") echo "Obsidian" ;;
+    "notion-app") echo "Notion" ;;
+    "slack") echo "Slack" ;;
+    "zoom") echo "Zoom" ;;
+    "teams") echo "Teams" ;;
+    "anydesk") echo "AnyDesk" ;;
+    "vlc") echo "VLC" ;;
+    "mpv") echo "MPV" ;;
+    *)
+        # Try to get process name as fallback
+        if [ -n "$pid" ]; then
+            process_name=$(ps -p "$pid" -o comm= 2>/dev/null | head -1)
+            if [ -n "$process_name" ]; then
+                # Capitalize first letter
+                echo "${process_name^}"
+            else
+                # Last resort: clean up the class name
+                echo "$class" | sed 's/.*\.//' | sed 's/-/ /g' | sed 's/\b\w/\U&/g'
+            fi
+        else
+            echo "$class" | sed 's/.*\.//' | sed 's/-/ /g' | sed 's/\b\w/\U&/g'
+        fi
+        ;;
+esac

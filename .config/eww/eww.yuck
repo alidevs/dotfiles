@@ -1,33 +1,18 @@
 ;;;;;;
-; CPU Metric
+; CPU Metric (Sketchybar style)
 ;;;;;;
 
 (defwidget cpu_meter []
   (eventbox
     :tooltip "CPU Usage: ${round(EWW_CPU.avg, 1)}%"
-    (box
-      :class "metric left"
-      :space-evenly false
-      (box :space-evenly false
-        (scale
-          :min 0
-          :max 100
-          :active false
-          :flipped true
-          :value {EWW_CPU.avg}
-          :class {EWW_CPU.avg > 80 ? "critical" : EWW_CPU.avg > 60 ? "warning" : ""}
-        )
-          (label
-            :class "value ${EWW_CPU.avg > 80 ? "critical" : ""}"
-            :text "${round(EWW_CPU.avg, 1)}%"
-          )
+    (box :class "panel cpu" :space-evenly false
+      (label
+        :class "cpu-label"
+        :text "CPU"
       )
-      (box
-        :class "label"
-        (image
-          :path "images/icons/cpu.svg"
-          :image-height 20 :image-width 20
-        )
+      (label
+        :class "cpu-percent ${EWW_CPU.avg > 80 ? "critical" : ""}"
+        :text "${round(EWW_CPU.avg, 1)}%"
       )
     )
   )
@@ -152,6 +137,116 @@
   )
 )
 
+;;;;;;
+; Front App (Current Window)
+;;;;;;
+
+(defpoll front_app :interval "1s" `scripts/get_app_name`)
+(defwidget front_app []
+  (eventbox
+    :tooltip "Current Application: ${front_app}"
+    (box :class "panel front-app"
+      (label
+        :text {front_app}
+        :class "label"
+      )
+    )
+  )
+)
+
+;;;;;;
+; Spotify
+;;;;;;
+
+(defpoll spotify_status :interval "2s" `playerctl status 2>/dev/null || echo "stopped"`)
+(defpoll spotify_title :interval "2s" `playerctl metadata title 2>/dev/null || echo ""`)
+(defpoll spotify_artist :interval "2s" `playerctl metadata artist 2>/dev/null || echo ""`)
+
+(defwidget spotify []
+  (eventbox
+    :tooltip "Spotify: ${spotify_title} - ${spotify_artist}"
+    :onclick "playerctl -p spotify play-pause"
+    (box :class "panel spotify ${spotify_status == "Playing" ? "playing" : ""}"
+      :space-evenly false
+      (label
+        :text {spotify_status == "Playing" ? "⏸" : "▶"}
+        :class "spotify-icon"
+      )
+      (label
+        :text {spotify_title != "" ? "${spotify_title} - ${spotify_artist}" : "No music playing"}
+        :class "spotify-text"
+        :limit-width 50
+      )
+    )
+  )
+)
+
+;;;;;;
+; Battery
+;;;;;;
+
+(defpoll battery_percent :interval "30s" `cat /sys/class/power_supply/BAT*/capacity 2>/dev/null | head -1 || echo "100"`)
+(defpoll battery_status :interval "30s" `cat /sys/class/power_supply/BAT*/status 2>/dev/null | head -1 || echo "Unknown"`)
+
+(defwidget battery []
+  (eventbox
+    :tooltip "Battery: ${battery_percent}% (${battery_status})"
+    (box :class "panel battery"
+      (label
+        :text {battery_status == "Charging" ? "🔌" : 
+               battery_percent >= 75 ? "🔋" :
+               battery_percent >= 50 ? "🔋" :
+               battery_percent >= 25 ? "🔋" :
+               battery_percent >= 10 ? "🪫" : "🪫"}
+        :class "battery-icon ${battery_percent <= 25 ? "critical" : ""}"
+      )
+    )
+  )
+)
+
+;;;;;;
+; Volume
+;;;;;;
+
+(defpoll volume_level :interval "1s" `scripts/getvol`)
+(defpoll volume_muted :interval "1s" `pactl get-sink-mute @DEFAULT_SINK@ | grep -q "yes" && echo "true" || echo "false"`)
+
+(defwidget volume []
+  (eventbox
+    :tooltip "Volume: ${volume_level}%"
+    :onclick "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+    (box :class "panel volume"
+      (label
+        :text {volume_muted == "true" ? "🔇" :
+               volume_level >= 66 ? "🔊" :
+               volume_level >= 33 ? "🔉" :
+               volume_level >= 10 ? "🔉" : "🔈"}
+        :class "volume-icon"
+      )
+    )
+  )
+)
+
+;;;;;;
+; Brew Updates (replaced with pacman)
+;;;;;;
+
+(defwidget yay_updates []
+  (eventbox
+    :tooltip "${UPDATES} package updates available"
+    (box :class "panel brew" :spacing 5
+      (label
+        :text {UPDATES}
+        :class "label"
+      )
+      (image
+        :path "images/icons/pacman.svg"
+        :image-width 20 :image-height 20
+      )
+    )
+  )
+)
+
 (defwindow bar
   :monitor 0
   :windowtype "dock"
@@ -162,32 +257,40 @@
     :x "0%"
     :y "0%"
     :width "100%"
-    :height "30px"
+    :height "22px"
     :anchor "top center"
   )
   :reserve (struts
-    :distance "30px"
+    :distance "22px"
     :side "top"
   )
-  (centerbox :orientation "h"
+  (centerbox :orientation "h" :class "bar-container"
     (box
       :class "main"
-      :spacing "10"
+      :spacing "12"
       :space-evenly false
       :halign "start"
       (workspace_switcher)
+      (front_app)
     )
-    (box :class "main" :spacing "10" :space-evenly false :hexpand true
-      (box :class "panel clock" :orientation "h" :halign "center"
-          (date-panel)
-          (clock)
+    (box :class "center-section" :spacing "0" :space-evenly false :hexpand true
+      (spotify)
+    )
+    (box :class "main" :spacing "12" :space-evenly false :halign "end"
+      (eventbox
+        :tooltip "Current date and time"
+        (box :class "panel clock" :orientation "h" :space-evenly false
+          (label
+            :text {date}
+            :class "clock-label"
+          )
+          (label
+            :text {time}
+            :class "clock-label"
+          )
+        )
       )
-    )
-    (box :class "main" :spacing "10" :space-evenly false :halign "end"
-      ;; (network)
-      (pacman)
-      (disk_widget)
-      (mem_meter)
+      (yay_updates)
       (cpu_meter)
     )
   )
