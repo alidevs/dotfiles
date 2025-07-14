@@ -1,11 +1,13 @@
 ;;;;;;
-; CPU Metric (Sketchybar style)
+; CPU Metric
 ;;;;;;
 
 (defwidget cpu_meter []
   (eventbox
     :tooltip "CPU Usage: ${round(EWW_CPU.avg, 1)}%"
-    (box :class "panel cpu" :space-evenly false
+    (box
+      :class "panel cpu"
+      :space-evenly false
       (label
         :class "cpu-label"
         :text "CPU"
@@ -18,6 +20,7 @@
   )
 )
 
+
 ;;;;;;
 ;; Memory Usage
 ;;;;;;
@@ -25,12 +28,17 @@
 (defwidget mem_meter []
   (eventbox
     :tooltip "Memory Usage: ${mem}%"
-    (box :class "panel mem" :spacing 5
+    (box
+      :class "panel mem" 
+      :spacing 5
       (label
         :text "${mem}%"
         :class "value ${mem > 80 ? "critical" : ""}"
       )
-      (image :path "images/icons/memory.svg" :image-width 20 :image-height 20)
+      (image 
+        :path "images/icons/memory.svg" 
+        :image-width 20 
+        :image-height 20)
     )
   )
 )
@@ -44,33 +52,14 @@
   :interval "50ms"
   `hyprctl activeworkspace -j | jq -r '.id'`)
 (defwidget workspace_switcher []
-  (box :class "button_panel" :orientation "h"
+  (box
+    :class "button_panel" 
+    :orientation "h"
     (for ws in workspaces
       (button
         :class "btn ${ws == current_ws ? "active" : ""}"
         :onclick "hyprctl dispatch workspace ${ws}"
         ws
-      )
-    )
-  )
-)
-
-;;;;;;
-;; Pacman
-;;;;;;
-
-(defpoll UPDATES :interval "2m" `(checkupdates; yay -Qua) | wc -l`)
-(defwidget pacman []
-  (eventbox
-    :tooltip "${UPDATES} package updates available"
-    (box :class "panel pacman" :spacing 5
-      (label
-        :text {UPDATES}
-        :class "label"
-      )
-      (image
-        :path "images/icons/pacman.svg"
-        :image-width 20 :image-height 20
       )
     )
   )
@@ -84,9 +73,16 @@
 (defwidget disk_widget []
   (eventbox
     :tooltip "Disk usage: ${disk}"
-    (box :class "panel disk" :spacing 5
-      (label :text {disk} :class "value")
-      (image :path "images/icons/disk.svg" :image-width 20 :image-height 20)
+    (box
+      :class "panel disk"
+      :spacing 5
+      (label
+        :text {disk}
+        :class "value")
+      (image
+        :path "images/icons/disk.svg"
+        :image-width 20
+        :image-height 20)
     )
   )
 )
@@ -145,7 +141,8 @@
 (defwidget front_app []
   (eventbox
     :tooltip "Current Application: ${front_app}"
-    (box :class "panel front-app"
+    (box
+      :class "panel front-app"
       (label
         :text {front_app}
         :class "label"
@@ -228,20 +225,24 @@
 )
 
 ;;;;;;
-; Brew Updates (replaced with pacman)
+; Pacman Updates
 ;;;;;;
 
+(defpoll UPDATES :interval "2m" `(checkupdates; yay -Qua) | wc -l`)
 (defwidget yay_updates []
   (eventbox
     :tooltip "${UPDATES} package updates available"
-    (box :class "panel brew" :spacing 5
+    (box
+      :class "panel brew"
+      :spacing 5
       (label
         :text {UPDATES}
         :class "label"
       )
       (image
         :path "images/icons/pacman.svg"
-        :image-width 20 :image-height 20
+        :image-width 20
+        :image-height 20
       )
     )
   )
@@ -264,7 +265,9 @@
     :distance "22px"
     :side "top"
   )
-  (centerbox :orientation "h" :class "bar-container"
+  (centerbox
+    :orientation "h"
+    :class "bar-container"
     (box
       :class "main"
       :spacing "12"
@@ -273,13 +276,24 @@
       (workspace_switcher)
       (front_app)
     )
-    (box :class "center-section" :spacing "0" :space-evenly false :hexpand true
+    (box
+      :class "center-section"
+      :spacing "0"
+      :space-evenly false
+      :hexpand true
       (spotify)
     )
-    (box :class "main" :spacing "12" :space-evenly false :halign "end"
+    (box
+      :class "main"
+      :spacing "12"
+      :space-evenly false
+      :halign "end"
       (eventbox
         :tooltip "Current date and time"
-        (box :class "panel clock" :orientation "h" :space-evenly false
+        (box
+          :class "panel clock"
+          :orientation "h"
+          :space-evenly false
           (label
             :text {date}
             :class "clock-label"
