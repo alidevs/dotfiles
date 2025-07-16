@@ -6,6 +6,13 @@ return {
     opts = {
       bigfile = { enabled = true },
       dashboard = { enabled = true },
+      dim = {
+        scope = {
+          min_size = 2,
+          max_size = 20,
+          siblings = true,
+        }
+      },
       indent = {
         enabled = true,
 
