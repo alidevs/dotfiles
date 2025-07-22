@@ -24,7 +24,7 @@ if vim.g.neovide then
   vim.g.neovide_refresh_rate = 240
   vim.g.neovide_cursor_vfx_mode = "railgun"
   vim.g.neovide_input_macos_option_key_is_meta = "only_left"
-  vim.g.neovide_opacity = 0.9
+  vim.g.neovide_opacity = 1.0
 end
 
 vim.api.nvim_command("set colorcolumn=120")
