@@ -172,7 +172,7 @@
       (label
         :text {spotify_title != "" ? "${spotify_title} - ${spotify_artist}" : "No music playing"}
         :class "spotify-text"
-        :limit-width 50
+        :limit-width 100
       )
     )
   )
