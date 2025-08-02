@@ -1,281 +1,48 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
 format = """
-$username\
-$hostname\
-$localip\
-$shlvl\
-$singularity\
-$kubernetes\
+$character\
 $directory\
-$vcsh\
-$fossil_branch\
-$fossil_metrics\
 $git_branch\
-$git_commit\
-$git_state\
-$git_metrics\
 $git_status\
-$hg_branch\
-$pijul_channel\
-$docker_context\
-$package\
-$c\
-$cmake\
-$cobol\
-$daml\
-$dart\
-$deno\
-$dotnet\
-$elixir\
-$elm\
-$erlang\
-$fennel\
-$gleam\
-$golang\
-$guix_shell\
-$haskell\
-$haxe\
-$helm\
-$java\
-$julia\
-$kotlin\
-$gradle\
-$lua\
-$nim\
-$nodejs\
-$ocaml\
-$opa\
-$perl\
-$php\
-$pulumi\
-$purescript\
-$python\
-$quarto\
-$raku\
-$rlang\
-$red\
-$ruby\
-$rust\
-$scala\
-$solidity\
-$swift\
-$terraform\
-$typst\
-$vlang\
-$vagrant\
-$zig\
-$buf\
-$nix_shell\
-$conda\
-$meson\
-$spack\
-$memory_usage\
-$gcloud\
-$openstack\
-$azure\
-$nats\
-$direnv\
-$env_var\
-$crystal\
-$custom\
-$sudo\
-$cmd_duration\
-$line_break\
-$jobs\
-$battery\
-$time\
-$status\
-$os\
-$container\
-$shell\
-$character"""
+"""
+
+palette = "rose-pine"
+
+add_newline = true
+
+[character]
+success_symbol = "[●](bold rose)"
+error_symbol = "[●](bold love)"
+vimcmd_symbol = "[●](bold foam)"
+vimcmd_replace_one_symbol = "●"
+vimcmd_replace_symbol = "●"
+vimcmd_visual_symbol = "●"
 
 
-[buf]
-format = '(with [$symbol$version ]($style))'
-style = 'fg:#f6c177'
+[directory]
+format = "[ $path ]($style)"
+style = "fg:rose"
+truncation_length = 1
+truncation_symbol = "/"
 
-[bun]
-format = '(via [$symbol($version )]($style))'
-style = 'fg:#5ea1ff'
+[git_branch]
+symbol = ""
+format = '[$symbol $branch]($style)'
+style = "fg:#6e6a86"
 
-[c]
-format = '(via [$symbol($version(-$name) )]($style))'
-style = 'fg:#ff6e5e'
+[git_status]
+format = ' [$all_status$ahead_behind]($style) '
+style = "fg:foam"
 
-[cmake]
-format = '(via [$symbol($version )]($style))'
-style = 'fg:#ffbd5e'
 
-[cobol]
-format = '(via [$symbol($version )]($style))'
-style = 'fg:#ff5ef1'
-
-[crystal]
-format = '(via [$symbol($version )]($style))'
-style = 'fg:#bd5eff'
-
-[daml]
-format = '(via [$symbol($version )]($style))'
-style = 'fg:#f1ff5e'
-
-[dart]
-format = '(via [$symbol($version )]($style))'
-style = 'fg:#f6c177'
-
-[deno]
-format = '(via [$symbol($version )]($style))'
-style = 'fg:#5ef1ff'
-
-[dotnet]
-format = '(via [$symbol($version )(🎯 $tfm )]($style))'
-style = 'fg:#ff6e5e'
-
-[elixir]
-format = '(via [$symbol($version \(OTP $otp_version\) )]($style))'
-style = 'fg:#f6c177'
-
-[elm]
-format = '(via [$symbol($version )]($style))'
-style = 'fg:#5ea1ff'
-
-[erlang]
-format = '(via [$symbol($version )]($style))'
-style = 'fg:#ff6e5e'
-
-[fennel]
-format = '(via [$symbol($version )]($style))'
-style = 'fg:#f1ff5e'
-
-[gleam]
-format = '(via [$symbol($version )]($style))'
-style = 'fg:#ff5ea0'
-
-[golang]
-format = '(via [$symbol($version )]($style))'
-style = 'fg:#f6c177'
-
-[haskell]
-format = '(via [$symbol($version )]($style))'
-style = 'fg:#ffbd5e'
-
-[helm]
-format = '(via [$symbol($version )]($style))'
-style = 'fg:#5ea1ff'
-
-[java]
-format = '(via [$symbol($version )]($style))'
-style = 'fg:#ff5ef1'
-
-[julia]
-format = '(via [$symbol($version )]($style))'
-style = 'fg:#ff6e5e'
-
-[kotlin]
-format = '(via [$symbol($version )]($style))'
-style = 'fg:#f6c177'
-
-[lua]
-format = '(via [$symbol($version )]($style))'
-style = 'fg:#bd5eff'
-
-[nim]
-format = '(via [$symbol($version )]($style))'
-style = 'fg:#f1ff5e'
-
-[nodejs]
-format = '(via [$symbol($version )]($style))'
-style = 'fg:#f6c177'
-
-[ocaml]
-format = '(via [$symbol($version )(\($switch_indicator$switch_name\) )]($style))'
-style = 'fg:#ffbd5e'
-
-[opa]
-format = '(via [$symbol($version )]($style))'
-style = 'fg:#ff5ef1'
-
-[package]
-format = '(is [$symbol$version]($style) )'
-style = 'fg:#5ea1ff'
-
-[perl]
-format = '(via [$symbol($version )]($style))'
-style = 'fg:#5ef1ff'
-
-[php]
-format = '(via [$symbol($version )]($style))'
-style = 'fg:#ff6e5e'
-
-[purescript]
-format = '(via [$symbol($version )]($style))'
-style = 'fg:#ff5ef1'
-
-[python]
-format = '(via [${symbol}(${version} )]($style))'
-style = 'fg:#f6c177'
-
-[quarto]
-format = '(via [$symbol($version )]($style))'
-style = 'fg:#ffbd5e'
-
-[raku]
-format = '(via [$symbol($version-$vm_version )]($style))'
-style = 'fg:#ff5ef1'
-
-[red]
-format = '(via [$symbol($version )]($style))'
-style = 'fg:#ff6e5e'
-
-[rlang]
-format = '(via [$symbol($version )]($style))'
-style = 'fg:#f1ff5e'
-
-[ruby]
-format = '(via [$symbol($version )]($style))'
-style = 'fg:#ff5ea0'
-
-[rust]
-format = '(via [$symbol($version )]($style))'
-style = 'fg:#bd5eff'
-
-[scala]
-format = '(via [$symbol($version )]($style))'
-style = 'fg:#ffbd5e'
-
-[swift]
-format = '(via [$symbol($version )]($style))'
-style = 'fg:#f6c177'
-
-[typst]
-format = '(via [$symbol($version )]($style))'
-style = 'fg:#ff6e5e'
-
-[vagrant]
-format = '(via [$symbol($version )]($style))'
-style = 'fg:#ffbd5e'
-
-[vlang]
-format = '(via [$symbol($version )]($style))'
-style = 'fg:#5ea1ff'
-
-[zig]
-format = '(via [$symbol($version )]($style))'
-style = 'fg:#f1ff5e'
-
-[kubernetes]
-format = '[⛵ $context](dimmed green) '
-style = 'fg:#f6c177'
-disabled = false
-
-[docker_context]
-format = '[🐳 $context](dimmed green) '
-style = 'fg:#f6c177'
-disabled = true
-
-[git_metrics]
-added_style = 'bold fg:#f6c177'
-deleted_style = 'bold fg:#ff6e5e'
-format = '[+$added]($added_style) | [-$deleted]($deleted_style) '
-only_nonzero_diffs = true
-disabled = true
-ignore_submodules = false
+[palettes.rose-pine]
+overlay = '#26233a'
+love = '#eb6f92'
+gold = '#f6c177'
+rose = '#ebbcba'
+pine = '#31748f'
+foam = '#9ccfd8'
+iris = '#c4a7e7'
+highlight_low = '#21202e'
+subtle = '#908caa'
