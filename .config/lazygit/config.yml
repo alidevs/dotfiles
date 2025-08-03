@@ -2,11 +2,11 @@
 gui:
   sidePanelWidth: 0.25
   nerdFontsVersion: "3"
-  border: rounded
+  border: "rounded"
   theme:
     activeBorderColor:
       - "#ebbcba"
-      - bold
+      - "bold"
     inactiveBorderColor:
       - "#524f67"
     optionsTextColor:
@@ -25,16 +25,18 @@ gui:
       - "#f6c177"
 
   authorColors:
-    "*": "#c4a7e7"
+    '*': "#c4a7e7"
+
 
 git:
+  localBranchSortOrder: "recency"
   paging:
-    colorArg: always
-    pager:
-      delta --dark --paging=never --24-bit-color=never --syntax-theme="Catppuccin Mocha"
-      --side-by-side
+    colorArg: "always"
+    pager: "delta --dark --paging=never --24-bit-color=never --syntax-theme=\"Catppuccin\
+      \ Mocha\" --side-by-side"
   log:
-    showGraph: always
+    showGraph: "always"
+
 
 os:
-  editPreset: nvim
+  editPreset: "nvim"
