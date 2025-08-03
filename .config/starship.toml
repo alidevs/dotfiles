@@ -1,10 +1,11 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-$character\
 $directory\
 $git_branch\
 $git_status\
+$line_break\
+$character
 """
 
 palette = "rose-pine"
@@ -12,12 +13,12 @@ palette = "rose-pine"
 add_newline = true
 
 [character]
-success_symbol = "[●](bold rose)"
-error_symbol = "[●](bold love)"
-vimcmd_symbol = "[●](bold foam)"
-vimcmd_replace_one_symbol = "●"
-vimcmd_replace_symbol = "●"
-vimcmd_visual_symbol = "●"
+success_symbol = " [●](bold rose)"
+error_symbol = " [●](bold love)"
+vimcmd_symbol = " [●](bold foam)"
+vimcmd_replace_one_symbol = " ●"
+vimcmd_replace_symbol = " ●"
+vimcmd_visual_symbol = " ●"
 
 
 [directory]
@@ -28,13 +29,15 @@ truncation_symbol = "/"
 
 [git_branch]
 symbol = ""
-format = '[$symbol $branch]($style)'
+format = '[$symbol $branch]($style) '
 style = "fg:#6e6a86"
 
 [git_status]
-format = ' [$all_status$ahead_behind]($style) '
+format = '[$all_status$ahead_behind]($style) '
 style = "fg:foam"
 
+[fill]
+symbol = " "
 
 [palettes.rose-pine]
 overlay = '#26233a'
