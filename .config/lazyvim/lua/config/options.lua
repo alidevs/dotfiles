@@ -28,3 +28,12 @@ if vim.g.neovide then
 end
 
 vim.api.nvim_command("set colorcolumn=120")
+
+vim.opt.wildignore:append({
+  "*/node_modules/*",
+  "*/dist/*",
+  "*/target/*",
+  "*/.git/*",
+  "*/.next/*",
+  "*/build/*"
+})
