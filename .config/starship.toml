@@ -4,12 +4,13 @@ format = """
 $directory\
 $git_branch\
 $git_status\
+$fill\
+$cmd_duration\
 $line_break\
 $character
 """
 
 palette = "rose-pine"
-
 add_newline = true
 
 [character]
@@ -38,6 +39,12 @@ style = "fg:foam"
 
 [fill]
 symbol = " "
+
+[cmd_duration]
+min_time = 1000
+format = '[ $duration]($style) '
+style = "fg:gold"
+show_milliseconds = true
 
 [palettes.rose-pine]
 overlay = '#26233a'
