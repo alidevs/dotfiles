@@ -19,7 +19,7 @@ return {
         chunk = {
           enabled = true,
           only_current = true,
-          hl = "SnacksIndentChunk", ---@type string|string[] hl group for chunk scopes
+          hl = "CustomIndentActive", ---@type string|string[] hl group for chunk scopes
           char = {
             corner_top = "╭",
             corner_bottom = "╰",

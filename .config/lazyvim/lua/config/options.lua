@@ -37,3 +37,6 @@ vim.opt.wildignore:append({
   "*/.next/*",
   "*/build/*"
 })
+
+
+vim.api.nvim_set_hl(0, "CustomIndentActive", { fg = "#E5C07B" })
