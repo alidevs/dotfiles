@@ -39,4 +39,4 @@ vim.opt.wildignore:append({
 })
 
 
-vim.api.nvim_set_hl(0, "CustomIndentActive", { fg = "#E5C07B" })
+vim.api.nvim_set_hl(0, "CustomIndentActive", { fg = "#9CCFD8" })
