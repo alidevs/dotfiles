@@ -20,7 +20,7 @@ vim.opt.signcolumn = "yes"
 
 -- Neovide
 if vim.g.neovide then
-  vim.o.guifont = "JetbrainsMono Nerd Font:h13"
+  vim.o.guifont = "JetbrainsMono Nerd Font:h16"
   vim.g.neovide_refresh_rate = 240
   vim.g.neovide_cursor_vfx_mode = "railgun"
   vim.g.neovide_input_macos_option_key_is_meta = "only_left"
@@ -40,3 +40,22 @@ vim.opt.wildignore:append({
 
 
 vim.api.nvim_set_hl(0, "CustomIndentActive", { fg = "#9CCFD8" })
+
+vim.g["db#client_mysql_command"] = "mariadb"
+
+-- Disable diagnostics for certain file types
+vim.api.nvim_create_autocmd({ "LspAttach", "BufReadPost", "BufNewFile" }, {
+  callback = function(args)
+    local bufnr = args.buf
+    local ft = vim.bo[bufnr].filetype
+    local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(bufnr), ":t")
+
+    local disabled_filetypes = { "markdown", "json" }
+    local disabled_files = { ".env" }
+
+    if vim.tbl_contains(disabled_filetypes, ft) or vim.tbl_contains(disabled_files, filename) then
+      -- disable diagnostics for this buffer
+      vim.diagnostic.enable(false, { bufnr = bufnr })
+    end
+  end,
+})
