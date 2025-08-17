@@ -107,7 +107,8 @@ return {
               YAMLFIX_WHITELINES = "1",
               YAMLFIX_quote_representation = "\"",
               YAMLFIX_SECTION_WHITELINES = "2",
-              YAMLFIX_quote_basic_values = "true"
+              YAMLFIX_quote_basic_values = "true",
+              YAMLFIX_LINE_LENGTH = "120",
             },
           }
         end,

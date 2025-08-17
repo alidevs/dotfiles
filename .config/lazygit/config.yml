@@ -32,8 +32,7 @@ git:
   localBranchSortOrder: "recency"
   paging:
     colorArg: "always"
-    pager: "delta --dark --paging=never --24-bit-color=never --syntax-theme=\"Catppuccin\
-      \ Mocha\" --side-by-side"
+    pager: "delta --dark --paging=never --24-bit-color=never --syntax-theme=\"Catppuccin Mocha\" --side-by-side"
   log:
     showGraph: "always"
 
