@@ -47,7 +47,7 @@ return {
         html = { "prettier" },
         go = { "gofmt" },
         toml = { "taplo" },
-        sql = { "pg_format" },
+        sql = { "sql_formatter" },
       },
       formatters = {
         injected = { options = { ignore_errors = true } },
@@ -87,6 +87,10 @@ return {
             }
           end
         end,
+        sql_formatter = {
+          command = "sql-formatter",
+          args = { "--language", "postgresql" },
+        },
         pint = {
           meta = {
             url = "https://github.com/laravel/pint",
