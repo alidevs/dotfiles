@@ -5,6 +5,7 @@ return {
       "tpope/vim-dotenv",
       "MunifTanjim/nui.nvim",
       "kevinhwang91/promise-async",
+      "nvim-neotest/nvim-nio",
     },
     cmd = { "Laravel" },
     event = { "VeryLazy" },
