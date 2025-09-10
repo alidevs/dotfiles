@@ -40,14 +40,26 @@ return {
         json = { "biome" },
         jsonc = { "biome" },
         typescriptreact = { "biome" },
-        typescript = { "biome" },
-        javascript = { "biome" },
+        typescript = { "prettier" },
+        javascript = { "prettier" },
         javascriptreact = { "biome" },
         css = { "prettier" },
         html = { "prettier" },
         go = { "gofmt" },
         toml = { "taplo" },
-        sql = { "sql_formatter" },
+        sql = function()
+          local dialect = vim.b.sql_dialect
+          if dialect == "postgresql" then
+            vim.notify("Using PostgreSQL formatter")
+            return { "sql_formatter_postgres" }
+          elseif dialect == "mariadb" then
+            vim.notify("Using MariaDB formatter")
+            return { "sql_formatter_mariadb" }
+          else
+            vim.notify("Using MySQL formatter")
+            return { "sql_formatter_mysql" }
+          end
+        end,
       },
       formatters = {
         injected = { options = { ignore_errors = true } },
@@ -87,9 +99,22 @@ return {
             }
           end
         end,
-        sql_formatter = {
-          command = "sql-formatter",
-          args = { "--language", "postgresql" },
+        formatters = {
+          sql_formatter_postgres = {
+            command = "sql-formatter",
+            args = { "--language", "postgresql" },
+            stdin = true,
+          },
+          sql_formatter_mysql = {
+            command = "sql-formatter",
+            args = { "--language", "mysql" },
+            stdin = true,
+          },
+          sql_formatter_mariadb = {
+            command = "sql-formatter",
+            args = { "--language", "mariadb" },
+            stdin = true,
+          },
         },
         pint = {
           meta = {
