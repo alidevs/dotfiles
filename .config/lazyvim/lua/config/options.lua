@@ -11,6 +11,9 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.cursorline = true
 
+-- Swapfile
+vim.opt.swapfile = false
+
 vim.o.wrap = true
 
 -- colors
