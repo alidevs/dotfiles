@@ -1,5 +1,5 @@
 # vim:ft=config
-theme = rose-pine
+theme = Rose Pine
 term = xterm-ghostty
 
 selection-background = #232136
@@ -37,3 +37,7 @@ window-padding-color = background
 
 keybind = global:ctrl+shift+x=toggle_quick_terminal
 quick-terminal-position = top
+
+
+clipboard-read = ask
+clipboard-write = allow
