@@ -41,4 +41,7 @@ function fish_user_key_bindings
 
   bind -M insert \cs pet-select
   bind -M insert \eq push-line
+  bind yy fish_clipboard_copy
+  bind Y fish_clipboard_copy
+  bind p fish_clipboard_paste
 end
