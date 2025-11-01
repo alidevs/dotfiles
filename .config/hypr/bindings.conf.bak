@@ -1,0 +1,34 @@
+# Application bindings
+$terminal = uwsm app -- ghostty
+$browser = omarchy-launch-browser
+
+bindd = SUPER, return, Terminal, exec, $terminal --working-directory=$(omarchy-cmd-terminal-cwd)
+bindd = SUPER, F, File manager, exec, uwsm app -- nautilus --new-window
+bindd = SUPER, B, Browser, exec, $browser --disable-features=WaylandWpColorManagerV1 # https://github.com/brave/brave-browser/issues/49921
+bindd = SUPER SHIFT, B, Browser (private), exec, $browser --private
+bindd = SUPER, M, Music, exec, omarchy-launch-or-focus spotify
+bindd = SUPER, N, Editor, exec, omarchy-launch-editor
+bindd = SUPER, T, Activity, exec, $terminal -e btop
+bindd = SUPER, D, Docker, exec, $terminal -e lazydocker
+bindd = SUPER, G, Signal, exec, omarchy-launch-or-focus signal "uwsm app -- signal-desktop"
+bindd = SUPER, O, Obsidian, exec, omarchy-launch-or-focus obsidian "uwsm app -- obsidian -disable-gpu --enable-wayland-ime"
+bindd = SUPER, slash, Passwords, exec, uwsm app -- 1password
+
+# If your web app url contains #, type it as ## to prevent hyperland treat it as comments
+bindd = SUPER, A, ChatGPT, exec, omarchy-launch-webapp "https://chatgpt.com"
+
+# Overwrite existing bindings, like putting Omarchy Menu on Super + Space
+# unbind = SUPER, SPACE
+# bindd = SUPER, SPACE, Omarchy menu, exec, omarchy-menu
+
+# Move focus
+bind = SUPER, H, movefocus, l
+bind = SUPER, J, movefocus, d
+bind = SUPER, K, movefocus, u
+bind = SUPER, L, movefocus, r
+
+bind = SUPER, Tab, workspace, previous
+
+# Move active workspace to next/prev monitor
+bind = SUPER CTRL, H, movecurrentworkspacetomonitor, l
+bind = SUPER CTRL, L, movecurrentworkspacetomonitor, r
