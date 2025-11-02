@@ -33,6 +33,7 @@ alias runrm="docker compose run --rm"
 alias up="docker compose up"
 alias build="docker compose build"
 alias down="docker compose down"
+alias dps="docker ps --format 'table {{.ID}}\t{{.Names}}\t{{.Ports}}'"
 
 fish_config theme choose Rosé\ Pine
 
