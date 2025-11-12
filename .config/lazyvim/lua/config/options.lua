@@ -42,6 +42,13 @@ vim.opt.wildignore:append({
 })
 
 
+vim.filetype.add({
+  filename = {
+    ["env"] = "sh",
+    ["envs"] = "sh",
+  }
+})
+
 vim.api.nvim_set_hl(0, "CustomIndentActive", { fg = "#9CCFD8" })
 
 vim.g["db#client_mysql_command"] = "mariadb"
@@ -54,7 +61,7 @@ vim.api.nvim_create_autocmd({ "LspAttach", "BufReadPost", "BufNewFile" }, {
     local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(bufnr), ":t")
 
     local disabled_filetypes = { "markdown", "json" }
-    local disabled_files = { ".env" }
+    local disabled_files = { ".env", ".env.example", "env", "envs" }
 
     if vim.tbl_contains(disabled_filetypes, ft) or vim.tbl_contains(disabled_files, filename) then
       -- disable diagnostics for this buffer
