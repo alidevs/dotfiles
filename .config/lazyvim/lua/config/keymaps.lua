@@ -15,6 +15,8 @@ map("n", "<leader>la", ":Laravel artisan<cr>", { desc = "Laravel artisan" })
 map("n", "<leader>lr", ":Laravel routes<cr>", { desc = "Laravel routes" })
 map("n", "<leader>lm", ":Laravel related<cr>", { desc = "Laravel related" })
 map("n", "<leader>lc", ":Laravel composer<cr>", { desc = "Laravel composer" })
+map("n", "<leader>fml", ":CellularAutomaton make_it_rain<cr>", { desc = "Make it rain" })
+
 -- Neovide
 local function neovide_scale(amount)
   local temp = vim.g.neovide_scale_factor + amount
