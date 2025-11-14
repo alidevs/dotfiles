@@ -99,4 +99,4 @@ shift + alt - k : kitty
 
 ## Sketchybar
 # Reload Sketchybar
-lctrl + alt - r : skhd --reload
+lctrl + alt - r : sketchybar --reload
