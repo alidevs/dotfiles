@@ -44,3 +44,11 @@ VOLUME_66=􀊧
 VOLUME_33=􀊥
 VOLUME_10=􀊡
 VOLUME_0=􀊣
+
+# Network Icons
+export NETWORK_WIFI="􀙇"
+export NETWORK_WIFI_OFF="􀙈"
+export NETWORK_ETHERNET="􀎔"
+export NETWORK_ERROR="􀐾"
+export NETWORK_UPLOAD="↑"
+export NETWORK_DOWNLOAD="↓"

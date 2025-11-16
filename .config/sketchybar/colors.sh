@@ -11,6 +11,7 @@ export ORANGE=0xffebbcba  # rose
 export MAGENTA=0xffc4a7e7 # iris
 export GREY=0xff6e6a86    # muted
 export SUBTLE=0xff908caa  # subtle
+export OVERLAY=0xff26233a # overlay
 export TRANSPARENT=0x00000000
 
 # General bar colors
