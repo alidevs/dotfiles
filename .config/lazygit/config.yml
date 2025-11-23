@@ -1,3 +1,5 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/jesseduffield/lazygit/master/schema/config.json
 gui:
   sidePanelWidth: 0.25
   nerdFontsVersion: "3"
@@ -24,12 +26,15 @@ gui:
       - "#f6c177"
   authorColors:
     '*': "#c4a7e7"
+
+
 git:
-  localBranchSortOrder: "recency"
   pagers:
     - colorArg: "always"
-      pager: "delta --dark --paging=never --24-bit-color=never --syntax-theme=\"Catppuccin Mocha\" --side-by-side"
+      pager: "delta --dark --paging=never --side-by-side --syntax-theme='Catppuccin Mocha'"
   log:
     showGraph: "always"
+
+
 os:
   editPreset: "nvim"
