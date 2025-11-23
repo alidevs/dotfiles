@@ -62,10 +62,10 @@ return {
         {
           name = "custom",
           map = {
-            php = { "docker", "compose", "run", "--rm", "php" },
-            composer = { "docker", "compose", "run", "--rm", "composer" },
+            php = { "docker", "compose", "run", "--rm", "php", "php" },
+            composer = { "docker", "compose", "run", "--rm", "composer", "composer" },
             npm = { "docker", "compose", "run", "--rm", "node", "npm" },
-          },
+          }
         },
       }
     )
