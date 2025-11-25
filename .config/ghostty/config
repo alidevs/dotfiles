@@ -41,3 +41,6 @@ quick-terminal-position = top
 
 clipboard-read = ask
 clipboard-write = allow
+
+# Slowdown mouse scrolling
+mouse-scroll-multiplier = 0.95
