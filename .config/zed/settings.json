@@ -29,10 +29,7 @@
   "buffer_font_size": 17,
   "relative_line_numbers": true,
   "format_on_save": "on",
-  "theme": {
-    "light": "Rosé Pine",
-    "dark": "Rosé Pine Moon"
-  },
+  "theme": "Rosé Pine",
   "features": {
     "edit_prediction_provider": "supermaven"
   },
