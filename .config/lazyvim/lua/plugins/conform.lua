@@ -46,6 +46,7 @@ return {
         css = { "prettier" },
         html = { "prettier" },
         go = { "gofmt" },
+        cs = { "csharpier" },
         toml = { "taplo" },
         sql = function()
           local dialect = vim.b.sql_dialect
