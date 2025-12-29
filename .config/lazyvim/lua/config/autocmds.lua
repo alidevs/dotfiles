@@ -23,20 +23,22 @@ vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd("LspAttach", {
-  callback = function(args)
-    local ft = vim.bo[args.buf].filetype
-    if ft ~= "cs" and ft ~= "razor" then
-      return
-    end
+local group = vim.api.nvim_create_augroup("CSharpNativeGd", { clear = true })
 
-    -- remove whatever set gd (FzfLua, etc.) for THIS buffer
-    pcall(vim.keymap.del, "n", "gd", { buffer = args.buf })
+vim.api.nvim_create_autocmd({ "LspAttach", "BufEnter" }, {
+  group = group,
+  callback = function(ev)
+    local buf = ev.buf or vim.api.nvim_get_current_buf()
+    local ft = vim.bo[buf].filetype
+    if ft ~= "cs" and ft ~= "razor" then return end
 
-    -- set native LSP definition (works for Roslyn)
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, {
-      buffer = args.buf,
-      desc = "Goto Definition (native LSP)",
-    })
+    -- Run after everything else that might (re)set keymaps
+    vim.schedule(function()
+      pcall(vim.keymap.del, "n", "gd", { buffer = buf })
+      vim.keymap.set("n", "gd", vim.lsp.buf.definition, {
+        buffer = buf,
+        desc = "Goto Definition (native LSP)",
+      })
+    end)
   end,
 })

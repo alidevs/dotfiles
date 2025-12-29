@@ -10,5 +10,9 @@ return {
       })
       return opts
     end,
+    keys = {
+      -- Disable the FzfLua "gd" mapping only for C# / Razor
+      { "gd", false, ft = { "cs", "razor" } },
+    },
   },
 }
