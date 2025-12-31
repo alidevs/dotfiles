@@ -1,7 +1,7 @@
 vim.g.snacks_animate = false
 
 vim.g.lazyvim_php_lsp = "intelephense"
-vim.g.lazyvim_python_lsp = "pyright"
+-- vim.g.lazyvim_python_lsp = "pyright"
 vim.g.lazyvim_python_ruff = "ruff"
 
 vim.g.lazyvim_picker = "fzf"
@@ -23,7 +23,7 @@ vim.opt.signcolumn = "yes"
 
 -- Neovide
 if vim.g.neovide then
-  vim.o.guifont = "JetbrainsMono Nerd Font:h16"
+  vim.o.guifont = "JetbrainsMono Nerd Font:h15"
   vim.g.neovide_refresh_rate = 240
   vim.g.neovide_cursor_vfx_mode = "railgun"
   vim.g.neovide_input_macos_option_key_is_meta = "only_left"
@@ -38,15 +38,14 @@ vim.opt.wildignore:append({
   "*/target/*",
   "*/.git/*",
   "*/.next/*",
-  "*/build/*"
+  "*/build/*",
 })
-
 
 vim.filetype.add({
   filename = {
     ["env"] = "sh",
     ["envs"] = "sh",
-  }
+  },
 })
 
 vim.api.nvim_set_hl(0, "CustomIndentActive", { fg = "#9CCFD8" })
@@ -69,3 +68,9 @@ vim.api.nvim_create_autocmd({ "LspAttach", "BufReadPost", "BufNewFile" }, {
     end
   end,
 })
+
+vim.lsp.config("ty", {
+  settings = { ty = {} },
+})
+
+vim.lsp.enable("ty")
