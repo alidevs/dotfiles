@@ -13,7 +13,7 @@ keybind = alt+right=unbind
 
 bold-is-bright = true
 window-decoration = false
-background-opacity = 0.80
+background-opacity = 1.00
 background-blur = true
 
 font-feature = +liga
