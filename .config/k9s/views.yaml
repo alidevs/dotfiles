@@ -1,14 +1,14 @@
 ---
 views:
   v1/pods:
-    sortColumn: AGE:asc
+    sortColumn: "AGE:asc"
     columns:
-      - AGE
-      - NAMESPACE
-      - NAME
-      - STATUS
-      - NODE
-      - READY
-      - CPU
-      - IP
-      - '%MEM/R'
+      - "AGE"
+      - "NAMESPACE"
+      - "NAME"
+      - "STATUS"
+      - "NODE"
+      - "READY"
+      - "CPU"
+      - "IP"
+      - "%MEM/R"

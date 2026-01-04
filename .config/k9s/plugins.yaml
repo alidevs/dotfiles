@@ -10,8 +10,7 @@ plugins:
     background: false
     args:
       - "-c"
-      - "kubectl logs -f $NAME -n $NAMESPACE --context $CONTEXT --since 1m | jq -SR\
-        \ '. as $line | try (fromjson) catch $line'"
+      - "kubectl logs -f $NAME -n $NAMESPACE --context $CONTEXT --since 1m | jq -SR '. as $line | try (fromjson) catch $line'"
 
   jqlogsd:
     shortCut: "Ctrl-D"
@@ -23,8 +22,7 @@ plugins:
     background: false
     args:
       - "-c"
-      - "kubectl logs -f deployment/$NAME -n $NAMESPACE --context $CONTEXT | jq -SR\
-        \ '. as $line | try (fromjson) catch $line'"
+      - "kubectl logs -f deployment/$NAME -n $NAMESPACE --context $CONTEXT | jq -SR '. as $line | try (fromjson) catch $line'"
 
   jqlogss:
     shortCut: "Ctrl-E"
@@ -36,5 +34,4 @@ plugins:
     background: false
     args:
       - "-c"
-      - "kubectl logs -f service/$NAME -n $NAMESPACE --context $CONTEXT | jq -SR '.\
-        \ as $line | try (fromjson) catch $line'"
+      - "kubectl logs -f service/$NAME -n $NAMESPACE --context $CONTEXT | jq -SR '. as $line | try (fromjson) catch $line'"

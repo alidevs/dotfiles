@@ -1,13 +1,13 @@
 ---
 k9s:
   liveViewAutoRefresh: false
-  screenDumpDir: /home/alidevs/.local/state/k9s/screen-dumps
+  screenDumpDir: "/home/alidevs/.local/state/k9s/screen-dumps"
   refreshRate: 2
   maxConnRetry: 5
   readOnly: false
   noExitOnCtrlC: false
   ui:
-    skin: catppuccin
+    skin: "catppuccin"
     enableMouse: false
     headless: false
     logoless: false
@@ -18,11 +18,11 @@ k9s:
   skipLatestRevCheck: false
   disablePodCounting: false
   shellPod:
-    image: busybox:1.35.0
-    namespace: default
+    image: "busybox:1.35.0"
+    namespace: "default"
     limits:
-      cpu: 100m
-      memory: 100Mi
+      cpu: "100m"
+      memory: "100Mi"
   imageScans:
     enable: false
     exclusions:
