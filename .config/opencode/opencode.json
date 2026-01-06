@@ -1,0 +1,81 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": ["oh-my-opencode", "opencode-openai-codex-auth"],
+  "permission": {
+    "edit": "ask",
+    "grep": "allow",
+    "list": "allow",
+    "bash": {
+      "*": "ask",
+      "find *": "allow",
+      "ls *": "allow"
+    }
+  },
+  "provider": {
+    "openai": {
+      "api": "codex",
+      "name": "OpenAI",
+      "models": {
+        "gpt-5.2": {
+          "name": "GPT-5.2"
+        },
+        "o3": {
+          "name": "o3"
+        },
+        "o4-mini": {
+          "name": "o4-mini"
+        },
+        "codex-1": {
+          "name": "Codex-1"
+        }
+      }
+    }
+  },
+  "mcp": {
+    "serena": {
+      "type": "local",
+      "command": [
+        "uvx",
+        "--from",
+        "git+https://github.com/oraios/serena",
+        "serena",
+        "start-mcp-server",
+        "--context",
+        "ide",
+        "--enable-web-dashboard",
+        "false"
+      ],
+      "enabled": true
+    },
+    "sentry": {
+      "type": "remote",
+      "url": "https://mcp.sentry.dev/mcp",
+      "oauth": {}
+    },
+    "playwright": {
+      "type": "local",
+      "command": ["npx", "@playwright/mcp@latest"],
+      "enabled": true
+    },
+    "laravel-boost": {
+      "type": "local",
+      "command": [
+        "/bin/bash",
+        "-l",
+        "-c",
+        "docker exec -i tahkeem-api-php-1 php artisan boost:mcp --no-ansi -q"
+      ],
+      "enabled": true
+    },
+    "atlassian": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "mcp-remote",
+        "https://mcp.atlassian.com/v1/mcp"
+      ],
+      "enabled": true
+    }
+  }
+}
