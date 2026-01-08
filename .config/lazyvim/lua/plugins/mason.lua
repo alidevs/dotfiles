@@ -8,6 +8,7 @@ return {
         "pint",
         "prettier",
         "yamlfix",
+        "ty",
       })
     end,
   }
