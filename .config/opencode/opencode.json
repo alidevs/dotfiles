@@ -10,7 +10,23 @@
     "list": "allow",
     "bash": {
       "*": "ask",
+      "awk *": "allow",
+      "echo *": "allow",
       "find *": "allow",
+      "git status*": "allow",
+      "gh issue list*": "allow",
+      "gh issue search*": "allow",
+      "gh issue status*": "allow",
+      "gh issue view*": "allow",
+      "gh pr diff *": "allow",
+      "gh pr list*": "allow",
+      "gh pr search*": "allow",
+      "gh pr status *": "allow",
+      "gh pr view *": "allow",
+      "gh run view *": "allow",
+      "head": "allow",
+      "jq": "allow",
+      "ls": "allow",
       "ls *": "allow"
     }
   },
