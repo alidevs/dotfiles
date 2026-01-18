@@ -34,3 +34,5 @@ end, { desc = "Increase scale factor" })
 map("n", "<C-->", function()
   neovide_scale(-0.1)
 end, { desc = "Decrease scale factor" })
+
+map("x", "p", '"_dP', { desc = "Paste without overwriting clipboard" })
