@@ -18,6 +18,18 @@ return {
         vim.fn.setreg("+", rel_path)
         vim.notify("Copied relative path: " .. rel_path)
       end
+
+      opts.window.mappings["N"] = function(state)
+        local node = state.tree:get_node()
+        local path = node and node.path or nil
+        if not path then
+          return
+        end
+        if node.type ~= "directory" then
+          path = vim.fn.fnamemodify(path, ":h")
+        end
+        require("easy-dotnet").createfile(path)
+      end
     end,
   },
 }
