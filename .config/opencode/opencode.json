@@ -1,9 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "plugin": [
-    "oh-my-opencode",
-    "opencode-openai-codex-auth"
-  ],
+  "plugin": ["oh-my-opencode", "opencode-openai-codex-auth"],
   "permission": {
     "edit": "ask",
     "grep": "allow",
@@ -37,9 +34,7 @@
         "reasoningEffort": "medium",
         "reasoningSummary": "auto",
         "textVerbosity": "medium",
-        "include": [
-          "reasoning.encrypted_content"
-        ],
+        "include": ["reasoning.encrypted_content"],
         "store": false
       },
       "models": {
@@ -50,13 +45,8 @@
             "output": 128000
           },
           "modalities": {
-            "input": [
-              "text",
-              "image"
-            ],
-            "output": [
-              "text"
-            ]
+            "input": ["text", "image"],
+            "output": ["text"]
           },
           "variants": {
             "none": {
@@ -93,13 +83,8 @@
             "output": 128000
           },
           "modalities": {
-            "input": [
-              "text",
-              "image"
-            ],
-            "output": [
-              "text"
-            ]
+            "input": ["text", "image"],
+            "output": ["text"]
           },
           "variants": {
             "low": {
@@ -131,13 +116,8 @@
             "output": 128000
           },
           "modalities": {
-            "input": [
-              "text",
-              "image"
-            ],
-            "output": [
-              "text"
-            ]
+            "input": ["text", "image"],
+            "output": ["text"]
           },
           "variants": {
             "low": {
@@ -165,6 +145,24 @@
       }
     }
   },
+  "agent": {
+    "build": {
+      "mode": "primary",
+      "model": "anthropic/claude-opus-4-5",
+      "permission": {
+        "edit": "ask",
+        "bash": {
+          "rg *": "allow",
+          "grep *": "allow",
+          "fd *": "allow",
+          "find *": "allow",
+          "git log": "allow",
+          "git status": "allow",
+          "*": "ask"
+        }
+      }
+    }
+  },
   "mcp": {
     "serena": {
       "type": "local",
@@ -188,10 +186,7 @@
     },
     "playwright": {
       "type": "local",
-      "command": [
-        "npx",
-        "@playwright/mcp@latest"
-      ],
+      "command": ["npx", "@playwright/mcp@latest"],
       "enabled": true
     },
     "laravel-boost": {
