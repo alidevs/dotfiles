@@ -22,23 +22,3 @@ vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
     vim.opt_local.cursorline = false
   end,
 })
-
-local group = vim.api.nvim_create_augroup("CSharpNativeGd", { clear = true })
-
-vim.api.nvim_create_autocmd({ "LspAttach", "BufEnter" }, {
-  group = group,
-  callback = function(ev)
-    local buf = ev.buf or vim.api.nvim_get_current_buf()
-    local ft = vim.bo[buf].filetype
-    if ft ~= "cs" and ft ~= "razor" then return end
-
-    -- Run after everything else that might (re)set keymaps
-    vim.schedule(function()
-      pcall(vim.keymap.del, "n", "gd", { buffer = buf })
-      vim.keymap.set("n", "gd", vim.lsp.buf.definition, {
-        buffer = buf,
-        desc = "Goto Definition (native LSP)",
-      })
-    end)
-  end,
-})
