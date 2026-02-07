@@ -1,6 +1,12 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "plugin": ["oh-my-opencode", "opencode-openai-codex-auth"],
+  "permission": {
+    "bash": "ask",
+    "edit": "ask",
+    "grep": "allow",
+    "list": "allow"
+  },
   "provider": {
     "openai": {
       "name": "OpenAI",
