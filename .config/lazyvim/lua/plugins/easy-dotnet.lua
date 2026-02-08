@@ -3,6 +3,11 @@ return {
   dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
   config = function()
     local dotnet = require("easy-dotnet")
+    dotnet.setup({
+      lsp = {
+        enabled = false,
+      },
+    })
 
     vim.keymap.set("n", "<leader>dnc", function()
       local bufname = vim.fn.expand("%:p")
