@@ -1,7 +1,7 @@
 ---
 description: Review changes [ref]
 agent: plan
-model: anthropic/claude-opus-4-5
+model: anthropic/claude-opus-4-6
 ---
 
 You are helping review a pull request. Please provide a thorough, structured review.
