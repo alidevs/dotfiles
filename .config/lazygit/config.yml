@@ -40,10 +40,11 @@ customCommands:
   - key: "C"
     context: "files"
     description: "Generate commit message with Claude Code"
-    command: "git diff --staged | claude -p 'Please generate a concise git commit message for the staged changes. Your output\
-      \ should consist of ONLY the raw commit message, adhering strictly to the conventional commit format. Ensure there are\
-      \ no markdown elements, code blocks, backticks, explanations, or commit descriptions included in your response.' --model\
-      \ haiku --output-format text > /tmp/commit_msg && GIT_EDITOR=nvim git commit -e -F /tmp/commit_msg"
+    command: "git diff --staged | claude -p 'Generate a concise git commit message for the staged changes, following the conventional\
+      \ commit format. Your response should strictly consist of the raw commit message without any markdown elements, code\
+      \ blocks, backticks, or explanations. Aim for clarity and brevity, capturing the essence of the changes made without\
+      \ detailing every single modification.' --model haiku --output-format text > /tmp/commit_msg && GIT_EDITOR=nvim git\
+      \ commit -e -F /tmp/commit_msg"
     output: "terminal"
 
 
