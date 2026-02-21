@@ -136,15 +136,15 @@ return {
 
           local found = vim.fs.find(function(name)
             return name == ".csharpierrc"
-              or name == ".csharpierrc.json"
-              or name == ".csharpierrc.yaml"
+                or name == ".csharpierrc.json"
+                or name == ".csharpierrc.yaml"
           end, {
             upward = true,
             path = dir,
             type = "file",
           })
 
-          local args = { "format", "--write-stdout" }
+          local args = { "format" }
           if found and #found > 0 then
             table.insert(args, "--config-path")
             table.insert(args, found[1])
@@ -158,7 +158,7 @@ return {
               "csharpier",
             }, "csharpier"),
             args = args,
-            stdin = true,
+            stdin = false,
           }
         end,
         yamlfix = function()
