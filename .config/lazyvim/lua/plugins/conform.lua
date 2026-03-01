@@ -39,6 +39,7 @@ return {
         },
         json = { "biome" },
         jsonc = { "biome" },
+        json5 = { "biome" },
         typescriptreact = { "prettier" },
         typescript = { "prettier" },
         javascript = { "prettier" },
@@ -57,7 +58,6 @@ return {
             vim.notify("Using MariaDB formatter")
             return { "sql_formatter_mariadb" }
           else
-            vim.notify("Using MySQL formatter")
             return { "sql_formatter_mysql" }
           end
         end,
