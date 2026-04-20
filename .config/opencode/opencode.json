@@ -1,6 +1,10 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "plugin": ["oh-my-opencode", "opencode-openai-codex-auth"],
+  "plugin": [
+    "oh-my-openagent",
+    "opencode-openai-codex-auth",
+    "opencode-claude-auth@latest"
+  ],
   "permission": {
     "bash": {
       "*": "ask",
@@ -24,124 +28,6 @@
     "edit": "ask",
     "grep": "allow",
     "list": "allow"
-  },
-  "provider": {
-    "openai": {
-      "name": "OpenAI",
-      "options": {
-        "reasoningEffort": "medium",
-        "reasoningSummary": "auto",
-        "textVerbosity": "medium",
-        "include": ["reasoning.encrypted_content"],
-        "store": false
-      },
-      "models": {
-        "gpt-5.2": {
-          "name": "GPT 5.2 (OAuth)",
-          "limit": {
-            "context": 272000,
-            "output": 128000
-          },
-          "modalities": {
-            "input": ["text", "image"],
-            "output": ["text"]
-          },
-          "variants": {
-            "none": {
-              "reasoningEffort": "none",
-              "reasoningSummary": "auto",
-              "textVerbosity": "medium"
-            },
-            "low": {
-              "reasoningEffort": "low",
-              "reasoningSummary": "auto",
-              "textVerbosity": "medium"
-            },
-            "medium": {
-              "reasoningEffort": "medium",
-              "reasoningSummary": "auto",
-              "textVerbosity": "medium"
-            },
-            "high": {
-              "reasoningEffort": "high",
-              "reasoningSummary": "detailed",
-              "textVerbosity": "medium"
-            },
-            "xhigh": {
-              "reasoningEffort": "xhigh",
-              "reasoningSummary": "detailed",
-              "textVerbosity": "medium"
-            }
-          }
-        },
-        "gpt-5.2-codex": {
-          "name": "GPT 5.2 Codex (OAuth)",
-          "limit": {
-            "context": 272000,
-            "output": 128000
-          },
-          "modalities": {
-            "input": ["text", "image"],
-            "output": ["text"]
-          },
-          "variants": {
-            "low": {
-              "reasoningEffort": "low",
-              "reasoningSummary": "auto",
-              "textVerbosity": "medium"
-            },
-            "medium": {
-              "reasoningEffort": "medium",
-              "reasoningSummary": "auto",
-              "textVerbosity": "medium"
-            },
-            "high": {
-              "reasoningEffort": "high",
-              "reasoningSummary": "detailed",
-              "textVerbosity": "medium"
-            },
-            "xhigh": {
-              "reasoningEffort": "xhigh",
-              "reasoningSummary": "detailed",
-              "textVerbosity": "medium"
-            }
-          }
-        },
-        "gpt-5.1-codex-max": {
-          "name": "GPT 5.1 Codex Max (OAuth)",
-          "limit": {
-            "context": 272000,
-            "output": 128000
-          },
-          "modalities": {
-            "input": ["text", "image"],
-            "output": ["text"]
-          },
-          "variants": {
-            "low": {
-              "reasoningEffort": "low",
-              "reasoningSummary": "detailed",
-              "textVerbosity": "medium"
-            },
-            "medium": {
-              "reasoningEffort": "medium",
-              "reasoningSummary": "detailed",
-              "textVerbosity": "medium"
-            },
-            "high": {
-              "reasoningEffort": "high",
-              "reasoningSummary": "detailed",
-              "textVerbosity": "medium"
-            },
-            "xhigh": {
-              "reasoningEffort": "xhigh",
-              "reasoningSummary": "detailed",
-              "textVerbosity": "medium"
-            }
-          }
-        }
-      }
-    }
   },
   "agent": {
     "explore": {
@@ -231,23 +117,12 @@
       "command": ["npx", "@playwright/mcp@latest"],
       "enabled": true
     },
-    "laravel-boost": {
+    "jira": {
       "type": "local",
       "command": [
         "/bin/bash",
-        "-l",
         "-c",
-        "docker exec -i tahkeem-api-php-1 php artisan boost:mcp --no-ansi -q"
-      ],
-      "enabled": true
-    },
-    "atlassian": {
-      "type": "local",
-      "command": [
-        "npx",
-        "-y",
-        "mcp-remote",
-        "https://mcp.atlassian.com/v1/mcp"
+        "JIRA_INSTANCE_URL=https://safcsp.atlassian.net JIRA_USER_EMAIL=a.alateyah@tuwaiq.edu.sa JIRA_API_KEY=ATATT3xFfGF0yb9eoAXVzh_As2mlEeuyk5wQO2uXpxKaINUxRX6cDlr9oNxxp9oQQZ95YvrF7yJSsrJtEl5Es2UUU9boGJvVtLHsXr1fJrWVhNiK9Je8C2Q7I0mITtrjTKzI7-klp9x6EQmX2oatD-FoYxjLqTLL9VIj7K_DCTlD5rnwRu2tQRM=B3C4CBDC npx -y jira-mcp"
       ],
       "enabled": true
     }

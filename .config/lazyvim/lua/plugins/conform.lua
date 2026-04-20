@@ -130,37 +130,6 @@ return {
           args = { "--config", vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h") .. "/pint.json", "$FILENAME" },
           stdin = false,
         },
-        csharpier = function(bufnr)
-          local filename = vim.api.nvim_buf_get_name(bufnr)
-          local dir = vim.fs.dirname(filename)
-
-          local found = vim.fs.find(function(name)
-            return name == ".csharpierrc"
-                or name == ".csharpierrc.json"
-                or name == ".csharpierrc.yaml"
-          end, {
-            upward = true,
-            path = dir,
-            type = "file",
-          })
-
-          local args = { "format" }
-          if found and #found > 0 then
-            table.insert(args, "--config-path")
-            table.insert(args, found[1])
-          end
-          table.insert(args, "$FILENAME")
-
-          return {
-            command = util.find_executable({
-              vim.fn.stdpath("data") .. "/mason/bin/csharpier",
-              "dotnet-csharpier",
-              "csharpier",
-            }, "csharpier"),
-            args = args,
-            stdin = false,
-          }
-        end,
         yamlfix = function()
           return {
             env = {
