@@ -88,3 +88,6 @@ y = 2
 [shell]
 program = "tmux"
 args = ["-l", "-u", "new-session", "-A", "-s", "main"]
+
+[terminal]
+osc52 = "CopyPaste"
