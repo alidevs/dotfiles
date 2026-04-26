@@ -2,7 +2,11 @@
 
 source "$HOME/.config/sketchybar/colors.sh"
 
-COUNT=$(brew outdated | wc -l | tr -d ' ')
+export PATH="/opt/homebrew/bin:$PATH"
+export HOMEBREW_NO_AUTO_UPDATE=1
+export HOMEBREW_DOWNLOAD_CONCURRENCY=4
+
+COUNT=$(brew outdated --quiet 2>/dev/null | grep -c '.')
 
 COLOR=$RED
 
