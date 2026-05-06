@@ -37,6 +37,9 @@ return {
     },
   },
   event = { "VeryLazy" },
+  cond = function()
+    return vim.fn.filereadable(vim.fn.getcwd() .. "/artisan") == 1
+  end,
 
   opts = {
     features = {
