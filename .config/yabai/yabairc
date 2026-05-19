@@ -6,11 +6,7 @@ set -x
 declare -A gaps
 declare -A color
 
-if [[ $(yabai -m query --displays | jq 'length') -gt 1 ]]; then
-  gaps["top"]="55"
-else
-  gaps["top"]="25"
-fi
+gaps["top"]="16"
 gaps["bottom"]="16"
 gaps["left"]="16"
 gaps["right"]="16"
@@ -27,6 +23,8 @@ sudo /opt/homebrew/bin/yabai --load-sa
 # ===== Tiling setting =========================
 
 yabai -m config layout bsp
+
+yabai -m config external_bar all:40:0
 
 yabai -m config top_padding "${gaps["top"]}"
 yabai -m config bottom_padding "${gaps["bottom"]}"
