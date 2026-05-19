@@ -67,4 +67,4 @@ yabai -m signal --add app='^Ghostty$' event=window_destroyed action='yabai -m sp
 set +x
 printf "yabai: configuration loaded...\\n"
 
-borders active_color=0xffeb6f92 width=3.0 &
+borders active_color=0xffeb6f92 width=5.0 &
