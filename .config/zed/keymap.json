@@ -1,78 +1,253 @@
-// Zed keymap
+// Zed keymap - LazyVim-style bindings
 //
-// For information on binding keys, see the Zed
-// documentation: https://zed.dev/docs/key-bindings
+// Leader = <space>. Mirrors LazyVim's which-key tree as closely as Zed allows.
+// Docs: https://zed.dev/docs/key-bindings  |  https://zed.dev/docs/all-actions
 //
-// To see the default key bindings run `zed: open default keymap`
-// from the command palette.
+// Tree summary:
+//   <leader><space>  find files            <leader>/   grep
+//   <leader>,        buffers               <leader>:   command palette
+//   <leader>e        file explorer         <leader>`   alt buffer
+//   <leader>b…       buffer ops            <leader>w…  window ops
+//   <leader>c…       code (LSP) ops        <leader>g…  git ops
+//   <leader>f…       find ops              <leader>s…  search ops
+//   <leader>x…       diagnostics/trouble   <leader>u…  UI toggles
+//   <leader>q…       quit/session          <leader>t…  terminal/tab
 [
+  // ============================================================
+  // Workspace-wide chord aliases (LazyVim non-leader staples)
+  // ============================================================
   {
     "context": "Workspace",
-    "bindings": {}
+    "bindings": {
+      "ctrl-s": "workspace::Save",
+      // <C-/> open terminal (LazyVim default)
+      "ctrl-/": "terminal_panel::ToggleFocus",
+      "ctrl-_": "terminal_panel::ToggleFocus",
+    },
   },
+
+  // ============================================================
+  // Buffer/pane navigation in normal & visual modes
+  // ============================================================
   {
     "context": "Editor && vim_mode && vim_mode != insert",
     "bindings": {
-      "shift-h": "pane::ActivatePreviousItem",
-      "shift-l": "pane::ActivateNextItem"
-    }
+      "shift-h": "pane::ActivatePreviousItem", // previous buffer
+      "shift-l": "pane::ActivateNextItem", // next buffer
+      "[ b": "pane::ActivatePreviousItem",
+      "] b": "pane::ActivateNextItem",
+      // Move lines (vim/LazyVim: <A-j>/<A-k>)
+      "alt-j": "editor::MoveLineDown",
+      "alt-k": "editor::MoveLineUp",
+    },
   },
+
+  // Visual mode: keep selection on indent + move selection up/down
+  {
+    "context": "Editor && vim_mode == visual",
+    "bindings": {
+      "shift-j": "editor::MoveLineDown",
+      "shift-k": "editor::MoveLineUp",
+      "g s a": ["vim::PushAddSurrounds", {}],
+      "g s r": ["vim::PushChangeSurrounds", {}],
+    },
+  },
+
+  // ============================================================
+  // Window navigation: <C-h/j/k/l> works anywhere
+  // ============================================================
   {
     "context": "Editor",
     "bindings": {
-      "ctrl-l": "workspace::ActivatePaneRight",
       "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
       "ctrl-k": "workspace::ActivatePaneUp",
-      "ctrl-j": "workspace::ActivatePaneDown"
-    }
+      "ctrl-j": "workspace::ActivatePaneDown",
+    },
   },
+  {
+    "context": "Dock",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+    },
+  },
+
+  // ============================================================
+  // Project panel: LazyVim's neo-tree-ish toggle
+  // ============================================================
   {
     "context": "ProjectPanel",
     "bindings": {
-      "space e": "workspace::ToggleLeftDock"
-    }
+      "space e": "workspace::ToggleLeftDock",
+      "space E": "workspace::ToggleLeftDock",
+    },
   },
-  {
-    "context": "Pane",
-    "bindings": {
-      "space -": "pane::SplitUp",
-      "space _": "pane::SplitDown",
-      "space |": "pane::SplitLeft",
-      "space \\": "pane::SplitRight"
-    }
-  },
+
+  // ============================================================
+  // Main leader tree (normal mode)
+  // ============================================================
   {
     "context": "Editor && vim_mode == normal && vim_operator == none && !VimWaiting",
     "bindings": {
-      "space space": "file_finder::Toggle",
+      // --- Top-level pickers ---
+      "space space": "file_finder::Toggle", // find files
+      "space ,": "tab_switcher::Toggle", // switch buffers
+      "space :": "command_palette::Toggle", // ex-command palette
+      "space /": "pane::DeploySearch", // grep across project
+      "space `": ["tab_switcher::Toggle", { "select_last": true }], // last buffer
       "space tab": ["tab_switcher::Toggle", { "select_last": true }],
+      "space ?": "command_palette::Toggle", // help-ish
+
+      // --- File explorer ---
       "space e": "project_panel::ToggleFocus",
+      "space E": "project_panel::ToggleFocus",
+
+      // --- Find (f) ---
+      "space f f": "file_finder::Toggle", // find files
+      "space f F": "file_finder::Toggle",
+      "space f r": "file_finder::Toggle", // recent (closest Zed has)
+      "space f b": "tab_switcher::Toggle", // buffers
+      "space f n": "workspace::NewFile", // new file
+      "space f t": "terminal_panel::ToggleFocus", // terminal
+      "space f T": "workspace::NewCenterTerminal", // floating-ish
+
+      // --- Search (s) ---
+      "space s s": "outline::Toggle", // document symbols
+      "space s S": "project_symbols::Toggle", // workspace symbols
+      "space s g": "pane::DeploySearch", // live grep
+      "space s G": "pane::DeploySearch",
+      "space s w": "pane::DeploySearch", // grep word (manual)
+      "space s b": "buffer_search::Deploy", // search in buffer
+      "space s d": "diagnostics::Deploy", // diagnostics list
+      "space s k": "command_palette::Toggle", // keymap browse
+      "space s c": "command_palette::Toggle", // commands
+      "space s h": "command_palette::Toggle", // help → cmd palette
+      "space s r": "pane::DeploySearch", // resume search
+
+      // --- Buffer (b) ---
+      "space b b": ["tab_switcher::Toggle", { "select_last": true }], // alt buffer
       "space b d": "pane::CloseActiveItem",
-      "g r": "editor::FindAllReferences",
-      "g f": "editor::OpenExcerpts",
-      "g e": "editor::OpenExcerpts",
-      "d ]": "editor::GoToDiagnostic",
-      "d [": "editor::GoToPreviousDiagnostic",
-      "] h": "editor::GoToHunk",
-      "[ h": "editor::GoToPreviousHunk",
+      "space b D": "pane::CloseAllItems",
+      "space b o": "pane::CloseInactiveItems", // close others
+      "space b n": "pane::ActivateNextItem",
+      "space b p": "pane::ActivatePreviousItem",
+
+      // --- Window (w) ---
+      "space w d": "pane::CloseAllItems", // close window
+      "space w -": "pane::SplitDown",
+      "space w _": "pane::SplitDown",
+      "space w |": "pane::SplitRight",
+      "space w \\": "pane::SplitRight",
+      "space w s": "pane::SplitDown", // split horizontal
+      "space w v": "pane::SplitRight", // split vertical
+      "space w h": "workspace::ActivatePaneLeft",
+      "space w j": "workspace::ActivatePaneDown",
+      "space w k": "workspace::ActivatePaneUp",
+      "space w l": "workspace::ActivatePaneRight",
+      "space w w": "workspace::ActivateNextPane",
+
+      // Top-level split aliases (LazyVim also has these)
+      "space -": "pane::SplitDown",
+      "space _": "pane::SplitDown",
+      "space |": "pane::SplitRight",
+      "space \\": "pane::SplitRight",
+
+      // --- Code (c) — LSP ---
       "space c a": "editor::ToggleCodeActions",
       "space c r": "editor::Rename",
-      "space g h r": "git::Restore",
-      "space g h p": "editor::ToggleSelectedDiffHunks"
-    }
+      "space c f": "editor::Format",
+      "space c d": "editor::Hover", // line diagnostic-ish
+      "space c c": "editor::ToggleCodeActions",
+      "space c s": "outline::Toggle", // symbols outline
+
+      // --- Git (g) ---
+      "space g g": "git_panel::ToggleFocus", // git panel (lazygit equiv)
+      "space g s": "git_panel::ToggleFocus", // status
+      "space g b": "editor::ToggleGitBlame", // line blame
+      "space g B": "editor::ToggleGitBlame",
+      "space g d": "editor::ToggleSelectedDiffHunks", // diff hunk
+      "space g h p": "editor::ToggleSelectedDiffHunks", // preview hunk
+      "space g h r": "git::Restore", // restore hunk
+      "space g h R": "git::Restore",
+
+      // --- Diagnostics / Trouble (x) ---
+      "space x x": "diagnostics::Deploy",
+      "space x X": "diagnostics::DeployCurrentFile",
+      "space x d": "diagnostics::Deploy",
+
+      // --- UI toggles (u) ---
+      "space u w": ["editor::ToggleSoftWrap", {}],
+      "space u L": ["editor::ToggleRelativeLineNumbers", {}],
+      "space u l": ["editor::ToggleLineNumbers", {}],
+      "space u i": ["editor::ToggleInlayHints", {}],
+      "space u c": "theme_selector::Toggle", // colorscheme
+      "space u h": ["editor::ToggleInlineDiagnostics", {}],
+      "space u t": "theme_selector::Toggle",
+      "space u f": "editor::Format", // ad-hoc format
+
+      // --- Quit / session (q) ---
+      "space q q": "zed::Quit",
+      "space q s": "workspace::Save",
+      "space q a": "workspace::CloseAllItemsAndPanes",
+
+      // --- Terminal / tabs (t) ---
+      "space t t": "terminal_panel::ToggleFocus",
+      "space t T": "workspace::NewCenterTerminal",
+      "space t f": "terminal_panel::ToggleFocus",
+
+    },
   },
+
+  // ============================================================
+  // VimControl = normal | visual | operator.
+  // g-prefix bindings MUST live here, because pressing `g` flips
+  // vim into operator-pending; a stricter context would never match
+  // the second keystroke and would also shadow Zed's defaults.
+  // ============================================================
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      // LSP / goto (LazyVim-style)
+      "g r": "editor::FindAllReferences", // LazyVim uses gr (Zed default is "g r r")
+      "g f": "editor::OpenExcerpts", // open refs/hover in multibuffer
+      "g e": "editor::OpenExcerpts",
+      // gd/gD/gy/gI/gh/K already work from Zed defaults.
+
+      // Git hunk navigation (LazyVim: ]h / [h; Zed default uses ]c / [c)
+      "] h": "editor::GoToHunk",
+      "[ h": "editor::GoToPreviousHunk",
+      // ]d / [d for diagnostics already work from Zed defaults.
+    },
+  },
+
+  // ============================================================
+  // Vim operator overrides (kept from previous config)
+  // ============================================================
   {
     "context": "vim_operator == c",
     "bindings": {
-      "x": "vim::Exchange", // Exchange with register
-      "d": "editor::Rename" // Rename (Zed specific)
-    }
+      "x": "vim::Exchange", // cx exchange
+      "d": "editor::Rename", // cd rename (Zed/vim docs)
+    },
   },
+
+  // ============================================================
+  // Empty pane / no editor: still expose pickers
+  // ============================================================
   {
-    "context": "vim_mode == visual",
+    "context": "EmptyPane || SharedScreen",
     "bindings": {
-      "g s a": ["vim::PushAddSurrounds", {}],
-      "g s r": ["vim::PushChangeSurrounds", {}]
-    }
-  }
+      "space space": "file_finder::Toggle",
+      "space ,": "tab_switcher::Toggle",
+      "space :": "command_palette::Toggle",
+      "space /": "pane::DeploySearch",
+      "space e": "project_panel::ToggleFocus",
+      "space f f": "file_finder::Toggle",
+      "space f n": "workspace::NewFile",
+      "space q q": "zed::Quit",
+    },
+  },
 ]

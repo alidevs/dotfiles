@@ -1,65 +1,161 @@
-// Zed settings
+// Zed settings - LazyVim-flavored
 //
-// For information on how to configure Zed, see the Zed
-// documentation: https://zed.dev/docs/configuring-zed
-//
-// To see all of Zed's default settings without changing your
-// custom settings, run the `open default settings` command
-// from the command palette or from `Zed` application menu.
+// Mirrors LazyVim defaults: relative numbers, smartcase, soft wrap,
+// 2-space tabs, 120-col guide, vim leader=space, cursorline, etc.
+// Docs: https://zed.dev/docs/reference/all-settings
 {
+  "sticky_scroll": {
+    "enabled": true
+  },
+  "session": {
+    "trust_all_worktrees": true
+  },
+  "outline_panel": {
+    "dock": "left"
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  },
+  "git_panel": {
+    "dock": "left"
+  },
+  "edit_predictions": {
+    "provider": "zed",
+  },
   "show_edit_predictions": false,
-  "assistant": {
+  "agent": {
+    "dock": "right",
     "default_model": {
       "provider": "anthropic",
-      "model": "claude-3-5-sonnet-latest"
+      "model": "claude-3-5-sonnet-latest",
     },
-    "version": "2"
   },
   "base_keymap": "VSCode",
   "telemetry": {
-    "metrics": true
+    "metrics": true,
   },
+
+  // ---- Vim ----
   "vim_mode": true,
   "vim": {
     "use_system_clipboard": "always",
     "leader": "space",
-    "use_multiline_find": true
+    "use_multiline_find": true,
+    "use_smartcase_find": true,
+    "highlight_on_yank_duration": 150,
   },
+
+  // ---- Editor look & feel (LazyVim parity) ----
   "ui_font_size": 18,
   "buffer_font_size": 17,
-  "relative_line_numbers": true,
+  "relative_line_numbers": "enabled",
+  "cursor_blink": false,
+  "scroll_beyond_last_line": "off",
+  "vertical_scroll_margin": 8,
+  "soft_wrap": "editor_width", // matches vim.o.wrap = true
+  "tab_size": 2,
+  "preferred_line_length": 120,
+  "wrap_guides": [120],
   "format_on_save": "on",
   "theme": "Rosé Pine",
-  "features": {
-    "edit_prediction_provider": "supermaven"
+
+  // ---- Inlay hints / diagnostics ----
+  "inlay_hints": {
+    "enabled": true,
   },
+  "diagnostics": {
+    "inline": {
+      "enabled": true,
+    },
+  },
+
+  // ---- Git (LazyVim has gitsigns + inline blame off by default) ----
+  "git": {
+    "git_gutter": "tracked_files",
+    "inline_blame": {
+      "enabled": false,
+    },
+  },
+
+  // ---- File explorer (no true auto-fit; this is the closest thing) ----
+  "project_panel": {
+    "dock": "left",
+    "default_width": 280, // wider than 240 default; fits most paths
+    "indent_size": 16, // tighter than 20; more room for names
+    "auto_fold_dirs": true, // collapse single-child chains (src/main/java/com/…)
+    "auto_reveal_entries": true, // jump to current file in the tree
+    "sticky_scroll": true, // keep parent dir headers visible
+    "scrollbar": {
+      "show": "auto",
+    },
+  },
+
+  // ---- Ex-command aliases (matches LazyVim muscle memory) ----
+  "command_aliases": {
+    "W": "w",
+    "Wq": "wq",
+    "Wa": "wa",
+    "Q": "q",
+    "Qa": "qa",
+  },
+
+  // ---- Languages ----
   "languages": {
     "Python": {
       "language_servers": ["pyright", "ruff", "!pylsp"],
       "format_on_save": "on",
       "wrap_guides": [120],
       "formatter": [
-        {
-          "code_actions": {
-            "source.organizeImports.ruff": true,
-            "source.fixAll.ruff": true
-          }
-        },
-        {
-          "language_server": {
-            "name": "ruff"
-          }
-        }
-      ]
-    }
+        { "code_action": "source.organizeImports.ruff" },
+        { "code_action": "source.fixAll.ruff" },
+        { "language_server": { "name": "ruff" } },
+      ],
+    },
+    "CSharp": {
+      "language_servers": ["roslyn", "!omnisharp", "..."],
+      "format_on_save": "on",
+    },
   },
   "lsp": {
     "ruff": {
       "initialization_options": {
         "settings": {
-          "path": "./pyproject.toml"
-        }
-      }
-    }
-  }
+          "path": "./pyproject.toml",
+        },
+      },
+    },
+    "roslyn": {
+      "settings": {
+        "csharp|inlay_hints": {
+          "csharp_enable_inlay_hints_for_types": true,
+          "csharp_enable_inlay_hints_for_implicit_variable_types": true,
+          "csharp_enable_inlay_hints_for_lambda_parameter_types": true,
+          "csharp_enable_inlay_hints_for_implicit_object_creation": true,
+          "dotnet_enable_inlay_hints_for_parameters": true,
+          "dotnet_enable_inlay_hints_for_literal_parameters": true,
+          "dotnet_enable_inlay_hints_for_object_creation_parameters": true,
+          "dotnet_enable_inlay_hints_for_other_parameters": true,
+        },
+        "csharp|navigation": {
+          "dotnet_navigate_to_decompiled_sources": true,
+          "dotnet_navigate_to_source_link_and_embedded_sources": true,
+        },
+        "csharp|background_analysis": {
+          "dotnet_analyzer_diagnostics_scope": "fullSolution",
+          "dotnet_compiler_diagnostics_scope": "fullSolution",
+        },
+        "csharp|code_lens": {
+          "dotnet_enable_references_code_lens": true,
+          "dotnet_enable_tests_code_lens": true,
+        },
+        "csharp|symbol_search": {
+          "dotnet_search_reference_assemblies": true,
+        },
+        "csharp|completion": {
+          "dotnet_show_completion_items_from_unimported_namespaces": true,
+          "dotnet_provide_regex_completions": true,
+        },
+      },
+    },
+  },
 }
