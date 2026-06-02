@@ -57,7 +57,8 @@ return {
 
     opts.environments = opts.environments or {}
     opts.environments.env_variable = opts.environments.env_variable or default_envs.env_variable
-    opts.environments.default = opts.environments.default or default_envs.default
+    -- Default to the Docker "custom" env below; built-in "local" runs host php, which isn't installed here.
+    opts.environments.default = opts.environments.default or "custom"
 
     opts.environments.definitions = vim.list_extend(
       default_envs.definitions,
