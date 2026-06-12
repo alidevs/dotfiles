@@ -6,11 +6,11 @@ set -x
 declare -A gaps
 declare -A color
 
-gaps["top"]="16"
-gaps["bottom"]="16"
-gaps["left"]="16"
-gaps["right"]="16"
-gaps["inner"]="16"
+gaps["top"]="12"
+gaps["bottom"]="12"
+gaps["left"]="12"
+gaps["right"]="12"
+gaps["inner"]="12"
 
 color["focused"]="0xE0808080"
 color["normal"]="0x00010101"
@@ -19,6 +19,10 @@ color["preselect"]="0xE02d74da"
 # ===== Loading Scripting Additions ============
 sudo /opt/homebrew/bin/yabai --load-sa
 /opt/homebrew/bin/yabai -m signal --add event=dock_did_restart action="sudo /opt/homebrew/bin/yabai --load-sa"
+
+# ===== Ensure minimum number of spaces ========
+"$HOME/.config/yabai/ensure-min-spaces.sh" 9
+yabai -m signal --add event=space_destroyed action="\$HOME/.config/yabai/ensure-min-spaces.sh 9"
 
 # ===== Tiling setting =========================
 
@@ -45,6 +49,13 @@ yabai -m config split_ratio 0.50
 
 yabai -m config auto_balance off
 
+# ===== Animations & placement (v6/v7) =========
+yabai -m config window_animation_duration 0.20
+yabai -m config window_animation_easing   ease_out_cubic
+yabai -m config insert_feedback_color     0xE02d74da
+yabai -m config window_origin_display     focused
+yabai -m config window_placement          second_child
+
 yabai -m config mouse_modifier fn
 yabai -m config mouse_action1 move
 yabai -m config mouse_action2 resize
@@ -55,6 +66,14 @@ yabai -m rule --add label="App Store" app="^App Store$" manage=off
 yabai -m rule --add label="Software Update" title="Software Update" manage=off
 yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
 yabai -m rule --add label="Brave PiP" app="^Brave Browser$" title="^Picture in Picture$" manage=off mouse_follows_focus=off
+
+# Drop-down terminal: handled at runtime by scratch-term.sh (bound to alt-t in
+# skhd). A creation-time rule can't be used here because Ghostty sets its window
+# title slightly after the window is created, so window_created sees an empty
+# title and never matches. The script assigns the scratchpad by window id.
+
+# Apply rules to any already-open windows on (re)load
+yabai -m rule --apply
 
 # ===== Signals ================================
 yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"

@@ -22,18 +22,6 @@ shift + alt - j : yabai -m window --warp south
 shift + alt - k : yabai -m window --warp north
 shift + alt - l : yabai -m window --warp east
 
-# Move windows across spaces
-shift + alt - 1 : yabai -m window --space 1
-shift + alt - 2 : yabai -m window --space 2
-shift + alt - 3 : yabai -m window --space 3
-shift + alt - 4 : yabai -m window --space 4
-shift + alt - 5 : yabai -m window --space 5
-shift + alt - 6 : yabai -m window --space 6
-shift + alt - 7 : yabai -m window --space 7
-shift + alt - 8 : yabai -m window --space 8
-shift + alt - 9 : yabai -m window --space 9
-shift + alt - 0 : yabai -m window --space 10
-
 # Move focus to next/prev space
 alt - n : yabai -m space --focus next
 alt - p : yabai -m space --focus prev
@@ -48,6 +36,7 @@ shift + alt - 6 : yabai -m window --space 6; yabai -m space --focus 6
 shift + alt - 7 : yabai -m window --space 7; yabai -m space --focus 7
 shift + alt - 8 : yabai -m window --space 8; yabai -m space --focus 8
 shift + alt - 9 : yabai -m window --space 9; yabai -m space --focus 9
+shift + alt - 0 : yabai -m window --space 10; yabai -m space --focus 10
 
 # Resize windows
 lctrl + alt - h : yabai -m window --resize left:-50:0; \
@@ -62,9 +51,9 @@ lctrl + alt - l : yabai -m window --resize right:50:0; \
 # Equalize size of windows
 lctrl + alt - e : yabai -m space --balance
 
-# Split window
-alt + shift - h : yabai -m window --toggle split horizontal 
-alt + shift - v : yabai -m window --toggle split vertical
+# Toggle split orientation of the focused window
+# (alt+shift-h removed: same chord as warp-west shift+alt-h; --toggle split flips both axes)
+alt + shift - v : yabai -m window --toggle split
 
 # Enable / Disable gaps in current workspace
 lctrl + alt - g : yabai -m space --toggle padding; yabai -m space --toggle gap
@@ -89,12 +78,23 @@ shift + alt - space : \
 
 # Make window native fullscreen
 alt - f         : yabai -m window --toggle zoom-fullscreen
+# Windowed fullscreen (fills display, ignores yabai padding)
+shift + alt - f : yabai -m window --toggle windowed-fullscreen
 
 # Restart yabai
-shift + alt - r : yabai --restart-service --config ~/.config/yabai/yabair
+shift + alt - r : yabai --restart-service --config ~/.config/yabai/yabairc
 
-# Start kitty
-shift + alt - k : kitty
+# ===== Window stacks =========================
+# Cycle focus through windows stacked in the same tile
+alt - s                 : yabai -m window --focus stack.next
+shift + alt - s         : yabai -m window --focus stack.prev
+# Next created/warped window stacks onto the focused one
+shift + lctrl + alt - s : yabai -m window --insert stack
+
+# ===== Scratchpad ============================
+# Toggle the Ghostty drop-down terminal. First press launches a window titled
+# "scratch" and adopts it as a scratchpad; later presses toggle its visibility.
+alt - t : ~/.config/yabai/scratch-term.sh
 
 
 ## Sketchybar
