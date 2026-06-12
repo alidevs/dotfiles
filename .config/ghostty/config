@@ -12,9 +12,10 @@ keybind = alt+left=unbind
 keybind = alt+right=unbind
 
 bold-is-bright = true
-window-decoration = false
-background-opacity = 1.00
-background-blur = true
+# Keep rounded corners; titlebar is hidden via `macos-titlebar-style = hidden`
+# (setting window-decoration = false also removes rounded corners on macOS)
+background-opacity = 0.94
+background-blur = 40
 
 font-feature = +liga
 font-size = 14
