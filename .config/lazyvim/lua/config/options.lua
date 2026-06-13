@@ -27,7 +27,10 @@ if vim.g.neovide then
   vim.g.neovide_refresh_rate = 240
   vim.g.neovide_cursor_vfx_mode = "railgun"
   vim.g.neovide_input_macos_option_key_is_meta = "only_left"
-  vim.g.neovide_opacity = 1.0
+  -- Mirror Ghostty's background-opacity = 0.94 + background-blur (text stays opaque).
+  vim.g.neovide_opacity = 0.94
+  vim.g.neovide_normal_opacity = 0.94
+  vim.g.neovide_window_blurred = true
 end
 
 vim.api.nvim_command("set colorcolumn=120")

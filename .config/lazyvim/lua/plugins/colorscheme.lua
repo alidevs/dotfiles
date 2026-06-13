@@ -11,7 +11,7 @@ return {
         light = "latte",
         dark = "mocha",
       },
-      transparent_background = false,
+      transparent_background = not vim.g.neovide,
       styles = {                 -- Handles the styles of general hi groups (see `:h highlight-args`):
         comments = { "italic" }, -- Change the style of comments
         conditionals = { "italic" },
@@ -53,7 +53,16 @@ return {
       },
     },
   },
-  { "rose-pine/neovim", name = "rose-pine" },
+  {
+    "rose-pine/neovim",
+    name = "rose-pine",
+    opts = {
+      styles = {
+        -- Terminal: bg=NONE lets Ghostty show through. Neovide uses a solid bg + neovide_opacity instead.
+        transparency = not vim.g.neovide,
+      },
+    },
+  },
   {
     "LazyVim/LazyVim",
     opts = {

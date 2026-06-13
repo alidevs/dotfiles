@@ -5,6 +5,7 @@ $directory\
 $git_branch\
 $git_status\
 $fill\
+$kubernetes\
 $cmd_duration\
 $line_break\
 $character
@@ -29,16 +30,23 @@ truncation_length = 3
 truncation_symbol = "/"
 
 [git_branch]
-symbol = ""
-format = '[$symbol $branch]($style) '
-style = "fg:#6e6a86"
+format = '[│ ](fg:muted)[$branch ]($style)'
+style = "fg:muted"
 
 [git_status]
-format = '[$all_status$ahead_behind]($style) '
+format = '[$all_status$ahead_behind ]($style)'
 style = "fg:foam"
+stashed = ''
+
+[kubernetes]
+disabled = false
+symbol = "⎈ "
+format = '[ $symbol$context ]($style)'
+style = "fg:pine"
 
 [fill]
-symbol = " "
+symbol = "─"
+style = "fg:muted"
 
 [cmd_duration]
 min_time = 1000
@@ -48,6 +56,7 @@ show_milliseconds = true
 
 [palettes.rose-pine]
 overlay = '#26233a'
+muted = '#6e6a86'
 love = '#eb6f92'
 gold = '#f6c177'
 rose = '#ebbcba'
