@@ -1,9 +1,8 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "plugin": [
-    "oh-my-openagent",
-    "opencode-openai-codex-auth",
-    "opencode-claude-auth@latest"
+    "@ex-machina/opencode-anthropic-auth@1.7.4",
+    "oh-my-openagent@latest"
   ],
   "permission": {
     "bash": {
@@ -12,6 +11,7 @@
       "ls *": "allow",
       "cat *": "allow",
       "find *": "allow",
+      "sort *": "allow",
       "head *": "allow",
       "tail *": "allow",
       "echo *": "allow",
@@ -20,7 +20,7 @@
       "git diff *": "allow",
       "git show *": "allow",
       "git status *": "allow",
-      "git commit *": "deny",
+      "git commit *": "ask",
       "git push *": "deny",
       "curl *": "allow",
       "wget *": "allow"
@@ -91,19 +91,14 @@
       "prompt": "You are a PR opener focused on:\n- Creating well-structured pull requests\n- Writing clear PR titles and descriptions\n- Using appropriate GitHub CLI commands\n- Ensuring the branch is pushed before opening the PR\n\nUse `gh pr create` to open pull requests. Create descriptive titles and include relevant details in the PR description."
     }
   },
+  "autoupdate": true,
   "mcp": {
-    "serena": {
+    "jira": {
       "type": "local",
       "command": [
-        "uvx",
-        "--from",
-        "git+https://github.com/oraios/serena",
-        "serena",
-        "start-mcp-server",
-        "--context",
-        "ide",
-        "--enable-web-dashboard",
-        "false"
+        "/bin/bash",
+        "-c",
+        "source ~/.config/opencode/.env.jira && exec npx -y jira-mcp"
       ],
       "enabled": true
     },
@@ -115,15 +110,6 @@
     "playwright": {
       "type": "local",
       "command": ["npx", "@playwright/mcp@latest"],
-      "enabled": true
-    },
-    "jira": {
-      "type": "local",
-      "command": [
-        "/bin/bash",
-        "-c",
-        "source ~/.config/opencode/.env.jira && exec npx -y jira-mcp"
-      ],
       "enabled": true
     }
   }
