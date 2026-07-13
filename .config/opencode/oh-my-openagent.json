@@ -13,7 +13,13 @@
     },
     "hephaestus": {
       "model": "openai/gpt-5.5",
-      "variant": "medium"
+      "variant": "medium",
+      "fallback_models": [
+        {
+          "model": "openai/gpt-5.5",
+          "variant": "medium"
+        }
+      ]
     },
     "oracle": {
       "model": "openai/gpt-5.5",
