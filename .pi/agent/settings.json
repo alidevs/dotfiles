@@ -1,0 +1,26 @@
+{
+  "lastChangelogVersion": "0.80.6",
+  "theme": "dark",
+  "defaultProvider": "anthropic",
+  "defaultModel": "claude-sonnet-5",
+  "defaultThinkingLevel": "high",
+  "packages": [
+    "npm:pi-claude-auth",
+    "npm:pi-mcp-adapter",
+    "npm:pi-subagents",
+    "npm:@ayulab/pi-rewind",
+    "npm:pi-lens",
+    "npm:@dietrichgebert/ponytail",
+    "npm:pi-web-access",
+    "npm:@juicesharp/rpiv-todo",
+    "npm:@narumitw/pi-plan-mode",
+    "npm:pi-ask-user",
+    "npm:pi-chrome",
+    "npm:pi-effort"
+  ],
+  "hideThinkingBlock": false,
+  "skills": [
+    "-skills/system-flow-mapper/SKILL.md",
+    "-skills/shop-scout/SKILL.md"
+  ]
+}
