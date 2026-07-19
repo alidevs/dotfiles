@@ -1,0 +1,20 @@
+[keys]
+prefix = "ctrl+e"
+
+[ui]
+agent_panel_scope = "all"
+
+show_agent_labels_on_pane_borders = true
+agent_panel_sort = "spaces"
+[ui.toast]
+delivery = "system"
+
+[theme]
+name = "terminal"
+
+[theme.custom]
+accent = "#c4a7e7"
+overlay0 = "#6e6a86"
+
+[experimental]
+switch_ascii_input_source_in_prefix = true
