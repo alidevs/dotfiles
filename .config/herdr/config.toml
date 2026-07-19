@@ -1,5 +1,9 @@
 [keys]
 prefix = "ctrl+e"
+next_agent = "prefix+]"
+previous_agent = "prefix+["
+split_horizontal = "prefix+minus"
+split_vertical = "prefix+_"
 
 [ui]
 agent_panel_scope = "all"
