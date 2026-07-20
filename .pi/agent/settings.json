@@ -2,8 +2,8 @@
   "lastChangelogVersion": "0.80.6",
   "theme": "dark",
   "defaultProvider": "anthropic",
-  "defaultModel": "claude-sonnet-5",
-  "defaultThinkingLevel": "high",
+  "defaultModel": "claude-opus-4-8",
+  "defaultThinkingLevel": "xhigh",
   "packages": [
     "npm:pi-claude-auth",
     "npm:pi-mcp-adapter",
@@ -11,16 +11,15 @@
     "npm:@ayulab/pi-rewind",
     "npm:pi-lens",
     "npm:@dietrichgebert/ponytail",
-    "npm:pi-web-access",
     "npm:@juicesharp/rpiv-todo",
-    "npm:@narumitw/pi-plan-mode",
     "npm:pi-ask-user",
     "npm:pi-chrome",
-    "npm:pi-effort"
+    "npm:pi-effort",
+    "npm:bigpowers",
+    "npm:@plannotator/pi-extension",
+    "npm:pi-web-access",
+    "npm:pi-fff"
   ],
   "hideThinkingBlock": false,
-  "skills": [
-    "-skills/system-flow-mapper/SKILL.md",
-    "-skills/shop-scout/SKILL.md"
-  ]
+  "skills": []
 }
