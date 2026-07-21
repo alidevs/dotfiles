@@ -523,11 +523,12 @@
   "mcp": {
     "jira": {
       "type": "local",
-      "command": [
-        "/bin/bash",
-        "-c",
-        "source ~/.config/opencode/.env.jira && exec npx -y jira-mcp"
-      ],
+      "command": ["npx", "-y", "jira-mcp"],
+      "environment": {
+        "JIRA_INSTANCE_URL": "{env:JIRA_INSTANCE_URL}",
+        "JIRA_USER_EMAIL": "{env:JIRA_USER_EMAIL}",
+        "JIRA_API_KEY": "{env:JIRA_API_KEY}"
+      },
       "enabled": true
     },
     "sentry": {
@@ -540,6 +541,25 @@
       "command": [
         "npx",
         "@playwright/mcp@latest"
+      ],
+      "enabled": true
+    },
+    "better-design": {
+      "type": "remote",
+      "url": "https://better-design.com/api/mcp",
+      "enabled": true,
+      "headers": {
+        "Authorization": "Bearer {env:BETTER_DESIGN_TOKEN}"
+      }
+    },
+    "blender": {
+      "type": "local",
+      "command": [
+        "uv",
+        "--directory",
+        "{env:BLENDER_MCP_DIR}",
+        "run",
+        "blender-mcp"
       ],
       "enabled": true
     }
