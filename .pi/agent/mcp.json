@@ -1,0 +1,30 @@
+{
+  "mcpServers": {
+    "jira": {
+      "command": "npx",
+      "args": ["-y", "jira-mcp"],
+      "env": {
+        "JIRA_INSTANCE_URL": "${JIRA_INSTANCE_URL}",
+        "JIRA_USER_EMAIL": "${JIRA_USER_EMAIL}",
+        "JIRA_API_KEY": "${JIRA_API_KEY}"
+      }
+    },
+    "sentry": {
+      "url": "https://mcp.sentry.dev/mcp",
+      "auth": "oauth",
+      "directTools": true
+    },
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest"
+      ]
+    },
+    "better-design": {
+      "url": "https://better-design.com/api/mcp",
+      "headers": {
+        "Authorization": "Bearer ${BETTER_DESIGN_TOKEN}"
+      }
+    }
+  }
+}

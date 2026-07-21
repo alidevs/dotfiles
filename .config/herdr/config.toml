@@ -1,3 +1,4 @@
+onboarding = false
 [keys]
 prefix = "ctrl+e"
 next_agent = "prefix+]"
