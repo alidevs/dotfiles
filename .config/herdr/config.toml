@@ -8,6 +8,8 @@ split_vertical = "prefix+_"
 
 [ui]
 agent_panel_scope = "all"
+sidebar_width = 34
+sidebar_max_width = 42
 
 show_agent_labels_on_pane_borders = true
 agent_panel_sort = "spaces"
