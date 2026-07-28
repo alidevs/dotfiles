@@ -7,7 +7,6 @@ split_horizontal = "prefix+minus"
 split_vertical = "prefix+_"
 
 [ui]
-agent_panel_scope = "all"
 sidebar_width = 34
 sidebar_max_width = 42
 
