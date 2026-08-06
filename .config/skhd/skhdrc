@@ -76,10 +76,8 @@ shift + alt - space : \
     yabai -m window --toggle float; \
     yabai -m window --toggle border
 
-# Make window native fullscreen
+# Make window fullscreen (fills display, stays yabai-managed)
 alt - f         : yabai -m window --toggle zoom-fullscreen
-# Windowed fullscreen (fills display, ignores yabai padding)
-shift + alt - f : yabai -m window --toggle windowed-fullscreen
 
 # Restart yabai
 shift + alt - r : yabai --restart-service --config ~/.config/yabai/yabairc

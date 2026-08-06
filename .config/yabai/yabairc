@@ -2,19 +2,14 @@
 
 set -x
 # ====== Variables =============================
+# NOTE: yabai executes this file with /bin/bash (3.2), which has no
+# associative arrays. Plain variables only.
 
-declare -A gaps
-declare -A color
-
-gaps["top"]="12"
-gaps["bottom"]="12"
-gaps["left"]="12"
-gaps["right"]="12"
-gaps["inner"]="12"
-
-color["focused"]="0xE0808080"
-color["normal"]="0x00010101"
-color["preselect"]="0xE02d74da"
+gap_top=12
+gap_bottom=12
+gap_left=12
+gap_right=12
+gap_inner=12
 
 # ===== Loading Scripting Additions ============
 sudo /opt/homebrew/bin/yabai --load-sa
@@ -30,16 +25,16 @@ yabai -m config layout bsp
 
 yabai -m config external_bar all:40:0
 
-yabai -m config top_padding "${gaps["top"]}"
-yabai -m config bottom_padding "${gaps["bottom"]}"
-yabai -m config left_padding "${gaps["left"]}"
-yabai -m config right_padding "${gaps["right"]}"
-yabai -m config window_gap "${gaps["inner"]}"
+yabai -m config top_padding    "$gap_top"
+yabai -m config bottom_padding "$gap_bottom"
+yabai -m config left_padding   "$gap_left"
+yabai -m config right_padding  "$gap_right"
+yabai -m config window_gap     "$gap_inner"
 
 yabai -m config mouse_follows_focus on
-yabai -m config focus_follows_mouse on
+# v7: focus_follows_mouse takes off | autofocus | autoraise ("on" is rejected)
+yabai -m config focus_follows_mouse autofocus
 
-yabai -m config window_topmost off
 yabai -m config window_opacity on
 yabai -m config window_shadow float
 
