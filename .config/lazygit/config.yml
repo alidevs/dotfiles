@@ -29,9 +29,9 @@ gui:
 
 
 git:
-  pagers:
+  diffRenderers:
     - colorArg: "always"
-      pager: "delta --dark --paging=never --side-by-side --syntax-theme='Catppuccin Mocha'"
+      command: "delta --dark --paging=never --side-by-side --syntax-theme='Catppuccin Mocha'"
   log:
     showGraph: "always"
 
