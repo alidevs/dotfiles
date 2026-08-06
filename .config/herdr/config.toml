@@ -5,6 +5,8 @@ next_agent = "prefix+]"
 previous_agent = "prefix+["
 split_horizontal = "prefix+minus"
 split_vertical = "prefix+_"
+rename_tab = "prefix+shift+r"
+reload_config = ""
 
 [ui]
 sidebar_width = 34
@@ -20,7 +22,12 @@ name = "terminal"
 
 [theme.custom]
 accent = "#c4a7e7"
-overlay0 = "#6e6a86"
+# Rosé Pine. The `terminal` preset leaves these as ANSI DarkGray, which this
+# terminal paints #6e6a86 — identical to the muted foreground, so the focused
+# agent row rendered invisible text on an invisible bar.
+surface_dim = "#33304a" # focused/active row background (sidebar.rs render_agent_detail)
+surface1 = "#403d52"    # dragged row background
+overlay0 = "#908caa"    # muted text: separators, tab titles, agent subtitle
 
 [experimental]
 switch_ascii_input_source_in_prefix = true
