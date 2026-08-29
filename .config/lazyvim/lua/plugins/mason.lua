@@ -9,6 +9,7 @@ return {
         "prettier",
         "yamlfix",
         "ty",
+        "templ",
       })
     end,
   }

@@ -12,6 +12,7 @@ return {
         lsp_format = "fallback",
       },
       formatters_by_ft = {
+        templ = { "templ" },
         php = function(bufnr)
           local filename = vim.api.nvim_buf_get_name(bufnr)
           local dir = vim.fs.dirname(filename)

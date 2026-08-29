@@ -17,6 +17,7 @@ return {
         "typescript",
         "vim",
         "yaml",
+        "templ",
       },
     },
   },
