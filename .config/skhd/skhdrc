@@ -84,15 +84,20 @@ shift + alt - r : yabai --restart-service --config ~/.config/yabai/yabairc
 
 # ===== Window stacks =========================
 # Cycle focus through windows stacked in the same tile
-alt - s                 : yabai -m window --focus stack.next
-shift + alt - s         : yabai -m window --focus stack.prev
+alt - a                 : yabai -m window --focus stack.next
+shift + alt - a         : yabai -m window --focus stack.prev
 # Next created/warped window stacks onto the focused one
-shift + lctrl + alt - s : yabai -m window --insert stack
+shift + lctrl + alt - a : yabai -m window --insert stack
 
 # ===== Scratchpad ============================
 # Toggle the Ghostty drop-down terminal. First press launches a window titled
 # "scratch" and adopts it as a scratchpad; later presses toggle its visibility.
 alt - t : ~/.config/yabai/scratch-term.sh
+
+# Send the focused window to the "pad" scratchpad / take it back out.
+lctrl + alt - s : yabai -m window --scratchpad || yabai -m window --scratchpad pad
+# Show / hide it.
+alt - s : yabai -m window --toggle pad
 
 
 ## Sketchybar
