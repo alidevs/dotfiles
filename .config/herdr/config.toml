@@ -14,8 +14,12 @@ sidebar_max_width = 42
 
 show_agent_labels_on_pane_borders = true
 agent_panel_sort = "spaces"
+status_indicators = "symbols"
 [ui.toast]
 delivery = "system"
+
+[ui.sidebar.agents]
+rows = [["state_icon", "machine", "workspace", "agent"], ["tab"]]
 
 [theme]
 name = "terminal"
