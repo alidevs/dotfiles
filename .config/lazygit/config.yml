@@ -1,4 +1,3 @@
----
 # yaml-language-server: $schema=https://raw.githubusercontent.com/jesseduffield/lazygit/master/schema/config.json
 gui:
   sidePanelWidth: 0.25
@@ -24,29 +23,19 @@ gui:
       - "#e0def4"
     searchingActiveBorderColor:
       - "#f6c177"
-  authorColors:
-    '*': "#c4a7e7"
-
-
+    authorColors:
+      '*': "#c4a7e7"
 git:
   diffRenderers:
     - colorArg: "always"
       command: "delta --dark --paging=never --side-by-side --syntax-theme='Catppuccin Mocha'"
   log:
     showGraph: "always"
-
-
 customCommands:
   - key: "C"
     context: "files"
-    description: "Generate commit message with Claude Code"
-    command: "git diff --staged | claude -p 'Generate a concise git commit message for the staged changes, following the conventional\
-      \ commit format. Your response should strictly consist of the raw commit message without any markdown elements, code\
-      \ blocks, backticks, or explanations. Aim for clarity and brevity, capturing the essence of the changes made without\
-      \ detailing every single modification.' --model haiku --output-format text > /tmp/commit_msg && GIT_EDITOR=nvim git\
-      \ commit -e -F /tmp/commit_msg"
+    description: "Generate commit message with local model (ollama qwen3:8b)"
+    command: "git diff --staged | head -c 16000 | jq -Rs --arg p 'Write the git commit message for the staged diff below. Rules: first line is type(optional scope): summary using a conventional commit type (feat, fix, refactor, perf, docs, test, chore); that subject line is reused verbatim as a GitHub pull request title, so it must be one line of at most 70 characters and never exceed GitHub limit of 256 characters; add body lines only if the change truly needs them; output raw text only, no markdown, no code fences, no backticks, no explanation.' '{model:\"qwen3:8b\",think:false,stream:false,keep_alive:\"30m\",options:{num_predict:120,num_ctx:8192},prompt:($p+\"\\n\\n\"+.)}' | curl -sS http://127.0.0.1:11434/api/generate -d @- | jq -r .response > /tmp/commit_msg && GIT_EDITOR=nvim git commit -e -F /tmp/commit_msg"
     output: "terminal"
-
-
 os:
   editPreset: "nvim"
