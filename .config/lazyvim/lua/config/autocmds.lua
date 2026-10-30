@@ -22,3 +22,14 @@ vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
     vim.opt_local.cursorline = false
   end,
 })
+
+-- clear a client's diagnostics on detach; nvim otherwise leaves stale
+-- diagnostics from the old client stacked on top of the new one's after
+-- any LSP restart (gopls crash/reattach, :LspRestart, buffer close/reopen)
+vim.api.nvim_create_autocmd("LspDetach", {
+  group = vim.api.nvim_create_augroup("clear_diagnostics_on_detach", { clear = true }),
+  callback = function(args)
+    local ns = vim.lsp.diagnostic.get_namespace(args.data.client_id)
+    vim.diagnostic.reset(ns, args.buf)
+  end,
+})

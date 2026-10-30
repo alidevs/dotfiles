@@ -6,6 +6,13 @@ return {
         pyright = {
           enabled = false,
         },
+        gopls = {
+          settings = {
+            gopls = {
+              directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules", "-tmp", "-**/tmp" },
+            },
+          },
+        },
         intelephense = {
           filetypes = { "php", "blade", "php_only" },
           settings = {
